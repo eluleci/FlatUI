@@ -41,10 +41,7 @@ include ':application', ':FlatUI'
 - clean and re-import your project
 - Edit your build.gradle in your application module and append FlatUI to dependencies
 ```
-dependencies {
-    //...
     compile project(':FlatUI')
-}
 ```
 
 IMPORTANT - If you want to use the widgets inside xml, you need to add this part to the root element of layout
