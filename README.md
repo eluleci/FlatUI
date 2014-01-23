@@ -29,7 +29,7 @@ Themes
  [2]: https://raw.github.com/eluleci/FlatUI/master/sample-images/themes.png
  
  
-## Usage (Android Studio)
+## Usage (Gradle)
 
 - Download the library and extract it.
 - Copy 'library' folder into root directory of your project and change name to FlatUI.
