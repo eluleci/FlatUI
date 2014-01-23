@@ -31,25 +31,23 @@ Themes
  
 ## Usage (Android Studio)
 
-Download the library and extract it. Put the folder into libs directory of the project. 
+- Download the library and extract it.
+- Copy 'library' folder into root directory of your project and change name to FlatUI.
+- Open your project in Android Studio
+- Edit your settings.gradlew file and add ':FlatUI' to dependencies. Result should be like:
+```
+include ':application', ':FlatUI'
+```
+- clean and re-import your project
+- Edit your build.gradle in your application module and append FlatUI to dependencies
+```
+dependencies {
+    //...
+    compile project(':FlatUI')
+}
+```
 
-- Open "Project Structure" (Right click on project -> "Open Module Settings").
-- Select "Modules" from left navigation menu.
-- Click "+" button on left top and select "Import Module".
-- Select the root directory of the project that you put into your libs folder.
-- Click next in all of the pages.
-- Then click your project name below the "+" button at top.
-- Then click "+" button at the right side and select "Module Dependency".
-- Select FlatUI and DONE.
-
-For using this library in Android Studio (IntelliJ IDEA) you also need to activate including assets from dependencies to be able to include font files.
-- Open project structure (Right click on project -> 'Open Module Settings')
-- Select 'Facets' from left menu
-- Select 'Compiler' tab at right
-- Activate 'Include assets from dependencies into APK' beneath 'Resources Packaging'
-
-Also you need to add this part to the root element of the element in layout page
-
+IMPORTANT - If you want to use the widgets inside xml, you need to add this part to the root element of layout
 ```xml
 xmlns:app="http://schemas.android.com/apk/res-auto"
 ```
@@ -63,7 +61,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 FlatUI.setDefaultTheme(FlatUI.DEEP);
 
 // to change the color of the action bar at runtime
-FlatUI.setActionBarTheme(this, FlatUI.DEEP, false);
+FlatUI.setActionBarTheme(this, FlatUI.DEEP, false, false);
 
 ```
 
@@ -79,11 +77,27 @@ FlatUI.setActionBarTheme(this, FlatUI.DEEP, false);
 - isFullFlat     :  shape of button (boolean)
 - fieldStyle     :  shape of the edit text (flat, box, transparent)
 - textColor      :  text color of the text view (darker, dark, main, light)
+- backgroundColor:  selecting one of the colors of theme (darker, dark, main, light)
 - customBackgroundColor : (color)
 
 ## Samples
 
 ```xml
+
+<!-- TextView -->
+<!-- available attrs: cornerRadius, fontFamily, fontWeight, textColor, backgroundColor, customBackgroundColor -->
+
+<com.cengalabs.flatui.views.FlatTextView
+                android:id="@+id/title_edittexts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginLeft="5dip"
+                android:maxLines="1"
+                android:gravity="center_vertical"
+                app:textColor="main"
+                android:text="Edit Texts"
+                android:textSize="20dip"/>
 
 <!-- FlatEditText -->
 <!-- available attrs: fieldStyle, cornerRadius, textPadding, fontFamily, fontWeight, textAppearance -->
