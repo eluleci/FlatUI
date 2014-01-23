@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CengaLabs">
+
+        <attr name="theme" format="integer">
+            <enum name="Sand" value="0" />
+            <enum name="Orange" value="1" />
+            <enum name="Candy" value="2" />
+            <enum name="Blossom" value="3" />
+            <enum name="Grape" value="4" />
+            <enum name="Deep" value="5" />
+            <enum name="Sky" value="6" />
+            <enum name="Grass" value="7" />
+            <enum name="Dark" value="8" />
+            <enum name="Snow" value="9" />
+            <enum name="Sea" value="10" />
+            <enum name="Blood" value="11" />
+        </attr>
+
+        <attr name="textAppearance" format="integer">
+            <enum name="none" value="0" />
+            <enum name="dark" value="1" />
+            <enum name="light" value="2" />
+        </attr>
+
+        <attr name="fontFamily" format="integer">
+            <enum name="DroidSans" value="0" />
+            <enum name="OpenSans" value="1" />
+            <enum name="Roboto" value="2" />
+            <enum name="Comfortaa" value="3" />
+        </attr>
+
+        <attr name="fontWeight" format="integer">
+            <enum name="extralight" value="0" />
+            <enum name="light" value="1" />
+            <enum name="regular" value="2" />
+            <enum name="bold" value="3" />
+            <enum name="extrabold" value="4" />
+        </attr>
+
+        <attr name="cornerRadius" format="dimension"/>
+        <attr name="textPadding" format="dimension"/>
+        <attr name="size" format="dimension"/>
+
+        <!-- FlatButton -->
+        <attr name="isFullFlat" format="boolean"/>
+
+        <!-- Edit Text -->
+        <attr name="fieldStyle" format="integer">
+            <enum name="flat" value="0" />
+            <enum name="box" value="1" />
+            <enum name="transparent" value="2" />
+        </attr>
+
+        <!-- Text View -->
+        <attr name="textColor" format="integer">
+            <enum name="darker" value="0" />
+            <enum name="dark" value="1" />
+            <enum name="main" value="2" />
+            <enum name="light" value="3" />
+        </attr>
+
+        <attr name="backgroundColor" format="integer">
+            <enum name="darker" value="0" />
+            <enum name="dark" value="1" />
+            <enum name="main" value="2" />
+            <enum name="light" value="3" />
+        </attr>
+
+        <attr name="customBackgroundColor" format="color" />
+
+    </declare-styleable>
+
+</resources>

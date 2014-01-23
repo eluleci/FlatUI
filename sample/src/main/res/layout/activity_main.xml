@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff">
+
+    <!-- Dummy item to prevent edit text from receiving focus -->
+    <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="0px"
+        android:layout_height="0px"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <!-- Edit Text -->
+            <com.cengalabs.flatui.views.FlatTextView
+                android:id="@+id/title_edittexts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginLeft="5dip"
+                android:maxLines="1"
+                android:gravity="center_vertical"
+                app:textColor="main"
+                android:text="Edit Texts"
+                android:textSize="20dip"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dip"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip">
+
+                <com.cengalabs.flatui.views.FlatEditText
+                    android:id="@+id/edittext_flat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dip"
+                    android:maxLines="1"
+                    android:gravity="center_vertical"
+                    app:fieldStyle="flat"
+                    app:cornerRadius="3dip"
+                    android:hint="Flat style"
+                    android:includeFontPadding="true"/>
+
+                <com.cengalabs.flatui.views.FlatEditText
+                    android:id="@+id/edittext_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dip"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    app:fieldStyle="box"
+                    android:gravity="center_vertical"
+                    android:hint="Box style"
+                    android:includeFontPadding="true"/>
+
+                <com.cengalabs.flatui.views.FlatEditText
+                    android:id="@+id/edittext_transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dip"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    app:fieldStyle="transparent"
+                    android:gravity="center_vertical"
+                    android:hint="Transparent style"
+                    android:includeFontPadding="true"/>
+
+            </LinearLayout>
+
+
+            <!-- Seek Bar -->
+            <com.cengalabs.flatui.views.FlatTextView
+                android:id="@+id/title_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:layout_marginLeft="5dip"
+                android:maxLines="1"
+                android:gravity="center_vertical"
+                app:textColor="main"
+                android:text="Seek Bar"
+                android:textSize="20dip"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dip"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip">
+
+                <com.cengalabs.flatui.views.FlatSeekBar
+                    android:id="@+id/seekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dip"
+                    android:max="100"/>
+
+            </LinearLayout>
+
+
+            <!-- Button -->
+            <com.cengalabs.flatui.views.FlatTextView
+                android:id="@+id/title_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:layout_marginLeft="5dip"
+                android:maxLines="1"
+                android:gravity="center_vertical"
+                app:textColor="main"
+                android:text="Buttons"
+                android:textSize="20dip"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dip"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip">
+
+                <com.cengalabs.flatui.views.FlatTextView
+                    android:id="@+id/title_buttons_shape"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dip"
+                    android:maxLines="1"
+                    android:gravity="center_vertical"
+                    app:textColor="main"
+                    android:text="Shape"
+                    android:textSize="16dip"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2">
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_block"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Block"
+                        app:textAppearance="light"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_flat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Full Flat"
+                        app:isFullFlat="true"
+                        app:textAppearance="light"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                </LinearLayout>
+
+                <com.cengalabs.flatui.views.FlatTextView
+                    android:id="@+id/title_buttons_text_appearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dip"
+                    android:maxLines="1"
+                    android:gravity="center_vertical"
+                    app:textColor="main"
+                    android:text="Text Appearance"
+                    android:textSize="16dip"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="3">
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_light"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Light"
+                        app:textAppearance="light"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_white"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="White"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_dark_text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Dark"
+                        app:textAppearance="dark"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!-- CheckBox -->
+            <com.cengalabs.flatui.views.FlatTextView
+                android:id="@+id/title_checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginLeft="5dip"
+                android:maxLines="1"
+                android:gravity="center_vertical"
+                app:textColor="main"
+                android:text="Check Box"
+                android:textSize="20dip"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.cengalabs.flatui.views.FlatTextView
+                        android:id="@+id/title_checkbox_enabled"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dip"
+                        android:gravity="center_vertical"
+                        app:textColor="main"
+                        android:text="Enabled"
+                        android:textSize="16dip"/>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip">
+
+                        <com.cengalabs.flatui.views.FlatCheckBox
+                            android:id="@+id/checkbox_unchecked_enabled"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:size="20dip"
+                            android:background="#0000"
+                            android:text="unchecked"
+                            android:layout_margin="5dip"/>
+
+                        <com.cengalabs.flatui.views.FlatCheckBox
+                            android:id="@+id/checkbox_checked_enabled"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:size="20dip"
+                            android:text="checked"
+                            android:checked="true"
+                            android:background="#0000"
+                            android:layout_margin="5dip"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.cengalabs.flatui.views.FlatTextView
+                        android:id="@+id/title_checkbox_disabled"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dip"
+                        android:gravity="center_vertical"
+                        app:textColor="main"
+                        android:text="Disabled"
+                        android:textSize="16dip"/>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip">
+
+                        <com.cengalabs.flatui.views.FlatCheckBox
+                            android:id="@+id/checkbox_unchecked_disabled"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:size="20dip"
+                            android:background="#0000"
+                            android:text="unchecked"
+                            android:enabled="false"
+                            android:layout_margin="5dip"/>
+
+                        <com.cengalabs.flatui.views.FlatCheckBox
+                            android:id="@+id/checkbox_checked_disabled"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:size="20dip"
+                            android:text="checked"
+                            android:checked="true"
+                            android:enabled="false"
+                            android:background="#0000"
+                            android:layout_margin="5dip"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- RadioButton -->
+            <com.cengalabs.flatui.views.FlatTextView
+                android:id="@+id/title_radiobutton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginLeft="5dip"
+                android:maxLines="1"
+                android:gravity="center_vertical"
+                app:textColor="main"
+                android:text="Radio Button"
+                android:textSize="20dip"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.cengalabs.flatui.views.FlatTextView
+                        android:id="@+id/title_radiobutton_enabled"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dip"
+                        android:gravity="center_vertical"
+                        app:textColor="main"
+                        android:text="Enabled"
+                        android:textSize="16dip"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip">
+
+                        <RadioGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="left">
+
+                            <com.cengalabs.flatui.views.FlatRadioButton
+                                android:id="@+id/radio_unchecked_enabled"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                app:size="20dip"
+                                android:background="#0000"
+                                android:text="unchecked"
+                                android:layout_margin="5dip"/>
+
+                            <com.cengalabs.flatui.views.FlatRadioButton
+                                android:id="@+id/radio_checked_enabled"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                app:size="20dip"
+                                android:text="checked"
+                                android:background="#0000"
+                                android:layout_margin="5dip"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.cengalabs.flatui.views.FlatTextView
+                        android:id="@+id/title_radiobutton_disabled"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dip"
+                        android:gravity="center_vertical"
+                        app:textColor="main"
+                        android:text="Disabled"
+                        android:textSize="16dip"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip">
+
+                        <RadioGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="left">
+
+                            <com.cengalabs.flatui.views.FlatRadioButton
+                                android:id="@+id/radio_unchecked_disabled"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                app:size="20dip"
+                                android:background="#0000"
+                                android:text="unchecked"
+                                android:enabled="false"
+                                android:layout_margin="5dip"/>
+
+                            <com.cengalabs.flatui.views.FlatRadioButton
+                                android:id="@+id/radio_checked_disabled"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                app:size="20dip"
+                                android:text="checked"
+                                android:checked="true"
+                                android:enabled="false"
+                                android:background="#0000"
+                                android:layout_margin="5dip"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- Toggle Button -->
+            <com.cengalabs.flatui.views.FlatTextView
+                android:id="@+id/title_toggle_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginLeft="5dip"
+                android:maxLines="1"
+                android:gravity="center_vertical"
+                app:textColor="main"
+                android:text="Toggle Button"
+                android:textSize="20dip"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.cengalabs.flatui.views.FlatTextView
+                        android:id="@+id/title_toggle_enabled"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dip"
+                        android:gravity="center_vertical"
+                        app:textColor="main"
+                        android:text="Enabled"
+                        android:textSize="16dip"/>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip">
+
+                        <com.cengalabs.flatui.views.FlatToggleButton
+                            android:id="@+id/toggle_unchecked_enabled"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Full Flat"
+                            app:size="20dip"/>
+
+                        <com.cengalabs.flatui.views.FlatToggleButton
+                            android:id="@+id/toggle_checked_enabled"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Full Flat"
+                            android:checked="true"
+                            app:size="20dip"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.cengalabs.flatui.views.FlatTextView
+                        android:id="@+id/title_toggle_disabled"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dip"
+                        android:gravity="center_vertical"
+                        app:textColor="main"
+                        android:text="Disabled"
+                        android:textSize="16dip"/>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip">
+
+                        <com.cengalabs.flatui.views.FlatToggleButton
+                            android:id="@+id/toggle_unchecked_disabled"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Full Flat"
+                            android:enabled="false"
+                            app:size="20dip"/>
+
+                        <com.cengalabs.flatui.views.FlatToggleButton
+                            android:id="@+id/toggle_checked_disabled"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Full Flat"
+                            android:checked="true"
+                            android:enabled="false"
+                            app:size="20dip"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- Themes -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dip"
+                android:layout_marginLeft="5dip">
+
+                <com.cengalabs.flatui.views.FlatTextView
+                    android:id="@+id/title_themes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:gravity="center_vertical"
+                    app:textColor="main"
+                    android:text="Themes"
+                    android:textSize="20dip"/>
+
+                <com.cengalabs.flatui.views.FlatTextView
+                    android:id="@+id/title_themes_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:gravity="center_vertical"
+                    app:textColor="light"
+                    android:text="Press buttons to change theme."
+                    android:textSize="12dip"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dip"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2">
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_sand"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sand"
+                        android:onClick="onChangeThemeButtonClicked"
+                        app:theme="Sand"
+                        app:textAppearance="light"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_orange"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Orange"
+                        app:theme="Orange"
+                        android:onClick="onChangeThemeButtonClicked"
+                        app:textAppearance="light"
+                        app:cornerRadius="3dip"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2">
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_candy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Candy"
+                        app:theme="Candy"
+                        android:onClick="onChangeThemeButtonClicked"
+                        app:textAppearance="light"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_blossom"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Blossom"
+                        app:theme="Blossom"
+                        android:onClick="onChangeThemeButtonClicked"
+                        app:textAppearance="light"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2">
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_grape"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Grape"
+                        app:theme="Grape"
+                        android:onClick="onChangeThemeButtonClicked"
+                        app:textAppearance="light"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_deep"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Deep"
+                        app:theme="Deep"
+                        android:onClick="onChangeThemeButtonClicked"
+                        app:textAppearance="light"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2">
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_sky"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sky"
+                        app:theme="Sky"
+                        android:onClick="onChangeThemeButtonClicked"
+                        app:textAppearance="light"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_grass"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Grass"
+                        app:theme="Grass"
+                        android:onClick="onChangeThemeButtonClicked"
+                        app:textAppearance="light"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2">
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_dark"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Dark"
+                        app:theme="Dark"
+                        android:onClick="onChangeThemeButtonClicked"
+                        app:textAppearance="light"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_snow"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Snow"
+                        app:theme="Snow"
+                        android:onClick="onChangeThemeButtonClicked"
+                        app:textAppearance="light"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2">
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_sea"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sea"
+                        app:theme="Sea"
+                        android:onClick="onChangeThemeButtonClicked"
+                        app:textAppearance="light"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_turquoise"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Blood"
+                        app:theme="Blood"
+                        android:onClick="onChangeThemeButtonClicked"
+                        app:textAppearance="light"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+
