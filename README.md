@@ -27,26 +27,20 @@ Themes
 
  [1]: https://raw.github.com/eluleci/FlatUI/master/sample-images/showcase.png
  [2]: https://raw.github.com/eluleci/FlatUI/master/sample-images/themes.png
- 
- 
-## Usage (Gradle)
 
-- Download the library and extract it.
-- Copy 'library' folder into root directory of your project and change name to FlatUI.
-- Open your project in Android Studio
-- Edit your settings.gradlew file and add ':FlatUI' to dependencies. Result should be like:
-```
-include ':application', ':FlatUI'
-```
-- clean and re-import your project
-- Edit your build.gradle in your application module and append FlatUI to dependencies
-```
-    compile project(':FlatUI')
-```
+Including into your project
+-------------------------
 
-IMPORTANT - If you want to use the widgets inside xml, you need to add this part to the root element of layout
+This library is pushed to Maven Central, so you just need to add the following dependency to your `build.gradle`.
+
+    dependencies {
+        compile 'com.github.eluleci:flatui:0.1.1'
+    }
+
+
+IMPORTANT - If you want to use the widgets inside xml, you need to add this line to the root element of layout and use necessary parameters with 'flatui' tag
 ```xml
-xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:flatui="http://schemas.android.com/apk/res-auto"
 ```
 
 ## Main Java functions
@@ -92,7 +86,7 @@ FlatUI.setActionBarTheme(this, FlatUI.DEEP, false, false);
                 android:layout_marginLeft="5dip"
                 android:maxLines="1"
                 android:gravity="center_vertical"
-                app:textColor="main"
+                flatui:textColor="main"
                 android:text="Edit Texts"
                 android:textSize="20dip"/>
 
@@ -103,25 +97,25 @@ FlatUI.setActionBarTheme(this, FlatUI.DEEP, false, false);
 	android:id="@+id/edittext_flat"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"                        
-	app:theme="Sand"
-	app:fieldStyle="flat"
-	app:cornerRadius="3dip"/>
+	flatui:theme="Sand"
+	flatui:fieldStyle="flat"
+	flatui:cornerRadius="3dip"/>
 	
 <com.cengalabs.flatui.views.FlatEditText
 	android:id="@+id/edittext_flat"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"                        
-	app:theme="Sand"
-	app:fieldStyle="box"
-	app:cornerRadius="3dip"/>
+	flatui:theme="Sand"
+	flatui:fieldStyle="box"
+	flatui:cornerRadius="3dip"/>
 
 <com.cengalabs.flatui.views.FlatEditText
 	android:id="@+id/edittext_flat"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"                        
-	app:theme="Sand"
-	app:fieldStyle="transparent"
-	app:cornerRadius="3dip"/>
+	flatui:theme="Sand"
+	flatui:fieldStyle="transparent"
+	flatui:cornerRadius="3dip"/>
 	
 
 <!-- FlatSeekBar -->
@@ -132,7 +126,7 @@ FlatUI.setActionBarTheme(this, FlatUI.DEEP, false, false);
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:layout_margin="5dip"
-	app:theme="Sand"
+	flatui:theme="Sand"
 	android:max="100"/>
 	
 
@@ -144,17 +138,17 @@ FlatUI.setActionBarTheme(this, FlatUI.DEEP, false, false);
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:text="Block"
-	app:theme="Sand"
-	app:textAppearance="light"/>
+	flatui:theme="Sand"
+	flatui:textAppearance="light"/>
 
 <com.cengalabs.flatui.views.FlatButton
 	android:id="@+id/button_flat"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:text="Full Flat"
-	app:theme="Sand"
-	app:isFullFlat="true"
-	app:textAppearance="light"/>
+	flatui:theme="Sand"
+	flatui:isFullFlat="true"
+	flatui:textAppearance="light"/>
 	
 
 	
@@ -165,8 +159,8 @@ FlatUI.setActionBarTheme(this, FlatUI.DEEP, false, false);
 	android:id="@+id/checkbox_unchecked_enabled"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	app:theme="Sand"
-	app:size="20dip"
+	flatui:theme="Sand"
+	flatui:size="20dip"
 	android:text="unchecked enabled"/>
 
 	
@@ -178,8 +172,8 @@ FlatUI.setActionBarTheme(this, FlatUI.DEEP, false, false);
 	android:id="@+id/checkbox_unchecked_disabled"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"	
-	app:theme="Sand"
-	app:size="20dip"
+	flatui:theme="Sand"
+	flatui:size="20dip"
 	android:text="unchecked enabled"
 	android:enabled="false"/>
 	
@@ -192,9 +186,25 @@ FlatUI.setActionBarTheme(this, FlatUI.DEEP, false, false);
 	android:id="@+id/toggle_unchecked_enabled"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	app:theme="Sand"
-	app:size="20dip"/>
+	flatui:theme="Sand"
+	flatui:size="20dip"/>
 
 	
 ```
 
+License
+--------
+
+    Copyright 2013 Square, Inc.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
