@@ -7,7 +7,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.PaintDrawable;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 
 import com.cengalabs.flatui.constants.Colors;
@@ -107,8 +106,35 @@ public class FlatUI implements Colors {
         return null;
     }
 
+    /**
+     * Sets action bar drawable with given attributes. Can be used for standard Activity ActionBar.
+     * If you are using Action Bar Compatibility, you can use getActionBarDrawable() method with
+     * same attributes and apply drawable manually.
+     *
+     * @param activity context
+     * @param theme selected theme
+     * @param dark boolean for choosing dark colors or primary colors
+     * @param titleEnabled used for hiding/showing action bar title after changing drawable
+     */
     public static void setActionBarTheme(Activity activity, int theme, boolean dark, boolean titleEnabled) {
 
+        Drawable drawable = getActionBarDrawable(theme, dark);
+
+        ActionBar actionBar = activity.getActionBar();
+        actionBar.setBackgroundDrawable(drawable);
+        actionBar.setDisplayShowTitleEnabled(!titleEnabled);
+        actionBar.setDisplayShowTitleEnabled(titleEnabled);
+    }
+
+    /**
+     * Returns a suitable drawable for ActionBar with theme colors. Should be used in case of usage
+     * of Action Bar Compatibility library.
+     *
+     * @param theme selected theme
+     * @param dark boolean for choosing dark colors or primary colors
+     * @return drawable to be used in ActionBar
+     */
+    public static Drawable getActionBarDrawable(int theme, boolean dark) {
         int[] color = getColor(theme);
 
         int color1 = color[2];
@@ -124,19 +150,7 @@ public class FlatUI implements Colors {
         Drawable[] d = {bottom, front};
         LayerDrawable drawable = new LayerDrawable(d);
         drawable.setLayerInset(1, 0, 0, 0, 3);
-
-        if(activity instanceof ActionBarActivity) {
-            ActionBarActivity aba = (ActionBarActivity) activity;
-            android.support.v7.app.ActionBar actionBar = aba.getSupportActionBar();
-            actionBar.setBackgroundDrawable(drawable);
-            actionBar.setDisplayShowTitleEnabled(!titleEnabled);
-            actionBar.setDisplayShowTitleEnabled(titleEnabled);
-        } else {
-            ActionBar actionBar = activity.getActionBar();
-            actionBar.setBackgroundDrawable(drawable);
-            actionBar.setDisplayShowTitleEnabled(!titleEnabled);
-            actionBar.setDisplayShowTitleEnabled(titleEnabled);
-        }
+        return drawable;
     }
 
     public static void setDefaultTheme(int theme) {
