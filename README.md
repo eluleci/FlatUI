@@ -1,9 +1,9 @@
-Flat UI Kit
+Android FlatUI
 ===================
 
-Flat UI Kit is a library that lets you use native android widgets with a better and customized look.
+FlatUI is a library that lets you use native android widgets with a better and customized look.
 
-You can define the widgets in XML or create on run time in JAVA. Even though the widgets are customized, you can create your own widget styles with some attributes.
+You can define the widgets in XML or create on run time in JAVA. Even though the widgets are customized, you can create your own widget styles via attributes.
 
 There are many predefined themes inside this library and there will be a functionality to add your own colors to it soon.
 
@@ -34,7 +34,7 @@ Including into your project
 This library is pushed to Maven Central, so you just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.eluleci:flatui:0.1.1'
+        compile 'com.github.eluleci:flatui:0.1.2'
     }
 
 
@@ -53,6 +53,9 @@ FlatUI.setDefaultTheme(FlatUI.DEEP);
 
 // to change the color of the action bar at runtime
 FlatUI.setActionBarTheme(this, FlatUI.DEEP, false, false);
+
+// if you are using ActionBar of compatibility library, get drawable and set it manually to support action bar.
+getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.DEEP, false));
 
 ```
 

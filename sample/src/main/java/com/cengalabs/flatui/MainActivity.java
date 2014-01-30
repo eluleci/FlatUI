@@ -35,7 +35,8 @@ public class MainActivity extends ActionBarActivity {
         // if you are using standard action bar (not compatibility library) use this
         // FlatUI.setActionBarTheme(this, theme, false, true);
 
-        // if you are using ActionBar of Compatibility library, get drawable and set it manually
+        // if you are using ActionBar of Compatibility library (like this activity), get drawable
+        // and set it manually to support action bar.
         getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.DEEP, false));
 
         // titles
