@@ -23,6 +23,8 @@ public class FlatUI implements Colors {
 
     public static final int DEFAULT_FONT_FAMILY = 2;
     public static final int DEFAULT_FONT_WEIGHT = 1;
+    public static final int DEFAULT_RADIUS = 10;
+    public static final int DEFAULT_SIZE = 20;
     public static int DEFAULT_THEME = 5;
 
     public static final int SAND = 0;

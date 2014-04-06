@@ -23,10 +23,10 @@ import com.cengalabs.flatui.constants.Colors;
 public class FlatButton extends android.widget.Button implements Colors {
 
     private int fontId = FlatUI.DEFAULT_FONT_FAMILY;
+    private int radius = FlatUI.DEFAULT_RADIUS;
     private int fontWeight = 2;
     private int[] color;
     private int theme;
-    private int radius = 5;
     private int bottom = 5;
     private int padding = 10;
     private int textAppearance = 0;

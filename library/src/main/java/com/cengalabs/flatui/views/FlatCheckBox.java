@@ -19,13 +19,13 @@ import com.cengalabs.flatui.constants.Colors;
  */
 public class FlatCheckBox extends CheckBox implements Colors {
 
+    private int fontId = FlatUI.DEFAULT_FONT_FAMILY;
+    private int fontWeight = FlatUI.DEFAULT_FONT_WEIGHT;
+    private int radius = FlatUI.DEFAULT_RADIUS;
     private int[] color;
     private int theme;
     private int size = 34;
     private int border = 5;
-    private int radius = 3;
-    private int fontId = FlatUI.DEFAULT_FONT_FAMILY;
-    private int fontWeight = FlatUI.DEFAULT_FONT_WEIGHT;
 
     public FlatCheckBox(Context context) {
         super(context);

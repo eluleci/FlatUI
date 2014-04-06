@@ -4,10 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
+import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
@@ -25,8 +22,8 @@ public class FlatEditText extends EditText implements Colors {
 
     private int fontId = FlatUI.DEFAULT_FONT_FAMILY;
     private int fontWeight = FlatUI.DEFAULT_FONT_WEIGHT;
+    private int radius = FlatUI.DEFAULT_RADIUS;
     private int[] color;
-    private int radius = 5;
     private int padding = 10;
     private int border = 3;
     private int style = 0;
@@ -82,35 +79,30 @@ public class FlatEditText extends EditText implements Colors {
             color = FlatUI.getColor(FlatUI.DEFAULT_THEME);
         }
 
-        float[] outerR = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
-
-        // creating normal state drawable
-        ShapeDrawable normalFront = new ShapeDrawable(new RoundRectShape(outerR, null, null));
-        normalFront.setPadding(padding, padding, padding, padding);
-
-        ShapeDrawable normalBack = new ShapeDrawable(new RoundRectShape(outerR, null, null));
-        normalBack.setPadding(border, border, border, border);
+        GradientDrawable backgroundDrawable = new GradientDrawable();
+        backgroundDrawable.setCornerRadius(radius);
 
         if (style == 0) {             // flat
-            normalFront.getPaint().setColor(Color.TRANSPARENT);
-            normalBack.getPaint().setColor(color[2]);
             if(!hasOwnTextColor) setTextColor(color[3]);
+            backgroundDrawable.setColor(color[2]);
+            backgroundDrawable.setStroke(0, color[2]);
 
         } else if (style == 1) {      // box
-            normalFront.getPaint().setColor(Color.WHITE);
-            normalBack.getPaint().setColor(color[2]);
             if(!hasOwnTextColor) setTextColor(color[2]);
+            backgroundDrawable.setColor(Color.WHITE);
+            backgroundDrawable.setStroke(border, color[2]);
 
         } else if (style == 2) {      // transparent
-            normalFront.getPaint().setColor(Color.TRANSPARENT);
-            normalBack.getPaint().setColor(Color.TRANSPARENT);
             if(!hasOwnTextColor) setTextColor(color[1]);
+            backgroundDrawable.setColor(Color.TRANSPARENT);
+            backgroundDrawable.setStroke(border, Color.TRANSPARENT);
+        } else if (style == 3) {      // transparentBox
+            if(!hasOwnTextColor) setTextColor(color[1]);
+            backgroundDrawable.setColor(Color.TRANSPARENT);
+            backgroundDrawable.setStroke(border, color[2]);
         }
 
-        Drawable[] d = {normalBack, normalFront};
-        LayerDrawable normal = new LayerDrawable(d);
-
-        setBackgroundDrawable(normal);
+        setBackgroundDrawable(backgroundDrawable);
 
         if(!hasOwnHintColor) setHintTextColor(color[3]);
 

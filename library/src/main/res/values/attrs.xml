@@ -50,6 +50,7 @@
             <enum name="flat" value="0" />
             <enum name="box" value="1" />
             <enum name="transparent" value="2" />
+            <enum name="transparentBox" value="3" />
         </attr>
 
         <!-- Text View -->

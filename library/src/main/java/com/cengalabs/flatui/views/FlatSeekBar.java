@@ -19,6 +19,8 @@ import com.cengalabs.flatui.constants.Colors;
  */
 public class FlatSeekBar extends android.widget.SeekBar implements Colors {
 
+    private int size = FlatUI.DEFAULT_SIZE;
+    private int theme;
     private int[] color;
 
     public FlatSeekBar(Context context) {
@@ -46,8 +48,10 @@ public class FlatSeekBar extends android.widget.SeekBar implements Colors {
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, com.cengalabs.flatui.R.styleable.CengaLabs);
 
-            int theme = a.getInt(com.cengalabs.flatui.R.styleable.CengaLabs_theme, FlatUI.DEFAULT_THEME);
+            theme = a.getInt(com.cengalabs.flatui.R.styleable.CengaLabs_theme, FlatUI.DEFAULT_THEME);
             color = FlatUI.getColor(theme);
+
+            size = a.getDimensionPixelSize(com.cengalabs.flatui.R.styleable.CengaLabs_size, size);
 
             a.recycle();
         } else if (color == null) {
@@ -56,29 +60,29 @@ public class FlatSeekBar extends android.widget.SeekBar implements Colors {
 
         // setting thumb
         PaintDrawable thumb = new PaintDrawable(color[0]);
-        thumb.setCornerRadius(15);
-        thumb.setIntrinsicWidth(30);
-        thumb.setIntrinsicHeight(30);
+        thumb.setCornerRadius(size * 5 / 4);
+        thumb.setIntrinsicWidth(size * 5 / 2);
+        thumb.setIntrinsicHeight(size * 5 / 2);
         setThumb(thumb);
 
         // progress
         PaintDrawable progress = new PaintDrawable(color[1]);
-        progress.setCornerRadius(10);
-        progress.setIntrinsicHeight(10);
-        progress.setIntrinsicWidth(5);
+        progress.setCornerRadius(size);
+        progress.setIntrinsicHeight(size);
+        progress.setIntrinsicWidth(size);
         progress.setDither(true);
         ClipDrawable progressClip = new ClipDrawable(progress, Gravity.LEFT, ClipDrawable.HORIZONTAL);
 
         // secondary progress
         PaintDrawable secondary = new PaintDrawable(color[2]);
-        secondary.setCornerRadius(10);
-        secondary.setIntrinsicHeight(10);
+        secondary.setCornerRadius(size);
+        secondary.setIntrinsicHeight(size);
         ClipDrawable secondaryProgressClip = new ClipDrawable(secondary, Gravity.LEFT, ClipDrawable.HORIZONTAL);
 
         // background
         PaintDrawable background = new PaintDrawable(color[3]);
-        background.setCornerRadius(10);
-        background.setIntrinsicHeight(10);
+        background.setCornerRadius(size);
+        background.setIntrinsicHeight(size);
 
         // applying drawable
         LayerDrawable ld = (LayerDrawable) getProgressDrawable();

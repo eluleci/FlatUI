@@ -28,9 +28,11 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        FlatUI.setDefaultTheme(FlatUI.DEEP);
+        // Default theme should bew set before content view is added
+        FlatUI.setDefaultTheme(FlatUI.BLOOD);
+
+        setContentView(R.layout.activity_main);
 
         // if you are using standard action bar (not compatibility library) use this
         // FlatUI.setActionBarTheme(this, theme, false, true);
@@ -60,6 +62,7 @@ public class MainActivity extends ActionBarActivity {
         // edit texts
         flatEditTexts.add((FlatEditText) findViewById(R.id.edittext_flat));
         flatEditTexts.add((FlatEditText) findViewById(R.id.edittext_box));
+        flatEditTexts.add((FlatEditText) findViewById(R.id.edittext_transparentbox));
         flatEditTexts.add((FlatEditText) findViewById(R.id.edittext_transparent));
 
         // buttons

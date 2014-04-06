@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ffffff">
+    android:background="#e8e8e8"
+    android:paddingLeft="5dp">
 
     <!-- Dummy item to prevent edit text from receiving focus -->
     <LinearLayout
@@ -62,11 +63,21 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dip"
                     android:maxLines="1"
-                    android:padding="10dp"
                     android:gravity="center_vertical"
                     android:hint="Box style"
                     android:includeFontPadding="true"
                     flatui:fieldStyle="box"/>
+
+                <com.cengalabs.flatui.views.FlatEditText
+                    android:id="@+id/edittext_transparentbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dip"
+                    android:maxLines="1"
+                    android:gravity="center_vertical"
+                    android:hint="Transparent box style"
+                    android:includeFontPadding="true"
+                    flatui:fieldStyle="transparentBox"/>
 
                 <com.cengalabs.flatui.views.FlatEditText
                     android:id="@+id/edittext_transparent"
@@ -74,7 +85,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dip"
                     android:maxLines="1"
-                    android:padding="10dp"
                     android:gravity="center_vertical"
                     android:hint="Transparent style"
                     android:includeFontPadding="true"
@@ -516,7 +526,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Full Flat"
-                            flatui:size="20dip"/>
+                            flatui:size="16dp"/>
 
                         <com.cengalabs.flatui.views.FlatToggleButton
                             android:id="@+id/toggle_checked_enabled"

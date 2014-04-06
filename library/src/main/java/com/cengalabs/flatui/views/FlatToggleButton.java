@@ -3,10 +3,16 @@ package com.cengalabs.flatui.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.*;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
+import android.view.ViewGroup;
 import android.widget.ToggleButton;
+
 import com.cengalabs.flatui.FlatUI;
 import com.cengalabs.flatui.R;
 import com.cengalabs.flatui.constants.Colors;
@@ -58,26 +64,24 @@ public class FlatToggleButton extends ToggleButton implements Colors {
             color = FlatUI.getColor(theme);
 
             size = a.getDimensionPixelSize(R.styleable.CengaLabs_size, size);
+            padding = size / 10;
 
             a.recycle();
-        } else if(color == null) {
+        } else if (color == null) {
             color = FlatUI.getColor(FlatUI.DEFAULT_THEME);
         }
-
-        setWidth(size * 5);
-        setHeight(size);
 
         //setTextOff("");
         //setTextOn("");
 
-        int radius = size - 4;
+        int radius = size;
 
         float[] outerR = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
 
         // creating unchecked-enabled state drawable
         ShapeDrawable uncheckedEnabledFrontCore = new ShapeDrawable(new RoundRectShape(outerR, null, null));
         uncheckedEnabledFrontCore.getPaint().setColor(color[2]);
-        InsetDrawable uncheckedEnabledFront = new InsetDrawable(uncheckedEnabledFrontCore, 5);
+        InsetDrawable uncheckedEnabledFront = new InsetDrawable(uncheckedEnabledFrontCore, padding);
 
         ShapeDrawable uncheckedEnabledBack = new ShapeDrawable(new RoundRectShape(outerR, null, null));
         uncheckedEnabledBack.getPaint().setColor(Color.parseColor("#f2f2f2"));
@@ -89,7 +93,7 @@ public class FlatToggleButton extends ToggleButton implements Colors {
         // creating checked-enabled state drawable
         ShapeDrawable checkedEnabledFrontCore = new ShapeDrawable(new RoundRectShape(outerR, null, null));
         checkedEnabledFrontCore.getPaint().setColor(color[2]);
-        InsetDrawable checkedEnabledFront = new InsetDrawable(checkedEnabledFrontCore, 5);
+        InsetDrawable checkedEnabledFront = new InsetDrawable(checkedEnabledFrontCore, padding);
 
         ShapeDrawable checkedEnabledBack = new ShapeDrawable(new RoundRectShape(outerR, null, null));
         checkedEnabledBack.getPaint().setColor(color[3]);
@@ -101,7 +105,7 @@ public class FlatToggleButton extends ToggleButton implements Colors {
         // creating unchecked-disabled state drawable
         ShapeDrawable uncheckedDisabledFrontCore = new ShapeDrawable(new RoundRectShape(outerR, null, null));
         uncheckedDisabledFrontCore.getPaint().setColor(Color.parseColor("#d2d2d2"));
-        InsetDrawable uncheckedDisabledFront = new InsetDrawable(uncheckedDisabledFrontCore, 5);
+        InsetDrawable uncheckedDisabledFront = new InsetDrawable(uncheckedDisabledFrontCore, padding);
 
         ShapeDrawable uncheckedDisabledBack = new ShapeDrawable(new RoundRectShape(outerR, null, null));
         uncheckedDisabledBack.getPaint().setColor(Color.parseColor("#f2f2f2"));
@@ -113,7 +117,7 @@ public class FlatToggleButton extends ToggleButton implements Colors {
         // creating checked-disabled state drawable
         ShapeDrawable checkedDisabledFrontCore = new ShapeDrawable(new RoundRectShape(outerR, null, null));
         checkedDisabledFrontCore.getPaint().setColor(color[3]);
-        InsetDrawable checkedDisabledFront = new InsetDrawable(checkedDisabledFrontCore, 5);
+        InsetDrawable checkedDisabledFront = new InsetDrawable(checkedDisabledFrontCore, padding);
 
         ShapeDrawable checkedDisabledBack = new ShapeDrawable(new RoundRectShape(outerR, null, null));
         checkedDisabledBack.getPaint().setColor(Color.parseColor("#f2f2f2"));
@@ -121,13 +125,6 @@ public class FlatToggleButton extends ToggleButton implements Colors {
 
         Drawable[] d4 = {checkedDisabledBack, checkedDisabledFront};
         LayerDrawable checkedDisabled = new LayerDrawable(d4);
-
-        setPadding(0, padding, 0, padding);
-
-        PaintDrawable paintDrawable = new PaintDrawable(color[1]);
-        paintDrawable.setIntrinsicHeight(size);
-        paintDrawable.setIntrinsicWidth(size);
-        paintDrawable.setPadding(size, 0, 0, 0);
 
         StateListDrawable states = new StateListDrawable();
 
@@ -141,6 +138,8 @@ public class FlatToggleButton extends ToggleButton implements Colors {
                 new InsetDrawable(checkedDisabled, padding * 2));
 
         setBackgroundDrawable(states);
+
+        setLayoutParams(new ViewGroup.LayoutParams(size / 2 * 5, size));
 
         setTextSize(0);
     }
