@@ -82,22 +82,15 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 <!-- available attrs: cornerRadius, fontFamily, fontWeight, textColor, backgroundColor, customBackgroundColor -->
 
 <com.cengalabs.flatui.views.FlatTextView
-                android:id="@+id/title_edittexts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:layout_marginLeft="5dip"
-                android:maxLines="1"
-                android:gravity="center_vertical"
-                flatui:textColor="main"
                 android:text="Edit Texts"
-                android:textSize="20dip"/>
+                flatui:textColor="main"/>
 
 <!-- FlatEditText -->
 <!-- available attrs: fieldStyle, cornerRadius, textPadding, fontFamily, fontWeight, textAppearance -->
 
 <com.cengalabs.flatui.views.FlatEditText
-	android:id="@+id/edittext_flat"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"                        
 	flatui:theme="Sand"
@@ -105,7 +98,6 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 	flatui:cornerRadius="3dip"/>
 	
 <com.cengalabs.flatui.views.FlatEditText
-	android:id="@+id/edittext_flat"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"                        
 	flatui:theme="Sand"
@@ -113,7 +105,6 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 	flatui:cornerRadius="3dip"/>
 
 <com.cengalabs.flatui.views.FlatEditText
-	android:id="@+id/edittext_flat"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"                        
 	flatui:theme="Sand"
@@ -125,7 +116,6 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 <!-- available attrs: none -->
 
 <com.cengalabs.flatui.views.FlatSeekBar
-	android:id="@+id/seekbar"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:layout_margin="5dip"
@@ -137,7 +127,6 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 <!-- available attrs: textApearance, textPadding, cornerRadius, isFullFlat, fontFamily, fontWeight -->
 
 <com.cengalabs.flatui.views.FlatButton
-	android:id="@+id/button_block"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:text="Block"
@@ -145,7 +134,6 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 	flatui:textAppearance="light"/>
 
 <com.cengalabs.flatui.views.FlatButton
-	android:id="@+id/button_flat"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:text="Full Flat"
@@ -159,7 +147,6 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 <!-- available attrs: cornerRadius, size, fontFamily, fontWeight -->
 
 <com.cengalabs.flatui.views.FlatCheckBox
-	android:id="@+id/checkbox_unchecked_enabled"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	flatui:theme="Sand"
@@ -172,7 +159,6 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 <!-- available attrs: size, fontFamily, fontWeight -->
 
 <com.cengalabs.flatui.views.FlatRadioButton
-	android:id="@+id/checkbox_unchecked_disabled"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"	
 	flatui:theme="Sand"
@@ -186,7 +172,6 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 <!-- available attrs: size -->
 
 <com.cengalabs.flatui.views.FlatToggleButton
-	android:id="@+id/toggle_unchecked_enabled"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	flatui:theme="Sand"
@@ -198,7 +183,7 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 License
 --------
 
-    Copyright 2014 Cengalabs
+    Copyright 2014 Cengalabs.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

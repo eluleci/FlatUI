@@ -10,6 +10,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
 import android.widget.EditText;
+
 import com.cengalabs.flatui.FlatUI;
 import com.cengalabs.flatui.R;
 import com.cengalabs.flatui.constants.Colors;
@@ -30,6 +31,9 @@ public class FlatEditText extends EditText implements Colors {
     private int border = 3;
     private int style = 0;
     private int textAppearance = 0;
+
+    private boolean hasOwnTextColor;
+    private boolean hasOwnHintColor;
 
     public FlatEditText(Context context) {
         super(context);
@@ -54,6 +58,11 @@ public class FlatEditText extends EditText implements Colors {
     private void init(AttributeSet attrs) {
 
         if (attrs != null) {
+
+            // getting android default tags for textColor and textColorHint
+            hasOwnTextColor = attrs.getAttributeValue(FlatUI.androidStyleNameSpace, "textColor") != null;
+            hasOwnHintColor = attrs.getAttributeValue(FlatUI.androidStyleNameSpace, "textColorHint") != null;
+
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CengaLabs);
 
             int theme = a.getInt(R.styleable.CengaLabs_theme, FlatUI.DEFAULT_THEME);
@@ -85,17 +94,17 @@ public class FlatEditText extends EditText implements Colors {
         if (style == 0) {             // flat
             normalFront.getPaint().setColor(Color.TRANSPARENT);
             normalBack.getPaint().setColor(color[2]);
-            setTextColor(color[3]);
+            if(!hasOwnTextColor) setTextColor(color[3]);
 
         } else if (style == 1) {      // box
             normalFront.getPaint().setColor(Color.WHITE);
             normalBack.getPaint().setColor(color[2]);
-            setTextColor(color[2]);
+            if(!hasOwnTextColor) setTextColor(color[2]);
 
         } else if (style == 2) {      // transparent
             normalFront.getPaint().setColor(Color.TRANSPARENT);
             normalBack.getPaint().setColor(Color.TRANSPARENT);
-            setTextColor(color[1]);
+            if(!hasOwnTextColor) setTextColor(color[1]);
         }
 
         Drawable[] d = {normalBack, normalFront};
@@ -103,7 +112,7 @@ public class FlatEditText extends EditText implements Colors {
 
         setBackgroundDrawable(normal);
 
-        setHintTextColor(color[3]);
+        if(!hasOwnHintColor) setHintTextColor(color[3]);
 
         if (textAppearance == 1) setTextColor(color[0]);
         else if (textAppearance == 2) setTextColor(color[3]);

@@ -19,6 +19,8 @@ import com.cengalabs.flatui.constants.Colors;
  */
 public class FlatUI implements Colors {
 
+    public static final String androidStyleNameSpace = "http://schemas.android.com/apk/res/android";
+
     public static final int DEFAULT_FONT_FAMILY = 2;
     public static final int DEFAULT_FONT_WEIGHT = 1;
     public static int DEFAULT_THEME = 5;
