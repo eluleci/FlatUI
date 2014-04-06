@@ -85,6 +85,8 @@ public class FlatToggleButton extends ToggleButton implements Colors {
 
         ShapeDrawable uncheckedEnabledBack = new ShapeDrawable(new RoundRectShape(outerR, null, null));
         uncheckedEnabledBack.getPaint().setColor(Color.parseColor("#f2f2f2"));
+        uncheckedEnabledBack.setIntrinsicWidth(size / 2 * 5);
+        uncheckedEnabledBack.setIntrinsicHeight(size);
         uncheckedEnabledBack.setPadding(0, 0, size / 2 * 5, 0);
 
         Drawable[] d1 = {uncheckedEnabledBack, uncheckedEnabledFront};

@@ -524,17 +524,17 @@
                         <com.cengalabs.flatui.views.FlatToggleButton
                             android:id="@+id/toggle_unchecked_enabled"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="35dp"
                             android:text="Full Flat"
-                            flatui:size="16dp"/>
+                            flatui:size="14dp"/>
 
                         <com.cengalabs.flatui.views.FlatToggleButton
                             android:id="@+id/toggle_checked_enabled"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="35dp"
                             android:text="Full Flat"
                             android:checked="true"
-                            flatui:size="20dip"/>
+                            flatui:size="14dp"/>
 
                     </LinearLayout>
 
@@ -565,19 +565,19 @@
                         <com.cengalabs.flatui.views.FlatToggleButton
                             android:id="@+id/toggle_unchecked_disabled"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="35dp"
                             android:text="Full Flat"
                             android:enabled="false"
-                            flatui:size="20dip"/>
+                            flatui:size="14dp"/>
 
                         <com.cengalabs.flatui.views.FlatToggleButton
                             android:id="@+id/toggle_checked_disabled"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="35dp"
                             android:text="Full Flat"
                             android:checked="true"
                             android:enabled="false"
-                            flatui:size="20dip"/>
+                            flatui:size="14dp"/>
 
                     </LinearLayout>
 

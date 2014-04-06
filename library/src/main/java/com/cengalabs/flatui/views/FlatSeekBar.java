@@ -60,9 +60,9 @@ public class FlatSeekBar extends android.widget.SeekBar implements Colors {
 
         // setting thumb
         PaintDrawable thumb = new PaintDrawable(color[0]);
-        thumb.setCornerRadius(size * 5 / 4);
-        thumb.setIntrinsicWidth(size * 5 / 2);
-        thumb.setIntrinsicHeight(size * 5 / 2);
+        thumb.setCornerRadius(size * 9 / 8);
+        thumb.setIntrinsicWidth(size * 9 / 4);
+        thumb.setIntrinsicHeight(size * 9 / 4);
         setThumb(thumb);
 
         // progress
