@@ -34,7 +34,7 @@ Including into your project
 This library is pushed to Maven Central, so you just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.eluleci:flatui:0.1.2'
+        compile 'com.github.eluleci:flatui:0.1.3'
     }
 
 
@@ -69,7 +69,7 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 - textPadding    :  text padding of the element. (dimension)
 - size           :  size of the element. (dimension)
 - isFullFlat     :  shape of button (boolean)
-- fieldStyle     :  shape of the edit text (flat, box, transparent)
+- fieldStyle     :  shape of the edit text (flat, box, transparentBox, transparent)
 - textColor      :  text color of the text view (darker, dark, main, light)
 - backgroundColor:  selecting one of the colors of theme (darker, dark, main, light)
 - customBackgroundColor : (color)
@@ -80,16 +80,15 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 
 <!-- TextView -->
 <!-- available attrs: cornerRadius, fontFamily, fontWeight, textColor, backgroundColor, customBackgroundColor -->
-
 <com.cengalabs.flatui.views.FlatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Edit Texts"
                 flatui:textColor="main"/>
 
+
 <!-- FlatEditText -->
 <!-- available attrs: fieldStyle, cornerRadius, textPadding, fontFamily, fontWeight, textAppearance -->
-
 <com.cengalabs.flatui.views.FlatEditText
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"                        
@@ -106,6 +105,13 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 
 <com.cengalabs.flatui.views.FlatEditText
 	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	flatui:theme="Sand"
+	flatui:fieldStyle="transparentBox"
+	flatui:cornerRadius="3dip"/>
+
+<com.cengalabs.flatui.views.FlatEditText
+	android:layout_width="match_parent"
 	android:layout_height="wrap_content"                        
 	flatui:theme="Sand"
 	flatui:fieldStyle="transparent"
@@ -114,7 +120,6 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 
 <!-- FlatSeekBar -->
 <!-- available attrs: none -->
-
 <com.cengalabs.flatui.views.FlatSeekBar
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
@@ -125,7 +130,6 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 
 <!-- FlatButton -->
 <!-- available attrs: textApearance, textPadding, cornerRadius, isFullFlat, fontFamily, fontWeight -->
-
 <com.cengalabs.flatui.views.FlatButton
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
@@ -142,10 +146,8 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 	flatui:textAppearance="light"/>
 	
 
-	
 <!-- FlatCheckBox -->
 <!-- available attrs: cornerRadius, size, fontFamily, fontWeight -->
-
 <com.cengalabs.flatui.views.FlatCheckBox
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
@@ -153,11 +155,9 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 	flatui:size="20dip"
 	android:text="unchecked enabled"/>
 
-	
-	
+
 <!-- FlatRadioButton -->
 <!-- available attrs: size, fontFamily, fontWeight -->
-
 <com.cengalabs.flatui.views.FlatRadioButton
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"	
@@ -165,12 +165,10 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 	flatui:size="20dip"
 	android:text="unchecked enabled"
 	android:enabled="false"/>
-	
-	
+
 
 <!-- FlatToggleButton -->
 <!-- available attrs: size -->
-
 <com.cengalabs.flatui.views.FlatToggleButton
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
@@ -183,7 +181,7 @@ getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.D
 License
 --------
 
-    Copyright 2014 Cengalabs.
+    Copyright 2014 Cengalabs
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
