@@ -58,8 +58,9 @@ public class FlatEditText extends EditText implements Attributes.AttributeChange
             int customTheme = a.getResourceId(R.styleable.FlatEditText_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
-            attributes.setFontId(a.getInt(R.styleable.FlatEditText_fontFamily, Attributes.DEFAULT_FONT_FAMILY));
-            attributes.setFontWeight(a.getInt(R.styleable.FlatEditText_fontWeight, Attributes.DEFAULT_FONT_WEIGHT));
+            attributes.setFontFamily(a.getString(R.styleable.FlatEditText_fontFamily));
+            attributes.setFontWeight(a.getString(R.styleable.FlatEditText_fontWeight));
+            attributes.setFontExtension(a.getString(R.styleable.FlatEditText_fontExtension));
 
             attributes.setTextAppearance(a.getInt(R.styleable.FlatEditText_textAppearance, Attributes.DEFAULT_TEXT_APPEARANCE));
             attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatEditText_cornerRadius, Attributes.DEFAULT_RADIUS));
@@ -101,7 +102,7 @@ public class FlatEditText extends EditText implements Attributes.AttributeChange
         if (attributes.getTextAppearance() == 1) setTextColor(attributes.getColor(0));
         else if (attributes.getTextAppearance() == 2) setTextColor(attributes.getColor(3));
 
-        Typeface typeface = FlatUI.getFont(getContext(), attributes.getFontId(), attributes.getFontWeight());
+        Typeface typeface = FlatUI.getFont(getContext(), attributes);
         if (typeface != null) setTypeface(typeface);
     }
 

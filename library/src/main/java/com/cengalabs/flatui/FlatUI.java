@@ -32,44 +32,21 @@ public class FlatUI {
     public static final int SEA = R.array.sea;
     public static final int BLOOD = R.array.blood;
 
-    public static Typeface getFont(Context context, int fontId, int weight) {
-        String fontName = "";
-        String fontWeight = "";
+    public static Typeface getFont(Context context, Attributes attributes) {
 
-        if (fontId != 0) {
+        String fontPath = "fonts/" + attributes.getFontFamily()
+                + "_" + attributes.getFontWeight()
+                + "." + attributes.getFontExtension();
 
-            if (fontId == 1) fontName = "opensans";
-            else if (fontId == 2) fontName = "roboto";
-            else if (fontId == 3) fontName = "comfortaa";
-
-            switch (weight) {
-                case 0:
-                    fontWeight = "extralight.ttf";
-                    break;
-                case 1:
-                    fontWeight = "light.ttf";
-                    break;
-                case 2:
-                    fontWeight = "regular.ttf";
-                    break;
-                case 3:
-                    fontWeight = "bold.ttf";
-                    break;
-                case 4:
-                    fontWeight = "extrabold.ttf";
-                    break;
-            }
-
-            try {
-                return Typeface.createFromAsset(context.getAssets(),
-                        "fonts/" + fontName + "_" + fontWeight);
-            } catch (Exception e) {
-                Log.e("FlatUI", "Font files cannot be found. Please be sure that library assets" +
-                        " are included to project. If not, copy assets/fonts folder of the" +
-                        " library to your projects assets folder.");
-            }
+        try {
+            return Typeface.createFromAsset(context.getAssets(), fontPath);
+        } catch (Exception e) {
+            Log.e("FlatUI", "Font file at " + fontPath + " cannot be found or the file is " +
+                    "not a valid font file. Please be sure that library assets are included " +
+                    "to project. If not, copy assets/fonts folder of the library to your " +
+                    "projects assets folder.");
+            return null;
         }
-        return null;
     }
 
     /**
@@ -78,18 +55,15 @@ public class FlatUI {
      * same attributes and apply drawable manually.
      *
      * @param activity context
-     * @param theme selected theme
-     * @param dark boolean for choosing dark colors or primary colors
-     * @param titleEnabled used for hiding/showing action bar title after changing drawable
+     * @param theme    selected theme
+     * @param dark     boolean for choosing dark colors or primary colors
      */
-    public static void setActionBarTheme(Activity activity, int theme, boolean dark, boolean titleEnabled) {
+    public static void setActionBarTheme(Activity activity, int theme, boolean dark) {
 
         Drawable drawable = getActionBarDrawable(activity, theme, dark);
 
         ActionBar actionBar = activity.getActionBar();
         actionBar.setBackgroundDrawable(drawable);
-        //actionBar.setDisplayShowTitleEnabled(!titleEnabled);
-        //actionBar.setDisplayShowTitleEnabled(titleEnabled);
     }
 
     /**
@@ -97,7 +71,7 @@ public class FlatUI {
      * of Action Bar Compatibility library.
      *
      * @param theme selected theme
-     * @param dark boolean for choosing dark colors or primary colors
+     * @param dark  boolean for choosing dark colors or primary colors
      * @return drawable to be used in ActionBar
      */
     public static Drawable getActionBarDrawable(Activity activity, int theme, boolean dark) {

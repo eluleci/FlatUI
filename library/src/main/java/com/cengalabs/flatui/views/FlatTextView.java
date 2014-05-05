@@ -57,8 +57,9 @@ public class FlatTextView extends TextView implements Attributes.AttributeChange
             int customTheme = a.getResourceId(R.styleable.FlatTextView_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
-            attributes.setFontId(a.getInt(R.styleable.FlatTextView_fontFamily, Attributes.DEFAULT_FONT_FAMILY));
-            attributes.setFontWeight(a.getInt(R.styleable.FlatTextView_fontWeight, Attributes.DEFAULT_FONT_WEIGHT));
+            attributes.setFontFamily(a.getString(R.styleable.FlatTextView_fontFamily));
+            attributes.setFontWeight(a.getString(R.styleable.FlatTextView_fontWeight));
+            attributes.setFontExtension(a.getString(R.styleable.FlatTextView_fontExtension));
 
             attributes.setRadius(attributes.getSize() / 2);
             attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.FlatTextView_borderWidth, 0));
@@ -88,7 +89,7 @@ public class FlatTextView extends TextView implements Attributes.AttributeChange
         // setting the text color only if there is no android:textColor attribute used
         if (!hasOwnTextColor) setTextColor(attributes.getColor(textColor));
 
-        Typeface typeface = FlatUI.getFont(getContext(), attributes.getFontId(), attributes.getFontWeight());
+        Typeface typeface = FlatUI.getFont(getContext(), attributes);
         if (typeface != null) setTypeface(typeface);
     }
 

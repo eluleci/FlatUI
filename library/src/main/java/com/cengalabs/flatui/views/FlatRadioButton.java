@@ -55,8 +55,9 @@ public class FlatRadioButton extends RadioButton implements Attributes.Attribute
             int customTheme = a.getResourceId(R.styleable.FlatRadioButton_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
-            attributes.setFontId(a.getInt(R.styleable.FlatRadioButton_fontFamily, Attributes.DEFAULT_FONT_FAMILY));
-            attributes.setFontWeight(a.getInt(R.styleable.FlatRadioButton_fontWeight, Attributes.DEFAULT_FONT_WEIGHT));
+            attributes.setFontFamily(a.getString(R.styleable.FlatRadioButton_fontFamily));
+            attributes.setFontWeight(a.getString(R.styleable.FlatRadioButton_fontWeight));
+            attributes.setFontExtension(a.getString(R.styleable.FlatRadioButton_fontExtension));
 
             attributes.setSize(a.getDimensionPixelSize(R.styleable.FlatRadioButton_size, Attributes.DEFAULT_SIZE));
             attributes.setRadius(attributes.getSize() / 2);
@@ -130,7 +131,7 @@ public class FlatRadioButton extends RadioButton implements Attributes.Attribute
         setPadding(attributes.getSize() / 4 * 5, 0, 0, 0);
         setTextColor(attributes.getColor(2));
 
-        Typeface typeface = FlatUI.getFont(getContext(), attributes.getFontId(), attributes.getFontWeight());
+        Typeface typeface = FlatUI.getFont(getContext(), attributes);
         if (typeface != null) setTypeface(typeface);
     }
 

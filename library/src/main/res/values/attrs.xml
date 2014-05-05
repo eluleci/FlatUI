@@ -3,19 +3,9 @@
 
     <attr name="theme" format="reference" />
 
-    <attr name="fontFamily" format="integer">
-        <enum name="DroidSans" value="0" />
-        <enum name="OpenSans" value="1" />
-        <enum name="Roboto" value="2" />
-        <enum name="Comfortaa" value="3" />
-    </attr>
-    <attr name="fontWeight" format="integer">
-        <enum name="extralight" value="0" />
-        <enum name="light" value="1" />
-        <enum name="regular" value="2" />
-        <enum name="bold" value="3" />
-        <enum name="extrabold" value="4" />
-    </attr>
+    <attr name="fontFamily" format="string" />
+    <attr name="fontWeight" format="string" />
+    <attr name="fontExtension" format="string" />
     <attr name="textAppearance" format="integer">
         <enum name="none" value="0" />
         <enum name="dark" value="1" />
@@ -31,6 +21,7 @@
         <attr name="theme" />
         <attr name="fontFamily" />
         <attr name="fontWeight" />
+        <attr name="fontExtension" />
         <attr name="textAppearance" />
         <attr name="cornerRadius" />
         <attr name="blockButtonEffectHeight" format="dimension" />
@@ -42,6 +33,7 @@
         <attr name="theme" />
         <attr name="fontFamily" />
         <attr name="fontWeight" />
+        <attr name="fontExtension" />
         <attr name="cornerRadius" />
         <attr name="size" />
     </declare-styleable>
@@ -51,6 +43,7 @@
         <attr name="theme" />
         <attr name="fontFamily" />
         <attr name="fontWeight" />
+        <attr name="fontExtension" />
         <attr name="textAppearance" />
         <attr name="cornerRadius" />
         <attr name="borderWidth" />
@@ -67,6 +60,7 @@
         <attr name="theme" />
         <attr name="fontFamily" />
         <attr name="fontWeight" />
+        <attr name="fontExtension" />
         <attr name="borderWidth" />
         <attr name="size" />
         <attr name="dotMargin" format="dimension" />
@@ -83,6 +77,7 @@
         <attr name="theme" />
         <attr name="fontFamily" />
         <attr name="fontWeight" />
+        <attr name="fontExtension" />
         <attr name="cornerRadius" />
         <attr name="borderWidth" />
         <attr name="textColor" format="integer">

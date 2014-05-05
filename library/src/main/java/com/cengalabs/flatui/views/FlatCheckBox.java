@@ -53,8 +53,9 @@ public class FlatCheckBox extends CheckBox implements Attributes.AttributeChange
             int customTheme = a.getResourceId(R.styleable.FlatCheckBox_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
-            attributes.setFontId(a.getInt(R.styleable.FlatCheckBox_fontFamily, Attributes.DEFAULT_FONT_FAMILY));
-            attributes.setFontWeight(a.getInt(R.styleable.FlatCheckBox_fontWeight, Attributes.DEFAULT_FONT_WEIGHT));
+            attributes.setFontFamily(a.getString(R.styleable.FlatButton_fontFamily));
+            attributes.setFontWeight(a.getString(R.styleable.FlatButton_fontWeight));
+            attributes.setFontExtension(a.getString(R.styleable.FlatCheckBox_fontExtension));
 
             attributes.setSize(a.getDimensionPixelSize(R.styleable.FlatCheckBox_size, Attributes.DEFAULT_SIZE));
             attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatCheckBox_cornerRadius, Attributes.DEFAULT_RADIUS));
@@ -125,7 +126,7 @@ public class FlatCheckBox extends CheckBox implements Attributes.AttributeChange
         setPadding(attributes.getSize() / 4 * 5, 0, 0, 0);
         setTextColor(attributes.getColor(2));
 
-        Typeface typeface = FlatUI.getFont(getContext(), attributes.getFontId(), attributes.getFontWeight());
+        Typeface typeface = FlatUI.getFont(getContext(), attributes);
         if (typeface != null) setTypeface(typeface);
     }
 

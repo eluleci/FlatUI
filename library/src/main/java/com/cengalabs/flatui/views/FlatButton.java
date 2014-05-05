@@ -56,8 +56,9 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
             int customTheme = a.getResourceId(R.styleable.FlatButton_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
-            attributes.setFontId(a.getInt(R.styleable.FlatButton_fontFamily, Attributes.DEFAULT_FONT_FAMILY));
-            attributes.setFontWeight(a.getInt(R.styleable.FlatButton_fontWeight, Attributes.DEFAULT_FONT_WEIGHT));
+            attributes.setFontFamily(a.getString(R.styleable.FlatButton_fontFamily));
+            attributes.setFontWeight(a.getString(R.styleable.FlatButton_fontWeight));
+            attributes.setFontExtension(a.getString(R.styleable.FlatButton_fontExtension));
 
             attributes.setTextAppearance(a.getInt(R.styleable.FlatButton_textAppearance, Attributes.DEFAULT_TEXT_APPEARANCE));
             attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatButton_cornerRadius, Attributes.DEFAULT_RADIUS));
@@ -116,7 +117,7 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
         else if (attributes.getTextAppearance() == 2) setTextColor(attributes.getColor(3));
         else setTextColor(Color.WHITE);
 
-        Typeface typeface = FlatUI.getFont(getContext(), attributes.getFontId(), attributes.getFontWeight());
+        Typeface typeface = FlatUI.getFont(getContext(), attributes);
         if (typeface != null) setTypeface(typeface);
     }
 
