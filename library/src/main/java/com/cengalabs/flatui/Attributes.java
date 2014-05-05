@@ -1,6 +1,7 @@
 package com.cengalabs.flatui;
 
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 
 /**
  * Created by eluleci on 05/05/14.
@@ -18,16 +19,23 @@ public class Attributes {
      * Font related fields
      */
     private int fontId = FlatUI.DEFAULT_FONT_FAMILY;
-    private int fontWeight = 2;
+    private int fontWeight = FlatUI.DEFAULT_FONT_WEIGHT;
+    private int textAppearance = FlatUI.DEFAULT_TEXT_APPEARANCE;
 
     /**
      * Size related fields
      */
+    private int radius = FlatUI.DEFAULT_RADIUS;
+    private int borderWidth = FlatUI.DEFAULT_BORDER_WIDTH;
+    private int size = FlatUI.DEFAULT_SIZE;
 
     private AttributeChangeListener attributeChangeListener;
 
     public Attributes(AttributeChangeListener attributeChangeListener) {
         this.attributeChangeListener = attributeChangeListener;
+    }
+
+    public void parseAttributes(TypedArray a, Resources resources) {
     }
 
     private void initColors(int theme) {
@@ -92,6 +100,42 @@ public class Attributes {
 
     public int getFontWeight() {
         return fontWeight;
+    }
+
+    public int getRadius() {
+        return radius;
+    }
+
+    public float[] getOuterRadius() {
+        return new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+    }
+
+    public void setRadius(int radius) {
+        this.radius = radius;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int getBorderWidth() {
+        return borderWidth;
+    }
+
+    public void setBorderWidth(int borderWidth) {
+        this.borderWidth = borderWidth;
+    }
+
+    public int getTextAppearance() {
+        return textAppearance;
+    }
+
+    public void setTextAppearance(int textAppearance) {
+        this.textAppearance = textAppearance;
     }
 
     public interface AttributeChangeListener {

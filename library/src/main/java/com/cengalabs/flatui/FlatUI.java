@@ -21,12 +21,14 @@ public class FlatUI implements Colors {
 
     public static final String androidStyleNameSpace = "http://schemas.android.com/apk/res/android";
 
-
     public static int INVALID_ATTRIBUTE = -1;
 
     public static final int DEFAULT_FONT_FAMILY = 2;
     public static final int DEFAULT_FONT_WEIGHT = 1;
+    public static final int DEFAULT_TEXT_APPEARANCE = 0;
+
     public static final int DEFAULT_RADIUS = 10;
+    public static final int DEFAULT_BORDER_WIDTH = 5;
     public static final int DEFAULT_SIZE = 20;
     public static final int CUSTOM_THEME = 631;
     public static int DEFAULT_THEME = 5;

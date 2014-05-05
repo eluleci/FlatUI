@@ -8,6 +8,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
+import com.cengalabs.flatui.Attributes;
 import com.cengalabs.flatui.FlatUI;
 import com.cengalabs.flatui.R;
 import com.cengalabs.flatui.constants.Colors;
@@ -18,15 +19,11 @@ import com.cengalabs.flatui.constants.Colors;
  * Date: 24.10.2013
  * Time: 21:09
  */
-public class FlatEditText extends EditText implements Colors {
+public class FlatEditText extends EditText implements Colors, Attributes.AttributeChangeListener {
 
-    private int fontId = FlatUI.DEFAULT_FONT_FAMILY;
-    private int fontWeight = FlatUI.DEFAULT_FONT_WEIGHT;
-    private int radius = FlatUI.DEFAULT_RADIUS;
-    private int[] color;
-    private int border = 3;
+    private Attributes attributes;
+
     private int style = 0;
-    private int textAppearance = 0;
 
     private boolean hasOwnTextColor;
     private boolean hasOwnHintColor;
@@ -46,12 +43,10 @@ public class FlatEditText extends EditText implements Colors {
         init(attrs);
     }
 
-    public void setTheme(int theme) {
-        color = FlatUI.getColor(theme);
-        init(null);
-    }
-
     private void init(AttributeSet attrs) {
+
+        if (attributes == null)
+            attributes = new Attributes(this);
 
         if (attrs != null) {
 
@@ -61,53 +56,65 @@ public class FlatEditText extends EditText implements Colors {
 
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatEditText);
 
-            int theme = a.getInt(R.styleable.FlatEditText_theme, FlatUI.DEFAULT_THEME);
-            color = FlatUI.getColor(theme);
+            // getting common attributes
+            attributes.setThemeSilent(a.getInt(R.styleable.FlatEditText_theme, FlatUI.DEFAULT_THEME));
 
+            int customTheme = a.getResourceId(R.styleable.FlatEditText_customTheme, FlatUI.INVALID_ATTRIBUTE);
+            if (customTheme != FlatUI.INVALID_ATTRIBUTE) attributes.setCustomThemeSilent(customTheme, getResources());
+
+            attributes.setFontId(a.getInt(R.styleable.FlatEditText_fontFamily, FlatUI.DEFAULT_FONT_FAMILY));
+            attributes.setFontWeight(a.getInt(R.styleable.FlatEditText_fontWeight, FlatUI.DEFAULT_FONT_WEIGHT));
+
+            attributes.setTextAppearance(a.getInt(R.styleable.FlatEditText_textAppearance, FlatUI.DEFAULT_TEXT_APPEARANCE));
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatEditText_cornerRadius, FlatUI.DEFAULT_RADIUS));
+            attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.FlatEditText_borderWidth, FlatUI.DEFAULT_BORDER_WIDTH));
+
+            // getting view specific attributes
             style = a.getInt(R.styleable.FlatEditText_fieldStyle, 0);
-            radius = a.getDimensionPixelSize(R.styleable.FlatEditText_cornerRadius, radius);
-
-            fontId = a.getInt(R.styleable.FlatEditText_fontFamily, fontId);
-            fontWeight = a.getInt(R.styleable.FlatEditText_fontWeight, fontWeight);
-
-            textAppearance = a.getInt(R.styleable.FlatEditText_textAppearance, textAppearance);
 
             a.recycle();
-        } else if (color == null) {
-            color = FlatUI.getColor(FlatUI.DEFAULT_THEME);
         }
 
         GradientDrawable backgroundDrawable = new GradientDrawable();
-        backgroundDrawable.setCornerRadius(radius);
+        backgroundDrawable.setCornerRadius(attributes.getRadius());
 
         if (style == 0) {             // flat
-            if(!hasOwnTextColor) setTextColor(color[3]);
-            backgroundDrawable.setColor(color[2]);
-            backgroundDrawable.setStroke(0, color[2]);
+            if(!hasOwnTextColor) setTextColor(attributes.getColor(3));
+            backgroundDrawable.setColor(attributes.getColor(2));
+            backgroundDrawable.setStroke(0, attributes.getColor(2));
 
         } else if (style == 1) {      // box
-            if(!hasOwnTextColor) setTextColor(color[2]);
+            if(!hasOwnTextColor) setTextColor(attributes.getColor(2));
             backgroundDrawable.setColor(Color.WHITE);
-            backgroundDrawable.setStroke(border, color[2]);
+            backgroundDrawable.setStroke(attributes.getBorderWidth(), attributes.getColor(2));
 
         } else if (style == 2) {      // transparent
-            if(!hasOwnTextColor) setTextColor(color[1]);
+            if(!hasOwnTextColor) setTextColor(attributes.getColor(1));
             backgroundDrawable.setColor(Color.TRANSPARENT);
-            backgroundDrawable.setStroke(border, Color.TRANSPARENT);
+            backgroundDrawable.setStroke(attributes.getBorderWidth(), Color.TRANSPARENT);
         } else if (style == 3) {      // transparentBox
-            if(!hasOwnTextColor) setTextColor(color[1]);
+            if(!hasOwnTextColor) setTextColor(attributes.getColor(1));
             backgroundDrawable.setColor(Color.TRANSPARENT);
-            backgroundDrawable.setStroke(border, color[2]);
+            backgroundDrawable.setStroke(attributes.getBorderWidth(), attributes.getColor(2));
         }
 
         setBackgroundDrawable(backgroundDrawable);
 
-        if(!hasOwnHintColor) setHintTextColor(color[3]);
+        if(!hasOwnHintColor) setHintTextColor(attributes.getColor(3));
 
-        if (textAppearance == 1) setTextColor(color[0]);
-        else if (textAppearance == 2) setTextColor(color[3]);
+        if (attributes.getTextAppearance() == 1) setTextColor(attributes.getColor(0));
+        else if (attributes.getTextAppearance() == 2) setTextColor(attributes.getColor(3));
 
-        Typeface typeface = FlatUI.getFont(getContext(), fontId, fontWeight);
+        Typeface typeface = FlatUI.getFont(getContext(), attributes.getFontId(), attributes.getFontWeight());
         if (typeface != null) setTypeface(typeface);
+    }
+
+    public Attributes getAttributes() {
+        return attributes;
+    }
+
+    @Override
+    public void onThemeChange() {
+        init(null);
     }
 }

@@ -77,7 +77,8 @@
                     android:gravity="center_vertical"
                     android:hint="Transparent box style"
                     android:includeFontPadding="true"
-                    flatui:fieldStyle="transparentBox"/>
+                    flatui:fieldStyle="transparentBox"
+                    flatui:customTheme="@array/custom_theme_1"/>
 
                 <com.cengalabs.flatui.views.FlatEditText
                     android:id="@+id/edittext_transparent"
@@ -168,7 +169,8 @@
                         android:text="Block"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:textAppearance="light"/>
+                        flatui:textAppearance="light"
+                        flatui:blockButtonEffectHeight="3dp"/>
 
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_flat"
@@ -403,7 +405,8 @@
                                 android:background="#0000"
                                 android:text="unchecked"
                                 android:layout_margin="5dip"
-                                flatui:size="20dip"/>
+                                flatui:size="20dip"
+                                flatui:dotMargin="1dp"/>
 
                             <com.cengalabs.flatui.views.FlatRadioButton
                                 android:id="@+id/radio_checked_enabled"
@@ -413,7 +416,8 @@
                                 android:text="checked"
                                 android:background="#0000"
                                 android:layout_margin="5dip"
-                                flatui:size="20dip"/>
+                                flatui:size="20dip"
+                                flatui:dotMargin="1dp"/>
 
                         </RadioGroup>
 
@@ -456,7 +460,8 @@
                                 android:text="unchecked"
                                 android:enabled="false"
                                 android:layout_margin="5dip"
-                                flatui:size="20dip"/>
+                                flatui:size="20dip"
+                                flatui:dotMargin="1dp"/>
 
                             <com.cengalabs.flatui.views.FlatRadioButton
                                 android:id="@+id/radio_checked_disabled"
@@ -468,7 +473,8 @@
                                 android:enabled="false"
                                 android:background="#0000"
                                 android:layout_margin="5dip"
-                                flatui:size="20dip"/>
+                                flatui:size="20dip"
+                                flatui:dotMargin="1dp"/>
 
                         </RadioGroup>
 
@@ -523,10 +529,11 @@
 
                         <com.cengalabs.flatui.views.FlatToggleButton
                             android:id="@+id/toggle_unchecked_enabled"
-                            android:layout_width="wrap_content"
-                            android:layout_height="35dp"
+                            android:layout_width="72dp"
+                            android:layout_height="36dp"
                             android:text="Full Flat"
-                            flatui:size="14dp"/>
+                            flatui:size="14dp"
+                            flatui:cornerRadius="18dp"/>
 
                         <com.cengalabs.flatui.views.FlatToggleButton
                             android:id="@+id/toggle_checked_enabled"

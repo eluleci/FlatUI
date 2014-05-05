@@ -7,6 +7,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.*;
 import android.util.AttributeSet;
 import android.widget.CheckBox;
+
+import com.cengalabs.flatui.Attributes;
 import com.cengalabs.flatui.FlatUI;
 import com.cengalabs.flatui.R;
 import com.cengalabs.flatui.constants.Colors;
@@ -17,16 +19,9 @@ import com.cengalabs.flatui.constants.Colors;
  * Date: 23.10.2013
  * Time: 22:18
  */
-public class FlatCheckBox extends CheckBox implements Colors {
+public class FlatCheckBox extends CheckBox implements Colors, Attributes.AttributeChangeListener {
 
-    private int fontId = FlatUI.DEFAULT_FONT_FAMILY;
-    private int fontWeight = FlatUI.DEFAULT_FONT_WEIGHT;
-    private int radius = FlatUI.DEFAULT_RADIUS;
-    private int customTheme = -1;
-    private int theme = -1;
-    private int[] colors;
-    private int size = 34;
-    private int border = 5;
+    private Attributes attributes;
 
     public FlatCheckBox(Context context) {
         super(context);
@@ -43,88 +38,76 @@ public class FlatCheckBox extends CheckBox implements Colors {
         init(attrs);
     }
 
-    public void setTheme(int theme) {
-        this.theme = theme;
-        this.customTheme = -1;
-        colors = FlatUI.getColor(theme);
-        init(null);
-    }
-
-    public void setCustomTheme(int customTheme) {
-        this.customTheme = customTheme;
-        if (customTheme != -1) colors = getResources().getIntArray(customTheme);
-        init(null);
-    }
-
     private void init(AttributeSet attrs) {
+
+        if (attributes == null)
+            attributes = new Attributes(this);
 
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatCheckBox);
 
-            theme = a.getInt(R.styleable.FlatCheckBox_theme, FlatUI.DEFAULT_THEME);
-            customTheme = a.getResourceId(R.styleable.FlatCheckBox_customTheme, customTheme);
+            // getting common attributes
+            attributes.setThemeSilent(a.getInt(R.styleable.FlatCheckBox_theme, FlatUI.DEFAULT_THEME));
 
-            colors = FlatUI.getColor(theme);
-            radius = a.getDimensionPixelSize(R.styleable.FlatCheckBox_cornerRadius, radius);
-            size = a.getDimensionPixelSize(R.styleable.FlatCheckBox_size, size);
+            int customTheme = a.getResourceId(R.styleable.FlatCheckBox_customTheme, FlatUI.INVALID_ATTRIBUTE);
+            if (customTheme != FlatUI.INVALID_ATTRIBUTE) attributes.setCustomThemeSilent(customTheme, getResources());
 
-            fontId = a.getInt(R.styleable.FlatCheckBox_fontFamily, fontId);
-            fontWeight = a.getInt(R.styleable.FlatCheckBox_fontWeight, fontWeight);
+            attributes.setFontId(a.getInt(R.styleable.FlatCheckBox_fontFamily, FlatUI.DEFAULT_FONT_FAMILY));
+            attributes.setFontWeight(a.getInt(R.styleable.FlatCheckBox_fontWeight, FlatUI.DEFAULT_FONT_WEIGHT));
 
+            attributes.setSize(a.getDimensionPixelSize(R.styleable.FlatCheckBox_size, FlatUI.DEFAULT_SIZE));
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatCheckBox_cornerRadius, FlatUI.DEFAULT_RADIUS));
+            attributes.setBorderWidth(attributes.getSize() / 10);
 
             a.recycle();
-        } else if (colors == null) {
-            colors = FlatUI.getColor(FlatUI.DEFAULT_THEME);
-        }
-
-        // getting custom theme colors if exists
-        if (customTheme != -1) {
-            colors = getResources().getIntArray(customTheme);
-            theme = FlatUI.CUSTOM_THEME;
         }
 
         // creating unchecked-enabled state drawable
         GradientDrawable uncheckedEnabled = new GradientDrawable();
-        uncheckedEnabled.setCornerRadius(radius);
-        uncheckedEnabled.setSize(size, size);
+        uncheckedEnabled.setCornerRadius(attributes.getRadius());
+        uncheckedEnabled.setSize(attributes.getSize(), attributes.getSize());
         uncheckedEnabled.setColor(Color.TRANSPARENT);
-        uncheckedEnabled.setStroke(border, colors[2]);
+        uncheckedEnabled.setStroke(attributes.getBorderWidth(), attributes.getColor(2));
 
         // creating checked-enabled state drawable
         GradientDrawable checkedOutside = new GradientDrawable();
-        checkedOutside.setCornerRadius(radius);
-        checkedOutside.setSize(size, size);
+        checkedOutside.setCornerRadius(attributes.getRadius());
+        checkedOutside.setSize(attributes.getSize(), attributes.getSize());
         checkedOutside.setColor(Color.TRANSPARENT);
-        checkedOutside.setStroke(border, colors[2]);
+        checkedOutside.setStroke(attributes.getBorderWidth(), attributes.getColor(2));
 
-        PaintDrawable checkedCore = new PaintDrawable(colors[2]);
-        checkedCore.setCornerRadius(radius);
-        checkedCore.setIntrinsicHeight(size);
-        checkedCore.setIntrinsicWidth(size);
-        InsetDrawable checkedInside = new InsetDrawable(checkedCore, border + 2, border + 2, border + 2, border + 2);
+        PaintDrawable checkedCore = new PaintDrawable(attributes.getColor(2));
+        checkedCore.setCornerRadius(attributes.getRadius());
+        checkedCore.setIntrinsicHeight(attributes.getSize());
+        checkedCore.setIntrinsicWidth(attributes.getSize());
+        InsetDrawable checkedInside = new InsetDrawable(checkedCore,
+                attributes.getBorderWidth() + 2, attributes.getBorderWidth() + 2,
+                attributes.getBorderWidth() + 2, attributes.getBorderWidth() + 2);
 
         Drawable[] checkedEnabledDrawable = {checkedOutside, checkedInside};
         LayerDrawable checkedEnabled = new LayerDrawable(checkedEnabledDrawable);
 
         // creating unchecked-enabled state drawable
         GradientDrawable uncheckedDisabled = new GradientDrawable();
-        uncheckedDisabled.setCornerRadius(radius);
-        uncheckedDisabled.setSize(size, size);
+        uncheckedDisabled.setCornerRadius(attributes.getRadius());
+        uncheckedDisabled.setSize(attributes.getSize(), attributes.getSize());
         uncheckedDisabled.setColor(Color.TRANSPARENT);
-        uncheckedDisabled.setStroke(border, colors[3]);
+        uncheckedDisabled.setStroke(attributes.getBorderWidth(), attributes.getColor(3));
 
         // creating checked-disabled state drawable
         GradientDrawable checkedOutsideDisabled = new GradientDrawable();
-        checkedOutsideDisabled.setCornerRadius(radius);
-        checkedOutsideDisabled.setSize(size, size);
+        checkedOutsideDisabled.setCornerRadius(attributes.getRadius());
+        checkedOutsideDisabled.setSize(attributes.getSize(), attributes.getSize());
         checkedOutsideDisabled.setColor(Color.TRANSPARENT);
-        checkedOutsideDisabled.setStroke(border, colors[3]);
+        checkedOutsideDisabled.setStroke(attributes.getBorderWidth(), attributes.getColor(3));
 
-        PaintDrawable checkedCoreDisabled = new PaintDrawable(colors[3]);
-        checkedCoreDisabled.setCornerRadius(radius);
-        checkedCoreDisabled.setIntrinsicHeight(size);
-        checkedCoreDisabled.setIntrinsicWidth(size);
-        InsetDrawable checkedInsideDisabled = new InsetDrawable(checkedCoreDisabled, border + 2, border + 2, border + 2, border + 2);
+        PaintDrawable checkedCoreDisabled = new PaintDrawable(attributes.getColor(3));
+        checkedCoreDisabled.setCornerRadius(attributes.getRadius());
+        checkedCoreDisabled.setIntrinsicHeight(attributes.getSize());
+        checkedCoreDisabled.setIntrinsicWidth(attributes.getSize());
+        InsetDrawable checkedInsideDisabled = new InsetDrawable(checkedCoreDisabled,
+                attributes.getBorderWidth() + 2, attributes.getBorderWidth() + 2,
+                attributes.getBorderWidth() + 2, attributes.getBorderWidth() + 2);
 
         Drawable[] checkedDisabledDrawable = {checkedOutsideDisabled, checkedInsideDisabled};
         LayerDrawable checkedDisabled = new LayerDrawable(checkedDisabledDrawable);
@@ -138,10 +121,19 @@ public class FlatCheckBox extends CheckBox implements Colors {
         setButtonDrawable(states);
 
         // setting padding for avoiding text to appear on icon
-        setPadding(size / 4 * 5, 0, 0, 0);
-        setTextColor(colors[2]);
+        setPadding(attributes.getSize() / 4 * 5, 0, 0, 0);
+        setTextColor(attributes.getColor(2));
 
-        Typeface typeface = FlatUI.getFont(getContext(), fontId, fontWeight);
+        Typeface typeface = FlatUI.getFont(getContext(), attributes.getFontId(), attributes.getFontWeight());
         if (typeface != null) setTypeface(typeface);
+    }
+
+    public Attributes getAttributes() {
+        return attributes;
+    }
+
+    @Override
+    public void onThemeChange() {
+        init(null);
     }
 }

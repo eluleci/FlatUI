@@ -25,14 +25,11 @@ import com.cengalabs.flatui.constants.Colors;
  */
 public class FlatButton extends Button implements Colors, Attributes.AttributeChangeListener {
 
-
     private Attributes attributes;
 
+    // default values of specific attributes
     private int bottom = 5;
-    //private int padding = 10;
     private boolean isFullFlat = false;
-    private int textAppearance = 0;
-    private int radius = FlatUI.DEFAULT_RADIUS;
 
     public FlatButton(Context context) {
         super(context);
@@ -57,31 +54,30 @@ public class FlatButton extends Button implements Colors, Attributes.AttributeCh
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatButton);
 
+            // getting common attributes
             attributes.setThemeSilent(a.getInt(R.styleable.FlatButton_theme, FlatUI.DEFAULT_THEME));
 
             int customTheme = a.getResourceId(R.styleable.FlatButton_customTheme, FlatUI.INVALID_ATTRIBUTE);
-            if (customTheme != FlatUI.INVALID_ATTRIBUTE)
-                attributes.setCustomThemeSilent(customTheme, getResources());
+            if (customTheme != FlatUI.INVALID_ATTRIBUTE) attributes.setCustomThemeSilent(customTheme, getResources());
 
             attributes.setFontId(a.getInt(R.styleable.FlatButton_fontFamily, FlatUI.DEFAULT_FONT_FAMILY));
             attributes.setFontWeight(a.getInt(R.styleable.FlatButton_fontWeight, FlatUI.DEFAULT_FONT_WEIGHT));
 
-            textAppearance = a.getInt(R.styleable.FlatButton_textAppearance, textAppearance);
-            //padding = a.getDimensionPixelSize(R.styleable.CengaLabs_textPadding, padding);
-            radius = a.getDimensionPixelSize(R.styleable.FlatButton_cornerRadius, radius);
+            attributes.setTextAppearance(a.getInt(R.styleable.FlatButton_textAppearance, FlatUI.DEFAULT_TEXT_APPEARANCE));
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatButton_cornerRadius, FlatUI.DEFAULT_RADIUS));
+
+            // getting view specific attributes
+            bottom = a.getDimensionPixelSize(R.styleable.FlatButton_blockButtonEffectHeight, bottom);
             isFullFlat = a.getBoolean(R.styleable.FlatButton_isFullFlat, isFullFlat);
 
             a.recycle();
         }
 
-        float[] outerR = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
-
         // creating normal state drawable
-        ShapeDrawable normalFront = new ShapeDrawable(new RoundRectShape(outerR, null, null));
+        ShapeDrawable normalFront = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
         normalFront.getPaint().setColor(attributes.getColor(2));
-        //normalFront.setPadding(padding, padding, padding, padding);
 
-        ShapeDrawable normalBack = new ShapeDrawable(new RoundRectShape(outerR, null, null));
+        ShapeDrawable normalBack = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
         normalBack.getPaint().setColor(attributes.getColor(1));
 
         if (isFullFlat) bottom = 0;
@@ -91,23 +87,22 @@ public class FlatButton extends Button implements Colors, Attributes.AttributeCh
         LayerDrawable normal = new LayerDrawable(d);
 
         // creating pressed state drawable
-        ShapeDrawable pressedFront = new ShapeDrawable(new RoundRectShape(outerR, null, null));
+        ShapeDrawable pressedFront = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
         pressedFront.getPaint().setColor(attributes.getColor(2));
 
-        ShapeDrawable pressedBack = new ShapeDrawable(new RoundRectShape(outerR, null, null));
-        pressedBack.getPaint().setColor(attributes.getColor(0));
-        if (!isFullFlat) pressedBack.setPadding(0, 0, 0, 3);
+        ShapeDrawable pressedBack = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
+        pressedBack.getPaint().setColor(attributes.getColor(1));
+        if (!isFullFlat) pressedBack.setPadding(0, 0, 0, bottom / 2);
 
         Drawable[] d2 = {pressedBack, pressedFront};
         LayerDrawable pressed = new LayerDrawable(d2);
 
         // creating disabled state drawable
-        ShapeDrawable disabledFront = new ShapeDrawable(new RoundRectShape(outerR, null, null));
+        ShapeDrawable disabledFront = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
         disabledFront.getPaint().setColor(attributes.getColor(3));
 
-        ShapeDrawable disabledBack = new ShapeDrawable(new RoundRectShape(outerR, null, null));
+        ShapeDrawable disabledBack = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
         disabledBack.getPaint().setColor(attributes.getColor(2));
-        //if (!isFullFlat) disabledBack.setPadding(0, 0, 0, padding);
 
         Drawable[] d3 = {disabledBack, disabledFront};
         LayerDrawable disabled = new LayerDrawable(d3);
@@ -121,8 +116,8 @@ public class FlatButton extends Button implements Colors, Attributes.AttributeCh
 
         setBackgroundDrawable(states);
 
-        if (textAppearance == 1) setTextColor(attributes.getColor(0));
-        else if (textAppearance == 2) setTextColor(attributes.getColor(3));
+        if (attributes.getTextAppearance() == 1) setTextColor(attributes.getColor(0));
+        else if (attributes.getTextAppearance() == 2) setTextColor(attributes.getColor(3));
         else setTextColor(Color.WHITE);
 
         Typeface typeface = FlatUI.getFont(getContext(), attributes.getFontId(), attributes.getFontWeight());

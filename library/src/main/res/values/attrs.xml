@@ -17,19 +17,12 @@
         <enum name="Blood" value="11" />
     </attr>
 
-    <attr name="textAppearance" format="integer">
-        <enum name="none" value="0" />
-        <enum name="dark" value="1" />
-        <enum name="light" value="2" />
-    </attr>
-
     <attr name="fontFamily" format="integer">
         <enum name="DroidSans" value="0" />
         <enum name="OpenSans" value="1" />
         <enum name="Roboto" value="2" />
         <enum name="Comfortaa" value="3" />
     </attr>
-
     <attr name="fontWeight" format="integer">
         <enum name="extralight" value="0" />
         <enum name="light" value="1" />
@@ -37,17 +30,27 @@
         <enum name="bold" value="3" />
         <enum name="extrabold" value="4" />
     </attr>
+    <attr name="textAppearance" format="integer">
+        <enum name="none" value="0" />
+        <enum name="dark" value="1" />
+        <enum name="light" value="2" />
+    </attr>
 
     <attr name="cornerRadius" format="dimension" />
-    <attr name="textPadding" format="dimension" />
+    <attr name="borderWidth" format="dimension" />
     <attr name="size" format="dimension" />
 
-    <!-- Edit Text -->
-
-    <!-- Text View -->
-
-
-
+    <!-- FlatButton -->
+    <declare-styleable name="FlatUI">
+        <attr name="theme" />
+        <attr name="customTheme" />
+        <attr name="fontFamily" />
+        <attr name="fontWeight" />
+        <attr name="textAppearance" />
+        <attr name="cornerRadius" />
+        <attr name="borderWidth" />
+        <attr name="size" />
+    </declare-styleable>
 
     <!-- FlatButton -->
     <declare-styleable name="FlatButton">
@@ -57,6 +60,7 @@
         <attr name="fontWeight" />
         <attr name="textAppearance" />
         <attr name="cornerRadius" />
+        <attr name="blockButtonEffectHeight" format="dimension" />
         <attr name="isFullFlat" format="boolean" />
     </declare-styleable>
 
@@ -78,6 +82,7 @@
         <attr name="fontWeight" />
         <attr name="textAppearance" />
         <attr name="cornerRadius" />
+        <attr name="borderWidth" />
         <attr name="fieldStyle" format="integer">
             <enum name="flat" value="0" />
             <enum name="box" value="1" />
@@ -92,7 +97,9 @@
         <attr name="customTheme" />
         <attr name="fontFamily" />
         <attr name="fontWeight" />
+        <attr name="borderWidth" />
         <attr name="size" />
+        <attr name="dotMargin" format="dimension" />
     </declare-styleable>
 
     <!-- Flat Seek Bar -->
@@ -109,6 +116,7 @@
         <attr name="fontFamily" />
         <attr name="fontWeight" />
         <attr name="cornerRadius" />
+        <attr name="borderWidth" />
         <attr name="textColor" format="integer">
             <enum name="darker" value="0" />
             <enum name="dark" value="1" />
@@ -128,6 +136,7 @@
     <declare-styleable name="FlatToggleButton">
         <attr name="theme" />
         <attr name="customTheme" />
+        <attr name="cornerRadius" />
         <attr name="size" />
     </declare-styleable>
 

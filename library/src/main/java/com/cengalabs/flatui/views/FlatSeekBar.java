@@ -8,6 +8,9 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.PaintDrawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.widget.SeekBar;
+
+import com.cengalabs.flatui.Attributes;
 import com.cengalabs.flatui.FlatUI;
 import com.cengalabs.flatui.constants.Colors;
 
@@ -17,77 +20,83 @@ import com.cengalabs.flatui.constants.Colors;
  * Date: 24.10.2013
  * Time: 23:03
  */
-public class FlatSeekBar extends android.widget.SeekBar implements Colors {
+public class FlatSeekBar extends SeekBar implements Colors, Attributes.AttributeChangeListener {
 
-    private int size = FlatUI.DEFAULT_SIZE;
-    private int theme;
-    private int[] color;
+    private Attributes attributes;
 
     public FlatSeekBar(Context context) {
         super(context);
-        init(null, true);
+        init(null);
     }
 
     public FlatSeekBar(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(attrs, true);
+        init(attrs);
     }
 
     public FlatSeekBar(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init(attrs, true);
+        init(attrs);
     }
 
-    public void setTheme(int theme) {
-        color = FlatUI.getColor(theme);
-        init(null, false);
-    }
+    private void init(AttributeSet attrs) {
 
-    private void init(AttributeSet attrs, boolean applyAttributeTheme) {
+        if (attributes == null)
+            attributes = new Attributes(this);
 
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, com.cengalabs.flatui.R.styleable.FlatSeekBar);
 
-            theme = a.getInt(com.cengalabs.flatui.R.styleable.FlatSeekBar_theme, FlatUI.DEFAULT_THEME);
-            color = FlatUI.getColor(theme);
+            // getting common attributes
+            attributes.setThemeSilent(a.getInt(com.cengalabs.flatui.R.styleable.FlatSeekBar_theme, FlatUI.DEFAULT_THEME));
 
-            size = a.getDimensionPixelSize(com.cengalabs.flatui.R.styleable.FlatSeekBar_size, size);
+            int customTheme = a.getResourceId(com.cengalabs.flatui.R.styleable.FlatSeekBar_customTheme, FlatUI.INVALID_ATTRIBUTE);
+            if (customTheme != FlatUI.INVALID_ATTRIBUTE) attributes.setCustomThemeSilent(customTheme, getResources());
+
+            attributes.setSize(a.getDimensionPixelSize(com.cengalabs.flatui.R.styleable.FlatSeekBar_size, FlatUI.DEFAULT_SIZE));
 
             a.recycle();
-        } else if (color == null) {
-            color = FlatUI.getColor(FlatUI.DEFAULT_THEME);
         }
 
         // setting thumb
-        PaintDrawable thumb = new PaintDrawable(color[0]);
-        thumb.setCornerRadius(size * 9 / 8);
-        thumb.setIntrinsicWidth(size * 9 / 4);
-        thumb.setIntrinsicHeight(size * 9 / 4);
+        PaintDrawable thumb = new PaintDrawable(attributes.getColor(0));
+        thumb.setCornerRadius(attributes.getSize() * 9 / 8);
+        thumb.setIntrinsicWidth(attributes.getSize() * 9 / 4);
+        thumb.setIntrinsicHeight(attributes.getSize() * 9 / 4);
         setThumb(thumb);
 
         // progress
-        PaintDrawable progress = new PaintDrawable(color[1]);
-        progress.setCornerRadius(size);
-        progress.setIntrinsicHeight(size);
-        progress.setIntrinsicWidth(size);
+        PaintDrawable progress = new PaintDrawable(attributes.getColor(1));
+        progress.setCornerRadius(attributes.getSize());
+        progress.setIntrinsicHeight(attributes.getSize());
+        progress.setIntrinsicWidth(attributes.getSize());
         progress.setDither(true);
         ClipDrawable progressClip = new ClipDrawable(progress, Gravity.LEFT, ClipDrawable.HORIZONTAL);
 
         // secondary progress
-        PaintDrawable secondary = new PaintDrawable(color[2]);
-        secondary.setCornerRadius(size);
-        secondary.setIntrinsicHeight(size);
+        PaintDrawable secondary = new PaintDrawable(attributes.getColor(2));
+        secondary.setCornerRadius(attributes.getSize());
+        secondary.setIntrinsicHeight(attributes.getSize());
         ClipDrawable secondaryProgressClip = new ClipDrawable(secondary, Gravity.LEFT, ClipDrawable.HORIZONTAL);
 
         // background
-        PaintDrawable background = new PaintDrawable(color[3]);
-        background.setCornerRadius(size);
-        background.setIntrinsicHeight(size);
+        PaintDrawable background = new PaintDrawable(attributes.getColor(3));
+        background.setCornerRadius(attributes.getSize());
+        background.setIntrinsicHeight(attributes.getSize());
 
         // applying drawable
         LayerDrawable ld = (LayerDrawable) getProgressDrawable();
         ld.setDrawableByLayerId(R.id.background, background);
         ld.setDrawableByLayerId(R.id.progress, progressClip);
         ld.setDrawableByLayerId(R.id.secondaryProgress, secondaryProgressClip);
+    }
+
+    public Attributes getAttributes() {
+        return attributes;
+    }
+
+    @Override
+    public void onThemeChange() {
+        init(null);
     }
 }

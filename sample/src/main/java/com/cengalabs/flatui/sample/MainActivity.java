@@ -108,11 +108,11 @@ public class MainActivity extends ActionBarActivity {
     private void changeTheme(int theme) {
 
         for (FlatTextView view : flatTextViews) {
-            view.setTheme(theme);
+            view.getAttributes().setTheme(theme);
         }
 
         for (FlatEditText view : flatEditTexts) {
-            view.setTheme(theme);
+            view.getAttributes().setTheme(theme);
         }
 
         for (FlatButton view : flatButtons) {
@@ -120,18 +120,18 @@ public class MainActivity extends ActionBarActivity {
         }
 
         for (FlatCheckBox view : flatCheckBoxes) {
-            view.setTheme(theme);
+            view.getAttributes().setTheme(theme);
         }
 
         for (FlatRadioButton view : flatRadioButtons) {
-            view.setTheme(theme);
+            view.getAttributes().setTheme(theme);
         }
 
         for (FlatToggleButton view : flatToggleButtons) {
-            view.setTheme(theme);
+            view.getAttributes().setTheme(theme);
         }
 
-        flatSeekBar.setTheme(theme);
+        flatSeekBar.getAttributes().setTheme(theme);
 
         runOnUiThread(new Runnable() {
             @Override
@@ -152,31 +152,31 @@ public class MainActivity extends ActionBarActivity {
 
     private void changeCustomTheme(int colorReference) {
 
-        /*for (FlatTextView view : flatTextViews) {
-            view.setTheme(theme);
+        for (FlatTextView view : flatTextViews) {
+            view.getAttributes().setCustomTheme(colorReference, getResources());
         }
 
         for (FlatEditText view : flatEditTexts) {
-            view.setTheme(theme);
-        }*/
+            view.getAttributes().setCustomTheme(colorReference, getResources());
+        }
 
         for (FlatButton view : flatButtons) {
             view.getAttributes().setCustomTheme(colorReference, getResources());
         }
 
         for (FlatCheckBox view : flatCheckBoxes) {
-            view.setCustomTheme(colorReference);
+            view.getAttributes().setCustomTheme(colorReference, getResources());
         }
 
-        /*for (FlatRadioButton view : flatRadioButtons) {
-            view.setTheme(theme);
+        for (FlatRadioButton view : flatRadioButtons) {
+            view.getAttributes().setCustomTheme(colorReference, getResources());
         }
 
         for (FlatToggleButton view : flatToggleButtons) {
-            view.setTheme(theme);
+            view.getAttributes().setCustomTheme(colorReference, getResources());
         }
 
-        flatSeekBar.setTheme(theme);
+        flatSeekBar.getAttributes().setCustomTheme(colorReference, getResources());
 
         runOnUiThread(new Runnable() {
             @Override
@@ -184,7 +184,7 @@ public class MainActivity extends ActionBarActivity {
                 flatSeekBar.setProgress(30);
                 flatSeekBar.setSecondaryProgress(40);
             }
-        });*/
+        });
 
         // if you are using standard action bar (not compatibility library) use this
         // FlatUI.setActionBarTheme(this, theme, false, true);
