@@ -11,15 +11,13 @@ import android.widget.EditText;
 import com.cengalabs.flatui.Attributes;
 import com.cengalabs.flatui.FlatUI;
 import com.cengalabs.flatui.R;
-import com.cengalabs.flatui.constants.Colors;
 
 /**
- * Created with IntelliJ IDEA.
  * User: eluleci
  * Date: 24.10.2013
  * Time: 21:09
  */
-public class FlatEditText extends EditText implements Colors, Attributes.AttributeChangeListener {
+public class FlatEditText extends EditText implements Attributes.AttributeChangeListener {
 
     private Attributes attributes;
 
@@ -57,17 +55,15 @@ public class FlatEditText extends EditText implements Colors, Attributes.Attribu
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatEditText);
 
             // getting common attributes
-            attributes.setThemeSilent(a.getInt(R.styleable.FlatEditText_theme, FlatUI.DEFAULT_THEME));
+            int customTheme = a.getResourceId(R.styleable.FlatEditText_theme, Attributes.DEFAULT_THEME);
+            attributes.setThemeSilent(customTheme, getResources());
 
-            int customTheme = a.getResourceId(R.styleable.FlatEditText_customTheme, FlatUI.INVALID_ATTRIBUTE);
-            if (customTheme != FlatUI.INVALID_ATTRIBUTE) attributes.setCustomThemeSilent(customTheme, getResources());
+            attributes.setFontId(a.getInt(R.styleable.FlatEditText_fontFamily, Attributes.DEFAULT_FONT_FAMILY));
+            attributes.setFontWeight(a.getInt(R.styleable.FlatEditText_fontWeight, Attributes.DEFAULT_FONT_WEIGHT));
 
-            attributes.setFontId(a.getInt(R.styleable.FlatEditText_fontFamily, FlatUI.DEFAULT_FONT_FAMILY));
-            attributes.setFontWeight(a.getInt(R.styleable.FlatEditText_fontWeight, FlatUI.DEFAULT_FONT_WEIGHT));
-
-            attributes.setTextAppearance(a.getInt(R.styleable.FlatEditText_textAppearance, FlatUI.DEFAULT_TEXT_APPEARANCE));
-            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatEditText_cornerRadius, FlatUI.DEFAULT_RADIUS));
-            attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.FlatEditText_borderWidth, FlatUI.DEFAULT_BORDER_WIDTH));
+            attributes.setTextAppearance(a.getInt(R.styleable.FlatEditText_textAppearance, Attributes.DEFAULT_TEXT_APPEARANCE));
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatEditText_cornerRadius, Attributes.DEFAULT_RADIUS));
+            attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.FlatEditText_borderWidth, Attributes.DEFAULT_BORDER_WIDTH));
 
             // getting view specific attributes
             style = a.getInt(R.styleable.FlatEditText_fieldStyle, 0);

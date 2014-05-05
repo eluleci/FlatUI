@@ -17,21 +17,21 @@ import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
 
-    ArrayList<FlatTextView> flatTextViews = new ArrayList<FlatTextView>();
-    ArrayList<FlatEditText> flatEditTexts = new ArrayList<FlatEditText>();
-    ArrayList<FlatButton> flatButtons = new ArrayList<FlatButton>();
-    ArrayList<FlatCheckBox> flatCheckBoxes = new ArrayList<FlatCheckBox>();
-    ArrayList<FlatRadioButton> flatRadioButtons = new ArrayList<FlatRadioButton>();
-    ArrayList<FlatToggleButton> flatToggleButtons = new ArrayList<FlatToggleButton>();
-    FlatRadioButton radioCheckedEnabled;
-    FlatSeekBar flatSeekBar;
+    private ArrayList<FlatTextView> flatTextViews = new ArrayList<FlatTextView>();
+    private ArrayList<FlatEditText> flatEditTexts = new ArrayList<FlatEditText>();
+    private ArrayList<FlatButton> flatButtons = new ArrayList<FlatButton>();
+    private ArrayList<FlatCheckBox> flatCheckBoxes = new ArrayList<FlatCheckBox>();
+    private ArrayList<FlatRadioButton> flatRadioButtons = new ArrayList<FlatRadioButton>();
+    private ArrayList<FlatToggleButton> flatToggleButtons = new ArrayList<FlatToggleButton>();
+    private FlatRadioButton radioCheckedEnabled;
+    private FlatSeekBar flatSeekBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Default theme should bew set before content view is added
-        FlatUI.setDefaultTheme(FlatUI.BLOOD);
+        FlatUI.setDefaultTheme(FlatUI.CANDY);
 
         setContentView(R.layout.activity_main);
 
@@ -40,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
 
         // if you are using ActionBar of Compatibility library (like this activity), get drawable
         // and set it manually to support action bar.
-        getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(FlatUI.DEEP, false));
+        getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(this, FlatUI.CANDY, false));
 
         // titles
         flatTextViews.add((FlatTextView) findViewById(R.id.title_edittexts));
@@ -98,40 +98,36 @@ public class MainActivity extends ActionBarActivity {
 
     public void onChangeThemeButtonClicked(View v) {
         FlatButton button = (FlatButton) v;
-
-        if (button.getAttributes().getTheme() == FlatUI.CUSTOM_THEME)
-            changeCustomTheme(button.getAttributes().getCustomTheme());
-        else
-            changeTheme(button.getAttributes().getTheme());
+        changeTheme(button.getAttributes().getTheme());
     }
 
-    private void changeTheme(int theme) {
+    private void changeTheme(int colorReference) {
 
         for (FlatTextView view : flatTextViews) {
-            view.getAttributes().setTheme(theme);
+            view.getAttributes().setTheme(colorReference, getResources());
         }
 
         for (FlatEditText view : flatEditTexts) {
-            view.getAttributes().setTheme(theme);
+            view.getAttributes().setTheme(colorReference, getResources());
         }
 
         for (FlatButton view : flatButtons) {
-            view.getAttributes().setTheme(theme);
+            view.getAttributes().setTheme(colorReference, getResources());
         }
 
         for (FlatCheckBox view : flatCheckBoxes) {
-            view.getAttributes().setTheme(theme);
+            view.getAttributes().setTheme(colorReference, getResources());
         }
 
         for (FlatRadioButton view : flatRadioButtons) {
-            view.getAttributes().setTheme(theme);
+            view.getAttributes().setTheme(colorReference, getResources());
         }
 
         for (FlatToggleButton view : flatToggleButtons) {
-            view.getAttributes().setTheme(theme);
+            view.getAttributes().setTheme(colorReference, getResources());
         }
 
-        flatSeekBar.getAttributes().setTheme(theme);
+        flatSeekBar.getAttributes().setTheme(colorReference, getResources());
 
         runOnUiThread(new Runnable() {
             @Override
@@ -145,52 +141,7 @@ public class MainActivity extends ActionBarActivity {
         // FlatUI.setActionBarTheme(this, theme, false, true);
 
         // if you are using ActionBar of Compatibility library, get drawable and set it manually
-        getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(theme, false));
-
-        setTitle("FlatUI Sample App");
-    }
-
-    private void changeCustomTheme(int colorReference) {
-
-        for (FlatTextView view : flatTextViews) {
-            view.getAttributes().setCustomTheme(colorReference, getResources());
-        }
-
-        for (FlatEditText view : flatEditTexts) {
-            view.getAttributes().setCustomTheme(colorReference, getResources());
-        }
-
-        for (FlatButton view : flatButtons) {
-            view.getAttributes().setCustomTheme(colorReference, getResources());
-        }
-
-        for (FlatCheckBox view : flatCheckBoxes) {
-            view.getAttributes().setCustomTheme(colorReference, getResources());
-        }
-
-        for (FlatRadioButton view : flatRadioButtons) {
-            view.getAttributes().setCustomTheme(colorReference, getResources());
-        }
-
-        for (FlatToggleButton view : flatToggleButtons) {
-            view.getAttributes().setCustomTheme(colorReference, getResources());
-        }
-
-        flatSeekBar.getAttributes().setCustomTheme(colorReference, getResources());
-
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                flatSeekBar.setProgress(30);
-                flatSeekBar.setSecondaryProgress(40);
-            }
-        });
-
-        // if you are using standard action bar (not compatibility library) use this
-        // FlatUI.setActionBarTheme(this, theme, false, true);
-
-        // if you are using ActionBar of Compatibility library, get drawable and set it manually
-        //getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(theme, false));
+        getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(this, colorReference, false));
 
         setTitle("FlatUI Sample App");
     }

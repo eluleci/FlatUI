@@ -10,21 +10,19 @@ import android.widget.TextView;
 import com.cengalabs.flatui.Attributes;
 import com.cengalabs.flatui.FlatUI;
 import com.cengalabs.flatui.R;
-import com.cengalabs.flatui.constants.Colors;
 
 /**
- * Created with IntelliJ IDEA.
  * User: eluleci
  * Date: 24.10.2013
  * Time: 21:09
  */
-public class FlatTextView extends TextView implements Colors, Attributes.AttributeChangeListener {
+public class FlatTextView extends TextView implements Attributes.AttributeChangeListener {
 
     private Attributes attributes;
 
     private int textColor = 2;
-    private int backgroundColor = -1;
-    private int customBackgroundColor = -1;
+    private int backgroundColor = Attributes.INVALID;
+    private int customBackgroundColor = Attributes.INVALID;
 
     private boolean hasOwnTextColor;
 
@@ -56,13 +54,11 @@ public class FlatTextView extends TextView implements Colors, Attributes.Attribu
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatTextView);
 
             // getting common attributes
-            attributes.setThemeSilent(a.getInt(R.styleable.FlatTextView_theme, FlatUI.DEFAULT_THEME));
+            int customTheme = a.getResourceId(R.styleable.FlatTextView_theme, Attributes.DEFAULT_THEME);
+            attributes.setThemeSilent(customTheme, getResources());
 
-            int customTheme = a.getResourceId(R.styleable.FlatTextView_customTheme, FlatUI.INVALID_ATTRIBUTE);
-            if (customTheme != FlatUI.INVALID_ATTRIBUTE) attributes.setCustomThemeSilent(customTheme, getResources());
-
-            attributes.setFontId(a.getInt(R.styleable.FlatTextView_fontFamily, FlatUI.DEFAULT_FONT_FAMILY));
-            attributes.setFontWeight(a.getInt(R.styleable.FlatTextView_fontWeight, FlatUI.DEFAULT_FONT_WEIGHT));
+            attributes.setFontId(a.getInt(R.styleable.FlatTextView_fontFamily, Attributes.DEFAULT_FONT_FAMILY));
+            attributes.setFontWeight(a.getInt(R.styleable.FlatTextView_fontWeight, Attributes.DEFAULT_FONT_WEIGHT));
 
             attributes.setRadius(attributes.getSize() / 2);
             attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.FlatTextView_borderWidth, 0));
@@ -75,13 +71,13 @@ public class FlatTextView extends TextView implements Colors, Attributes.Attribu
             a.recycle();
         }
 
-        if (backgroundColor != -1) {
+        if (backgroundColor != Attributes.INVALID) {
             GradientDrawable gradientDrawable = new GradientDrawable();
             gradientDrawable.setColor(attributes.getColor(backgroundColor));
             gradientDrawable.setCornerRadius(attributes.getRadius());
             gradientDrawable.setStroke(attributes.getBorderWidth(), attributes.getColor(textColor));
             setBackgroundDrawable(gradientDrawable);
-        } else if (customBackgroundColor != -1) {
+        } else if (customBackgroundColor != Attributes.INVALID) {
             GradientDrawable gradientDrawable = new GradientDrawable();
             gradientDrawable.setColor(customBackgroundColor);
             gradientDrawable.setCornerRadius(attributes.getRadius());

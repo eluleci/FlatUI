@@ -1,79 +1,65 @@
 package com.cengalabs.flatui;
 
 import android.content.res.Resources;
-import android.content.res.TypedArray;
 
 /**
  * Created by eluleci on 05/05/14.
  */
 public class Attributes {
 
+    public static int INVALID = -1;
+
+    public static int DEFAULT_THEME = R.array.blood;
+
+    public static final int DEFAULT_FONT_FAMILY = 2;
+    public static final int DEFAULT_FONT_WEIGHT = 1;
+    public static final int DEFAULT_TEXT_APPEARANCE = 0;
+
+    public static final int DEFAULT_RADIUS = 10;
+    public static final int DEFAULT_BORDER_WIDTH = 5;
+    public static final int DEFAULT_SIZE = 20;
+
     /**
      * Color related fields
      */
     private int[] colors;
     private int theme = -1;
-    private int customTheme = -1;
 
     /**
      * Font related fields
      */
-    private int fontId = FlatUI.DEFAULT_FONT_FAMILY;
-    private int fontWeight = FlatUI.DEFAULT_FONT_WEIGHT;
-    private int textAppearance = FlatUI.DEFAULT_TEXT_APPEARANCE;
+    private int fontId = DEFAULT_FONT_FAMILY;
+    private int fontWeight = DEFAULT_FONT_WEIGHT;
+    private int textAppearance = DEFAULT_TEXT_APPEARANCE;
 
     /**
      * Size related fields
      */
-    private int radius = FlatUI.DEFAULT_RADIUS;
-    private int borderWidth = FlatUI.DEFAULT_BORDER_WIDTH;
-    private int size = FlatUI.DEFAULT_SIZE;
+    private int radius = DEFAULT_RADIUS;
+    private int size = DEFAULT_SIZE;
+    private int borderWidth = DEFAULT_BORDER_WIDTH;
 
+    /**
+     * Attribute change listener. Used to redraw the view when attributes are changed.
+     */
     private AttributeChangeListener attributeChangeListener;
 
     public Attributes(AttributeChangeListener attributeChangeListener) {
         this.attributeChangeListener = attributeChangeListener;
     }
 
-    public void parseAttributes(TypedArray a, Resources resources) {
-    }
-
-    private void initColors(int theme) {
-        colors = FlatUI.getColor(theme);
-        if (colors == null) colors = FlatUI.getColor(FlatUI.DEFAULT_THEME);
-    }
-
     public int getTheme() {
         return theme;
     }
 
-    public void setTheme(int theme) {
+    public void setTheme(int theme, Resources resources) {
         this.theme = theme;
-        this.customTheme = FlatUI.INVALID_ATTRIBUTE;
-        initColors(theme);
+        colors = resources.getIntArray(theme);
         attributeChangeListener.onThemeChange();
     }
 
-    public void setThemeSilent(int theme) {
-        this.theme = theme;
-        this.customTheme = FlatUI.INVALID_ATTRIBUTE;
-        initColors(theme);
-    }
-
-    public int getCustomTheme() {
-        return customTheme;
-    }
-
-    public void setCustomTheme(int customTheme, Resources resources) {
-        this.customTheme = customTheme;
-        this.theme = FlatUI.CUSTOM_THEME;
-        colors = resources.getIntArray(customTheme);
-        attributeChangeListener.onThemeChange();
-    }
-
-    public void setCustomThemeSilent(int customTheme, Resources resources) {
-        this.customTheme = customTheme;
-        this.theme = FlatUI.CUSTOM_THEME;
+    public void setThemeSilent(int customTheme, Resources resources) {
+        this.theme = customTheme;
         colors = resources.getIntArray(customTheme);
     }
 

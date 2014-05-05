@@ -6,12 +6,24 @@
     <color name="theme1_dark_color">#ff1a8868</color>
     <color name="theme1_primary_color">#1abc9c</color>
     <color name="theme1_light_color">#ff1bf0cf</color>
-
     <integer-array name="custom_theme_1">
         <item>@color/theme1_darker_color</item>
         <item>@color/theme1_dark_color</item>
         <item>@color/theme1_primary_color</item>
         <item>@color/theme1_light_color</item>
+    </integer-array>
+
+
+    <color name="theme2_darker_color">#ff40af1d</color>
+    <color name="theme2_dark_color">#ff2d3a88</color>
+    <color name="theme2_primary_color">#ffbc5357</color>
+    <color name="theme2_light_color">#ffb7b3f0</color>
+
+    <integer-array name="custom_theme_2">
+        <item>@color/theme2_darker_color</item>
+        <item>@color/theme2_dark_color</item>
+        <item>@color/theme2_primary_color</item>
+        <item>@color/theme2_light_color</item>
     </integer-array>
 
 

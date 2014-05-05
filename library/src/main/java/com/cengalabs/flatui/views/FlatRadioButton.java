@@ -4,22 +4,25 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.*;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.PaintDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.util.AttributeSet;
 import android.widget.RadioButton;
 
 import com.cengalabs.flatui.Attributes;
 import com.cengalabs.flatui.FlatUI;
 import com.cengalabs.flatui.R;
-import com.cengalabs.flatui.constants.Colors;
 
 /**
- * Created with IntelliJ IDEA.
  * User: eluleci
  * Date: 23.10.2013
  * Time: 22:18
  */
-public class FlatRadioButton extends RadioButton implements Colors, Attributes.AttributeChangeListener {
+public class FlatRadioButton extends RadioButton implements Attributes.AttributeChangeListener {
 
     private Attributes attributes;
 
@@ -49,17 +52,15 @@ public class FlatRadioButton extends RadioButton implements Colors, Attributes.A
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatRadioButton);
 
             // getting common attributes
-            attributes.setThemeSilent(a.getInt(R.styleable.FlatRadioButton_theme, FlatUI.DEFAULT_THEME));
+            int customTheme = a.getResourceId(R.styleable.FlatRadioButton_theme, Attributes.DEFAULT_THEME);
+            attributes.setThemeSilent(customTheme, getResources());
 
-            int customTheme = a.getResourceId(R.styleable.FlatRadioButton_customTheme, FlatUI.INVALID_ATTRIBUTE);
-            if (customTheme != FlatUI.INVALID_ATTRIBUTE) attributes.setCustomThemeSilent(customTheme, getResources());
+            attributes.setFontId(a.getInt(R.styleable.FlatRadioButton_fontFamily, Attributes.DEFAULT_FONT_FAMILY));
+            attributes.setFontWeight(a.getInt(R.styleable.FlatRadioButton_fontWeight, Attributes.DEFAULT_FONT_WEIGHT));
 
-            attributes.setFontId(a.getInt(R.styleable.FlatRadioButton_fontFamily, FlatUI.DEFAULT_FONT_FAMILY));
-            attributes.setFontWeight(a.getInt(R.styleable.FlatRadioButton_fontWeight, FlatUI.DEFAULT_FONT_WEIGHT));
-
-            attributes.setSize(a.getDimensionPixelSize(R.styleable.FlatRadioButton_size, FlatUI.DEFAULT_SIZE));
+            attributes.setSize(a.getDimensionPixelSize(R.styleable.FlatRadioButton_size, Attributes.DEFAULT_SIZE));
             attributes.setRadius(attributes.getSize() / 2);
-            attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.FlatRadioButton_borderWidth, FlatUI.DEFAULT_BORDER_WIDTH));
+            attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.FlatRadioButton_borderWidth, Attributes.DEFAULT_BORDER_WIDTH));
 
             // getting view specific attributes
             dotMargin = a.getDimensionPixelSize(R.styleable.FlatRadioButton_dotMargin, dotMargin);

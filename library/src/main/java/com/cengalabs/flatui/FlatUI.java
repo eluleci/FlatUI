@@ -9,72 +9,28 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.PaintDrawable;
 import android.util.Log;
 
-import com.cengalabs.flatui.constants.Colors;
-
 /**
  * Created with IntelliJ IDEA.
  * User: eluleci
  * Date: 25.10.2013
  * Time: 15:00
  */
-public class FlatUI implements Colors {
+public class FlatUI {
 
     public static final String androidStyleNameSpace = "http://schemas.android.com/apk/res/android";
 
-    public static int INVALID_ATTRIBUTE = -1;
-
-    public static final int DEFAULT_FONT_FAMILY = 2;
-    public static final int DEFAULT_FONT_WEIGHT = 1;
-    public static final int DEFAULT_TEXT_APPEARANCE = 0;
-
-    public static final int DEFAULT_RADIUS = 10;
-    public static final int DEFAULT_BORDER_WIDTH = 5;
-    public static final int DEFAULT_SIZE = 20;
-    public static final int CUSTOM_THEME = 631;
-    public static int DEFAULT_THEME = 5;
-
-    public static final int SAND = 0;
-    public static final int ORANGE = 1;
-    public static final int CANDY = 2;
-    public static final int BLOSSOM = 3;
-    public static final int GRAPE = 4;
-    public static final int DEEP = 5;
-    public static final int SKY = 6;
-    public static final int GRASS = 7;
-    public static final int DARK = 8;
-    public static final int SNOW = 9;
-    public static final int SEA = 10;
-    public static final int BLOOD = 11;
-
-    public static int[] getColor(int theme) {
-
-        if (theme == SAND)
-            return COLOR_SAND;
-        else if (theme == ORANGE)
-            return COLOR_ORANGE;
-        else if (theme == CANDY)
-            return COLOR_CANDY;
-        else if (theme == BLOSSOM)
-            return COLOR_BLOSSOM;
-        else if (theme == GRAPE)
-            return COLOR_GRAPE;
-        else if (theme == DEEP)
-            return COLOR_DEEP;
-        else if (theme == SKY)
-            return COLOR_SKY;
-        else if (theme == GRASS)
-            return COLOR_GRASS;
-        else if (theme == DARK)
-            return COLOR_DARK;
-        else if (theme == SNOW)
-            return COLOR_SNOW;
-        else if (theme == SEA)
-            return COLOR_SEA;
-        else if (theme == BLOOD)
-            return COLOR_BLOOD;
-
-        return COLOR_CANDY;
-    }
+    public static final int SAND = R.array.sand;
+    public static final int ORANGE = R.array.orange;
+    public static final int CANDY = R.array.candy;
+    public static final int BLOSSOM = R.array.blossom;
+    public static final int GRAPE = R.array.grape;
+    public static final int DEEP = R.array.deep;
+    public static final int SKY = R.array.sky;
+    public static final int GRASS = R.array.grass;
+    public static final int DARK = R.array.dark;
+    public static final int SNOW = R.array.snow;
+    public static final int SEA = R.array.sea;
+    public static final int BLOOD = R.array.blood;
 
     public static Typeface getFont(Context context, int fontId, int weight) {
         String fontName = "";
@@ -128,12 +84,12 @@ public class FlatUI implements Colors {
      */
     public static void setActionBarTheme(Activity activity, int theme, boolean dark, boolean titleEnabled) {
 
-        Drawable drawable = getActionBarDrawable(theme, dark);
+        Drawable drawable = getActionBarDrawable(activity, theme, dark);
 
         ActionBar actionBar = activity.getActionBar();
         actionBar.setBackgroundDrawable(drawable);
-        actionBar.setDisplayShowTitleEnabled(!titleEnabled);
-        actionBar.setDisplayShowTitleEnabled(titleEnabled);
+        //actionBar.setDisplayShowTitleEnabled(!titleEnabled);
+        //actionBar.setDisplayShowTitleEnabled(titleEnabled);
     }
 
     /**
@@ -144,15 +100,15 @@ public class FlatUI implements Colors {
      * @param dark boolean for choosing dark colors or primary colors
      * @return drawable to be used in ActionBar
      */
-    public static Drawable getActionBarDrawable(int theme, boolean dark) {
-        int[] color = getColor(theme);
+    public static Drawable getActionBarDrawable(Activity activity, int theme, boolean dark) {
+        int[] colors = activity.getResources().getIntArray(theme);
 
-        int color1 = color[2];
-        int color2 = color[1];
+        int color1 = colors[2];
+        int color2 = colors[1];
 
         if (dark) {
-            color1 = color[1];
-            color2 = color[0];
+            color1 = colors[1];
+            color2 = colors[0];
         }
 
         PaintDrawable front = new PaintDrawable(color1);
@@ -164,6 +120,6 @@ public class FlatUI implements Colors {
     }
 
     public static void setDefaultTheme(int theme) {
-        DEFAULT_THEME = theme;
+        Attributes.DEFAULT_THEME = theme;
     }
 }

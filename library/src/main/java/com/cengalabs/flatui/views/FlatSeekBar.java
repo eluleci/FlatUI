@@ -11,16 +11,13 @@ import android.view.Gravity;
 import android.widget.SeekBar;
 
 import com.cengalabs.flatui.Attributes;
-import com.cengalabs.flatui.FlatUI;
-import com.cengalabs.flatui.constants.Colors;
 
 /**
- * Created with IntelliJ IDEA.
  * User: eluleci
  * Date: 24.10.2013
  * Time: 23:03
  */
-public class FlatSeekBar extends SeekBar implements Colors, Attributes.AttributeChangeListener {
+public class FlatSeekBar extends SeekBar implements Attributes.AttributeChangeListener {
 
     private Attributes attributes;
 
@@ -48,12 +45,10 @@ public class FlatSeekBar extends SeekBar implements Colors, Attributes.Attribute
             TypedArray a = getContext().obtainStyledAttributes(attrs, com.cengalabs.flatui.R.styleable.FlatSeekBar);
 
             // getting common attributes
-            attributes.setThemeSilent(a.getInt(com.cengalabs.flatui.R.styleable.FlatSeekBar_theme, FlatUI.DEFAULT_THEME));
+            int customTheme = a.getResourceId(com.cengalabs.flatui.R.styleable.FlatSeekBar_theme, Attributes.DEFAULT_THEME);
+            attributes.setThemeSilent(customTheme, getResources());
 
-            int customTheme = a.getResourceId(com.cengalabs.flatui.R.styleable.FlatSeekBar_customTheme, FlatUI.INVALID_ATTRIBUTE);
-            if (customTheme != FlatUI.INVALID_ATTRIBUTE) attributes.setCustomThemeSilent(customTheme, getResources());
-
-            attributes.setSize(a.getDimensionPixelSize(com.cengalabs.flatui.R.styleable.FlatSeekBar_size, FlatUI.DEFAULT_SIZE));
+            attributes.setSize(a.getDimensionPixelSize(com.cengalabs.flatui.R.styleable.FlatSeekBar_size, Attributes.DEFAULT_SIZE));
 
             a.recycle();
         }

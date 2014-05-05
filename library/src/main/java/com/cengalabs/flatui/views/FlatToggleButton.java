@@ -13,20 +13,18 @@ import android.util.AttributeSet;
 import android.widget.ToggleButton;
 
 import com.cengalabs.flatui.Attributes;
-import com.cengalabs.flatui.FlatUI;
 import com.cengalabs.flatui.R;
-import com.cengalabs.flatui.constants.Colors;
 
 /**
- * Created with IntelliJ IDEA.
  * User: eluleci
  * Date: 23.10.2013
  * Time: 22:18
  */
-public class FlatToggleButton extends ToggleButton implements Colors, Attributes.AttributeChangeListener {
+public class FlatToggleButton extends ToggleButton implements Attributes.AttributeChangeListener {
 
     private Attributes attributes;
 
+    private int space = 14;
     private int padding;
 
     public FlatToggleButton(Context context) {
@@ -53,14 +51,13 @@ public class FlatToggleButton extends ToggleButton implements Colors, Attributes
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatToggleButton);
 
             // getting common attributes
-            attributes.setThemeSilent(a.getInt(R.styleable.FlatToggleButton_theme, FlatUI.DEFAULT_THEME));
+            int customTheme = a.getResourceId(R.styleable.FlatToggleButton_theme, Attributes.DEFAULT_THEME);
+            attributes.setThemeSilent(customTheme, getResources());
 
-            int customTheme = a.getResourceId(R.styleable.FlatToggleButton_customTheme, FlatUI.INVALID_ATTRIBUTE);
-            if (customTheme != FlatUI.INVALID_ATTRIBUTE) attributes.setCustomThemeSilent(customTheme, getResources());
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatToggleButton_cornerRadius, Attributes.DEFAULT_RADIUS));
 
-            attributes.setSize(a.getDimensionPixelSize(R.styleable.FlatToggleButton_size, FlatUI.DEFAULT_SIZE));
-            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatToggleButton_cornerRadius, FlatUI.DEFAULT_RADIUS));
-            padding = attributes.getSize() / 10;
+            space = a.getDimensionPixelSize(R.styleable.FlatToggleButton_space, space);
+            padding = space / 10;
 
             a.recycle();
         }
@@ -72,9 +69,9 @@ public class FlatToggleButton extends ToggleButton implements Colors, Attributes
 
         ShapeDrawable uncheckedEnabledBack = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
         uncheckedEnabledBack.getPaint().setColor(Color.parseColor("#f2f2f2"));
-        uncheckedEnabledBack.setIntrinsicWidth(attributes.getSize() / 2 * 5);
-        uncheckedEnabledBack.setIntrinsicHeight(attributes.getSize());
-        uncheckedEnabledBack.setPadding(0, 0, attributes.getSize() / 2 * 5, 0);
+        uncheckedEnabledBack.setIntrinsicWidth(space / 2 * 5);
+        uncheckedEnabledBack.setIntrinsicHeight(space);
+        uncheckedEnabledBack.setPadding(0, 0, space / 2 * 5, 0);
 
         Drawable[] d1 = {uncheckedEnabledBack, uncheckedEnabledFront};
         LayerDrawable uncheckedEnabled = new LayerDrawable(d1);
@@ -86,7 +83,7 @@ public class FlatToggleButton extends ToggleButton implements Colors, Attributes
 
         ShapeDrawable checkedEnabledBack = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
         checkedEnabledBack.getPaint().setColor(attributes.getColor(3));
-        checkedEnabledBack.setPadding(attributes.getSize() / 2 * 5, 0, 0, 0);
+        checkedEnabledBack.setPadding(space / 2 * 5, 0, 0, 0);
 
         Drawable[] d2 = {checkedEnabledBack, checkedEnabledFront};
         LayerDrawable checkedEnabled = new LayerDrawable(d2);
@@ -98,7 +95,7 @@ public class FlatToggleButton extends ToggleButton implements Colors, Attributes
 
         ShapeDrawable uncheckedDisabledBack = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
         uncheckedDisabledBack.getPaint().setColor(Color.parseColor("#f2f2f2"));
-        uncheckedDisabledBack.setPadding(0, 0, attributes.getSize() / 2 * 5, 0);
+        uncheckedDisabledBack.setPadding(0, 0, space / 2 * 5, 0);
 
         Drawable[] d3 = {uncheckedDisabledBack, uncheckedDisabledFront};
         LayerDrawable uncheckedDisabled = new LayerDrawable(d3);
@@ -110,7 +107,7 @@ public class FlatToggleButton extends ToggleButton implements Colors, Attributes
 
         ShapeDrawable checkedDisabledBack = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
         checkedDisabledBack.getPaint().setColor(Color.parseColor("#f2f2f2"));
-        checkedDisabledBack.setPadding(attributes.getSize() / 2 * 5, 0, 0, 0);
+        checkedDisabledBack.setPadding(space / 2 * 5, 0, 0, 0);
 
         Drawable[] d4 = {checkedDisabledBack, checkedDisabledFront};
         LayerDrawable checkedDisabled = new LayerDrawable(d4);

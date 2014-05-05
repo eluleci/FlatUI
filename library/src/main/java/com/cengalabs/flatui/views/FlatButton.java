@@ -15,15 +15,13 @@ import android.widget.Button;
 import com.cengalabs.flatui.Attributes;
 import com.cengalabs.flatui.FlatUI;
 import com.cengalabs.flatui.R;
-import com.cengalabs.flatui.constants.Colors;
 
 /**
- * Created with IntelliJ IDEA.
  * User: eluleci
  * Date: 23.10.2013
  * Time: 22:18
  */
-public class FlatButton extends Button implements Colors, Attributes.AttributeChangeListener {
+public class FlatButton extends Button implements Attributes.AttributeChangeListener {
 
     private Attributes attributes;
 
@@ -55,16 +53,14 @@ public class FlatButton extends Button implements Colors, Attributes.AttributeCh
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatButton);
 
             // getting common attributes
-            attributes.setThemeSilent(a.getInt(R.styleable.FlatButton_theme, FlatUI.DEFAULT_THEME));
+            int customTheme = a.getResourceId(R.styleable.FlatButton_theme, Attributes.DEFAULT_THEME);
+            attributes.setThemeSilent(customTheme, getResources());
 
-            int customTheme = a.getResourceId(R.styleable.FlatButton_customTheme, FlatUI.INVALID_ATTRIBUTE);
-            if (customTheme != FlatUI.INVALID_ATTRIBUTE) attributes.setCustomThemeSilent(customTheme, getResources());
+            attributes.setFontId(a.getInt(R.styleable.FlatButton_fontFamily, Attributes.DEFAULT_FONT_FAMILY));
+            attributes.setFontWeight(a.getInt(R.styleable.FlatButton_fontWeight, Attributes.DEFAULT_FONT_WEIGHT));
 
-            attributes.setFontId(a.getInt(R.styleable.FlatButton_fontFamily, FlatUI.DEFAULT_FONT_FAMILY));
-            attributes.setFontWeight(a.getInt(R.styleable.FlatButton_fontWeight, FlatUI.DEFAULT_FONT_WEIGHT));
-
-            attributes.setTextAppearance(a.getInt(R.styleable.FlatButton_textAppearance, FlatUI.DEFAULT_TEXT_APPEARANCE));
-            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatButton_cornerRadius, FlatUI.DEFAULT_RADIUS));
+            attributes.setTextAppearance(a.getInt(R.styleable.FlatButton_textAppearance, Attributes.DEFAULT_TEXT_APPEARANCE));
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatButton_cornerRadius, Attributes.DEFAULT_RADIUS));
 
             // getting view specific attributes
             bottom = a.getDimensionPixelSize(R.styleable.FlatButton_blockButtonEffectHeight, bottom);
@@ -88,10 +84,10 @@ public class FlatButton extends Button implements Colors, Attributes.AttributeCh
 
         // creating pressed state drawable
         ShapeDrawable pressedFront = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
-        pressedFront.getPaint().setColor(attributes.getColor(2));
+        pressedFront.getPaint().setColor(attributes.getColor(1));
 
         ShapeDrawable pressedBack = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
-        pressedBack.getPaint().setColor(attributes.getColor(1));
+        pressedBack.getPaint().setColor(attributes.getColor(0));
         if (!isFullFlat) pressedBack.setPadding(0, 0, 0, bottom / 2);
 
         Drawable[] d2 = {pressedBack, pressedFront};

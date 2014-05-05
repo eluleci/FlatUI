@@ -4,22 +4,25 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.*;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.PaintDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.util.AttributeSet;
 import android.widget.CheckBox;
 
 import com.cengalabs.flatui.Attributes;
 import com.cengalabs.flatui.FlatUI;
 import com.cengalabs.flatui.R;
-import com.cengalabs.flatui.constants.Colors;
 
 /**
- * Created with IntelliJ IDEA.
  * User: eluleci
  * Date: 23.10.2013
  * Time: 22:18
  */
-public class FlatCheckBox extends CheckBox implements Colors, Attributes.AttributeChangeListener {
+public class FlatCheckBox extends CheckBox implements Attributes.AttributeChangeListener {
 
     private Attributes attributes;
 
@@ -47,16 +50,14 @@ public class FlatCheckBox extends CheckBox implements Colors, Attributes.Attribu
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatCheckBox);
 
             // getting common attributes
-            attributes.setThemeSilent(a.getInt(R.styleable.FlatCheckBox_theme, FlatUI.DEFAULT_THEME));
+            int customTheme = a.getResourceId(R.styleable.FlatCheckBox_theme, Attributes.DEFAULT_THEME);
+            attributes.setThemeSilent(customTheme, getResources());
 
-            int customTheme = a.getResourceId(R.styleable.FlatCheckBox_customTheme, FlatUI.INVALID_ATTRIBUTE);
-            if (customTheme != FlatUI.INVALID_ATTRIBUTE) attributes.setCustomThemeSilent(customTheme, getResources());
+            attributes.setFontId(a.getInt(R.styleable.FlatCheckBox_fontFamily, Attributes.DEFAULT_FONT_FAMILY));
+            attributes.setFontWeight(a.getInt(R.styleable.FlatCheckBox_fontWeight, Attributes.DEFAULT_FONT_WEIGHT));
 
-            attributes.setFontId(a.getInt(R.styleable.FlatCheckBox_fontFamily, FlatUI.DEFAULT_FONT_FAMILY));
-            attributes.setFontWeight(a.getInt(R.styleable.FlatCheckBox_fontWeight, FlatUI.DEFAULT_FONT_WEIGHT));
-
-            attributes.setSize(a.getDimensionPixelSize(R.styleable.FlatCheckBox_size, FlatUI.DEFAULT_SIZE));
-            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatCheckBox_cornerRadius, FlatUI.DEFAULT_RADIUS));
+            attributes.setSize(a.getDimensionPixelSize(R.styleable.FlatCheckBox_size, Attributes.DEFAULT_SIZE));
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatCheckBox_cornerRadius, Attributes.DEFAULT_RADIUS));
             attributes.setBorderWidth(attributes.getSize() / 10);
 
             a.recycle();
