@@ -10,7 +10,6 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
-import android.view.ViewGroup;
 import android.widget.ToggleButton;
 
 import com.cengalabs.flatui.FlatUI;
@@ -58,12 +57,12 @@ public class FlatToggleButton extends ToggleButton implements Colors {
     private void init(AttributeSet attrs) {
 
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CengaLabs);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatToggleButton);
 
-            theme = a.getInt(R.styleable.CengaLabs_theme, FlatUI.DEFAULT_THEME);
+            theme = a.getInt(R.styleable.FlatToggleButton_theme, FlatUI.DEFAULT_THEME);
             color = FlatUI.getColor(theme);
 
-            size = a.getDimensionPixelSize(R.styleable.CengaLabs_size, size);
+            size = a.getDimensionPixelSize(R.styleable.FlatToggleButton_size, size);
             padding = size / 10;
 
             a.recycle();
@@ -140,8 +139,6 @@ public class FlatToggleButton extends ToggleButton implements Colors {
                 new InsetDrawable(checkedDisabled, padding * 2));
 
         setBackgroundDrawable(states);
-
-        setLayoutParams(new ViewGroup.LayoutParams(size / 2 * 5, size));
 
         setTextSize(0);
     }

@@ -796,6 +796,36 @@
                         flatui:textAppearance="light"/>
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2">
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_custom_theme_1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Custom 1"
+                        android:onClick="onChangeThemeButtonClicked"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"
+                        flatui:textAppearance="light"
+                        flatui:customTheme="@array/custom_theme_1"/>
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_custom_theme_2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Custom 2"
+                        android:onClick="onChangeThemeButtonClicked"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"
+                        flatui:theme="Blood"
+                        flatui:textAppearance="light"
+                        flatui:customTheme="@array/custom_theme_1"/>
+
+                </LinearLayout>
             </LinearLayout>
 
 

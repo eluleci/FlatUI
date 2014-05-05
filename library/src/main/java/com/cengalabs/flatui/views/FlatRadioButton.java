@@ -51,15 +51,15 @@ public class FlatRadioButton extends RadioButton implements Colors {
     private void init(AttributeSet attrs) {
 
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CengaLabs);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatRadioButton);
 
-            theme = a.getInt(R.styleable.CengaLabs_theme, FlatUI.DEFAULT_THEME);
+            theme = a.getInt(R.styleable.FlatRadioButton_theme, FlatUI.DEFAULT_THEME);
             color = FlatUI.getColor(theme);
-            size = a.getDimensionPixelSize(R.styleable.CengaLabs_size, size);
+            size = a.getDimensionPixelSize(R.styleable.FlatRadioButton_size, size);
             radius = size / 2;
 
-            fontId = a.getInt(R.styleable.CengaLabs_fontFamily, fontId);
-            fontWeight = a.getInt(R.styleable.CengaLabs_fontWeight, fontWeight);
+            fontId = a.getInt(R.styleable.FlatRadioButton_fontFamily, fontId);
+            fontWeight = a.getInt(R.styleable.FlatRadioButton_fontWeight, fontWeight);
 
             a.recycle();
         } else if (color == null) {

@@ -46,12 +46,12 @@ public class FlatSeekBar extends android.widget.SeekBar implements Colors {
     private void init(AttributeSet attrs, boolean applyAttributeTheme) {
 
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, com.cengalabs.flatui.R.styleable.CengaLabs);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, com.cengalabs.flatui.R.styleable.FlatSeekBar);
 
-            theme = a.getInt(com.cengalabs.flatui.R.styleable.CengaLabs_theme, FlatUI.DEFAULT_THEME);
+            theme = a.getInt(com.cengalabs.flatui.R.styleable.FlatSeekBar_theme, FlatUI.DEFAULT_THEME);
             color = FlatUI.getColor(theme);
 
-            size = a.getDimensionPixelSize(com.cengalabs.flatui.R.styleable.CengaLabs_size, size);
+            size = a.getDimensionPixelSize(com.cengalabs.flatui.R.styleable.FlatSeekBar_size, size);
 
             a.recycle();
         } else if (color == null) {

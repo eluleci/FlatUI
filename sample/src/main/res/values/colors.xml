@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="theme1_darker_color">#ff0a463a</color>
+    <color name="theme1_dark_color">#ff1a8868</color>
+    <color name="theme1_primary_color">#1abc9c</color>
+    <color name="theme1_light_color">#ffb3fff4</color>
+
+    <integer-array name="custom_theme_1">
+        <item>@color/theme1_darker_color</item>
+        <item>@color/theme1_dark_color</item>
+        <item>@color/theme1_primary_color</item>
+        <item>@color/theme1_light_color</item>
+    </integer-array>
+
+
+</resources>

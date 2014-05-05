@@ -24,7 +24,6 @@ public class FlatEditText extends EditText implements Colors {
     private int fontWeight = FlatUI.DEFAULT_FONT_WEIGHT;
     private int radius = FlatUI.DEFAULT_RADIUS;
     private int[] color;
-    private int padding = 10;
     private int border = 3;
     private int style = 0;
     private int textAppearance = 0;
@@ -60,19 +59,18 @@ public class FlatEditText extends EditText implements Colors {
             hasOwnTextColor = attrs.getAttributeValue(FlatUI.androidStyleNameSpace, "textColor") != null;
             hasOwnHintColor = attrs.getAttributeValue(FlatUI.androidStyleNameSpace, "textColorHint") != null;
 
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CengaLabs);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatEditText);
 
-            int theme = a.getInt(R.styleable.CengaLabs_theme, FlatUI.DEFAULT_THEME);
+            int theme = a.getInt(R.styleable.FlatEditText_theme, FlatUI.DEFAULT_THEME);
             color = FlatUI.getColor(theme);
 
-            style = a.getInt(R.styleable.CengaLabs_fieldStyle, 0);
-            radius = a.getDimensionPixelSize(R.styleable.CengaLabs_cornerRadius, radius);
-            padding = a.getDimensionPixelSize(R.styleable.CengaLabs_textPadding, padding);
+            style = a.getInt(R.styleable.FlatEditText_fieldStyle, 0);
+            radius = a.getDimensionPixelSize(R.styleable.FlatEditText_cornerRadius, radius);
 
-            fontId = a.getInt(R.styleable.CengaLabs_fontFamily, fontId);
-            fontWeight = a.getInt(R.styleable.CengaLabs_fontWeight, fontWeight);
+            fontId = a.getInt(R.styleable.FlatEditText_fontFamily, fontId);
+            fontWeight = a.getInt(R.styleable.FlatEditText_fontWeight, fontWeight);
 
-            textAppearance = a.getInt(R.styleable.CengaLabs_textAppearance, textAppearance);
+            textAppearance = a.getInt(R.styleable.FlatEditText_textAppearance, textAppearance);
 
             a.recycle();
         } else if (color == null) {

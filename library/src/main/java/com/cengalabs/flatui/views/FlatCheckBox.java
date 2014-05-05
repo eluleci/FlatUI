@@ -22,8 +22,9 @@ public class FlatCheckBox extends CheckBox implements Colors {
     private int fontId = FlatUI.DEFAULT_FONT_FAMILY;
     private int fontWeight = FlatUI.DEFAULT_FONT_WEIGHT;
     private int radius = FlatUI.DEFAULT_RADIUS;
-    private int[] color;
-    private int theme;
+    private int customTheme = -1;
+    private int theme = -1;
+    private int[] colors;
     private int size = 34;
     private int border = 5;
 
@@ -44,26 +45,42 @@ public class FlatCheckBox extends CheckBox implements Colors {
 
     public void setTheme(int theme) {
         this.theme = theme;
-        color = FlatUI.getColor(theme);
+        this.customTheme = -1;
+        colors = FlatUI.getColor(theme);
+        init(null);
+    }
+
+    public void setCustomTheme(int customTheme) {
+        this.customTheme = customTheme;
+        if (customTheme != -1) colors = getResources().getIntArray(customTheme);
         init(null);
     }
 
     private void init(AttributeSet attrs) {
 
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CengaLabs);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatCheckBox);
 
-            theme = a.getInt(R.styleable.CengaLabs_theme, FlatUI.DEFAULT_THEME);
-            color = FlatUI.getColor(theme);
-            radius = a.getDimensionPixelSize(R.styleable.CengaLabs_cornerRadius, radius);
-            size = a.getDimensionPixelSize(R.styleable.CengaLabs_size, size);
+            theme = a.getInt(R.styleable.FlatCheckBox_theme, FlatUI.DEFAULT_THEME);
+            customTheme = a.getResourceId(R.styleable.FlatCheckBox_customTheme, customTheme);
 
-            fontId = a.getInt(R.styleable.CengaLabs_fontFamily, fontId);
-            fontWeight = a.getInt(R.styleable.CengaLabs_fontWeight, fontWeight);
+            colors = FlatUI.getColor(theme);
+            radius = a.getDimensionPixelSize(R.styleable.FlatCheckBox_cornerRadius, radius);
+            size = a.getDimensionPixelSize(R.styleable.FlatCheckBox_size, size);
+
+            fontId = a.getInt(R.styleable.FlatCheckBox_fontFamily, fontId);
+            fontWeight = a.getInt(R.styleable.FlatCheckBox_fontWeight, fontWeight);
+
 
             a.recycle();
-        } else if (color == null) {
-            color = FlatUI.getColor(FlatUI.DEFAULT_THEME);
+        } else if (colors == null) {
+            colors = FlatUI.getColor(FlatUI.DEFAULT_THEME);
+        }
+
+        // getting custom theme colors if exists
+        if (customTheme != -1) {
+            colors = getResources().getIntArray(customTheme);
+            theme = FlatUI.CUSTOM_THEME;
         }
 
         // creating unchecked-enabled state drawable
@@ -71,16 +88,16 @@ public class FlatCheckBox extends CheckBox implements Colors {
         uncheckedEnabled.setCornerRadius(radius);
         uncheckedEnabled.setSize(size, size);
         uncheckedEnabled.setColor(Color.TRANSPARENT);
-        uncheckedEnabled.setStroke(border, color[2]);
+        uncheckedEnabled.setStroke(border, colors[2]);
 
         // creating checked-enabled state drawable
         GradientDrawable checkedOutside = new GradientDrawable();
         checkedOutside.setCornerRadius(radius);
         checkedOutside.setSize(size, size);
         checkedOutside.setColor(Color.TRANSPARENT);
-        checkedOutside.setStroke(border, color[2]);
+        checkedOutside.setStroke(border, colors[2]);
 
-        PaintDrawable checkedCore = new PaintDrawable(color[2]);
+        PaintDrawable checkedCore = new PaintDrawable(colors[2]);
         checkedCore.setCornerRadius(radius);
         checkedCore.setIntrinsicHeight(size);
         checkedCore.setIntrinsicWidth(size);
@@ -94,16 +111,16 @@ public class FlatCheckBox extends CheckBox implements Colors {
         uncheckedDisabled.setCornerRadius(radius);
         uncheckedDisabled.setSize(size, size);
         uncheckedDisabled.setColor(Color.TRANSPARENT);
-        uncheckedDisabled.setStroke(border, color[3]);
+        uncheckedDisabled.setStroke(border, colors[3]);
 
         // creating checked-disabled state drawable
         GradientDrawable checkedOutsideDisabled = new GradientDrawable();
         checkedOutsideDisabled.setCornerRadius(radius);
         checkedOutsideDisabled.setSize(size, size);
         checkedOutsideDisabled.setColor(Color.TRANSPARENT);
-        checkedOutsideDisabled.setStroke(border, color[3]);
+        checkedOutsideDisabled.setStroke(border, colors[3]);
 
-        PaintDrawable checkedCoreDisabled = new PaintDrawable(color[3]);
+        PaintDrawable checkedCoreDisabled = new PaintDrawable(colors[3]);
         checkedCoreDisabled.setCornerRadius(radius);
         checkedCoreDisabled.setIntrinsicHeight(size);
         checkedCoreDisabled.setIntrinsicWidth(size);
@@ -120,9 +137,9 @@ public class FlatCheckBox extends CheckBox implements Colors {
         states.addState(new int[]{android.R.attr.state_checked, -android.R.attr.state_enabled}, checkedDisabled);
         setButtonDrawable(states);
 
-        // setting padding for avoiding text to be appear on icon
+        // setting padding for avoiding text to appear on icon
         setPadding(size / 4 * 5, 0, 0, 0);
-        setTextColor(color[2]);
+        setTextColor(colors[2]);
 
         Typeface typeface = FlatUI.getFont(getContext(), fontId, fontWeight);
         if (typeface != null) setTypeface(typeface);

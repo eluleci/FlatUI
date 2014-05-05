@@ -45,20 +45,22 @@ public class FlatTextView extends android.widget.TextView implements Colors {
         init(null);
     }
 
+
+
     private void init(AttributeSet attrs) {
 
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CengaLabs);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatTextView);
 
-            int theme = a.getInt(R.styleable.CengaLabs_theme, FlatUI.DEFAULT_THEME);
+            int theme = a.getInt(R.styleable.FlatTextView_theme, FlatUI.DEFAULT_THEME);
             color = FlatUI.getColor(theme);
 
-            fontId = a.getInt(R.styleable.CengaLabs_fontFamily, fontId);
-            weight = a.getInt(R.styleable.CengaLabs_fontWeight, weight);
-            textColor = a.getInt(R.styleable.CengaLabs_textColor, textColor);
-            backgroundColor = a.getInt(R.styleable.CengaLabs_backgroundColor, backgroundColor);
-            customBackgroundColor = a.getInt(R.styleable.CengaLabs_customBackgroundColor, customBackgroundColor);
-            cornerRadius = a.getInt(R.styleable.CengaLabs_cornerRadius, cornerRadius);
+            fontId = a.getInt(R.styleable.FlatTextView_fontFamily, fontId);
+            weight = a.getInt(R.styleable.FlatTextView_fontWeight, weight);
+            textColor = a.getInt(R.styleable.FlatTextView_textColor, textColor);
+            backgroundColor = a.getInt(R.styleable.FlatTextView_backgroundColor, backgroundColor);
+            customBackgroundColor = a.getInt(R.styleable.FlatTextView_customBackgroundColor, customBackgroundColor);
+            cornerRadius = a.getInt(R.styleable.FlatTextView_cornerRadius, cornerRadius);
 
             a.recycle();
         } else if (color == null) {

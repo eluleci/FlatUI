@@ -10,6 +10,9 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
+import android.widget.Button;
+
+import com.cengalabs.flatui.Attributes;
 import com.cengalabs.flatui.FlatUI;
 import com.cengalabs.flatui.R;
 import com.cengalabs.flatui.constants.Colors;
@@ -20,17 +23,16 @@ import com.cengalabs.flatui.constants.Colors;
  * Date: 23.10.2013
  * Time: 22:18
  */
-public class FlatButton extends android.widget.Button implements Colors {
+public class FlatButton extends Button implements Colors, Attributes.AttributeChangeListener {
 
-    private int fontId = FlatUI.DEFAULT_FONT_FAMILY;
-    private int radius = FlatUI.DEFAULT_RADIUS;
-    private int fontWeight = 2;
-    private int[] color;
-    private int theme;
+
+    private Attributes attributes;
+
     private int bottom = 5;
-    private int padding = 10;
-    private int textAppearance = 0;
+    //private int padding = 10;
     private boolean isFullFlat = false;
+    private int textAppearance = 0;
+    private int radius = FlatUI.DEFAULT_RADIUS;
 
     public FlatButton(Context context) {
         super(context);
@@ -47,46 +49,40 @@ public class FlatButton extends android.widget.Button implements Colors {
         init(attrs);
     }
 
-    public int getTheme() {
-        return theme;
-    }
-
-    public void setTheme(int theme) {
-        this.theme = theme;
-        color = FlatUI.getColor(theme);
-        init(null);
-    }
-
     private void init(AttributeSet attrs) {
 
+        if (attributes == null)
+            attributes = new Attributes(this);
+
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.CengaLabs);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatButton);
 
-            theme = a.getInt(R.styleable.CengaLabs_theme, FlatUI.DEFAULT_THEME);
-            color = FlatUI.getColor(theme);
+            attributes.setThemeSilent(a.getInt(R.styleable.FlatButton_theme, FlatUI.DEFAULT_THEME));
 
-            textAppearance = a.getInt(R.styleable.CengaLabs_textAppearance, textAppearance);
-            padding = a.getDimensionPixelSize(R.styleable.CengaLabs_textPadding, padding);
-            radius = a.getDimensionPixelSize(R.styleable.CengaLabs_cornerRadius, radius);
-            isFullFlat = a.getBoolean(R.styleable.CengaLabs_isFullFlat, isFullFlat);
+            int customTheme = a.getResourceId(R.styleable.FlatButton_customTheme, FlatUI.INVALID_ATTRIBUTE);
+            if (customTheme != FlatUI.INVALID_ATTRIBUTE)
+                attributes.setCustomThemeSilent(customTheme, getResources());
 
-            fontId = a.getInt(R.styleable.CengaLabs_fontFamily, fontId);
-            fontWeight = a.getInt(R.styleable.CengaLabs_fontWeight, fontWeight);
+            attributes.setFontId(a.getInt(R.styleable.FlatButton_fontFamily, FlatUI.DEFAULT_FONT_FAMILY));
+            attributes.setFontWeight(a.getInt(R.styleable.FlatButton_fontWeight, FlatUI.DEFAULT_FONT_WEIGHT));
+
+            textAppearance = a.getInt(R.styleable.FlatButton_textAppearance, textAppearance);
+            //padding = a.getDimensionPixelSize(R.styleable.CengaLabs_textPadding, padding);
+            radius = a.getDimensionPixelSize(R.styleable.FlatButton_cornerRadius, radius);
+            isFullFlat = a.getBoolean(R.styleable.FlatButton_isFullFlat, isFullFlat);
 
             a.recycle();
-        } else if (color == null) {
-            color = FlatUI.getColor(FlatUI.DEFAULT_THEME);
         }
 
         float[] outerR = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
 
         // creating normal state drawable
         ShapeDrawable normalFront = new ShapeDrawable(new RoundRectShape(outerR, null, null));
-        normalFront.getPaint().setColor(color[2]);
-        normalFront.setPadding(padding, padding, padding, padding);
+        normalFront.getPaint().setColor(attributes.getColor(2));
+        //normalFront.setPadding(padding, padding, padding, padding);
 
         ShapeDrawable normalBack = new ShapeDrawable(new RoundRectShape(outerR, null, null));
-        normalBack.getPaint().setColor(color[1]);
+        normalBack.getPaint().setColor(attributes.getColor(1));
 
         if (isFullFlat) bottom = 0;
         normalBack.setPadding(0, 0, 0, bottom);
@@ -96,10 +92,10 @@ public class FlatButton extends android.widget.Button implements Colors {
 
         // creating pressed state drawable
         ShapeDrawable pressedFront = new ShapeDrawable(new RoundRectShape(outerR, null, null));
-        pressedFront.getPaint().setColor(color[1]);
+        pressedFront.getPaint().setColor(attributes.getColor(2));
 
         ShapeDrawable pressedBack = new ShapeDrawable(new RoundRectShape(outerR, null, null));
-        pressedBack.getPaint().setColor(color[0]);
+        pressedBack.getPaint().setColor(attributes.getColor(0));
         if (!isFullFlat) pressedBack.setPadding(0, 0, 0, 3);
 
         Drawable[] d2 = {pressedBack, pressedFront};
@@ -107,11 +103,11 @@ public class FlatButton extends android.widget.Button implements Colors {
 
         // creating disabled state drawable
         ShapeDrawable disabledFront = new ShapeDrawable(new RoundRectShape(outerR, null, null));
-        disabledFront.getPaint().setColor(color[3]);
+        disabledFront.getPaint().setColor(attributes.getColor(3));
 
         ShapeDrawable disabledBack = new ShapeDrawable(new RoundRectShape(outerR, null, null));
-        disabledBack.getPaint().setColor(color[2]);
-        if (!isFullFlat) disabledBack.setPadding(0, 0, 0, padding);
+        disabledBack.getPaint().setColor(attributes.getColor(2));
+        //if (!isFullFlat) disabledBack.setPadding(0, 0, 0, padding);
 
         Drawable[] d3 = {disabledBack, disabledFront};
         LayerDrawable disabled = new LayerDrawable(d3);
@@ -125,11 +121,20 @@ public class FlatButton extends android.widget.Button implements Colors {
 
         setBackgroundDrawable(states);
 
-        if (textAppearance == 1) setTextColor(color[0]);
-        else if (textAppearance == 2) setTextColor(color[3]);
+        if (textAppearance == 1) setTextColor(attributes.getColor(0));
+        else if (textAppearance == 2) setTextColor(attributes.getColor(3));
         else setTextColor(Color.WHITE);
 
-        Typeface typeface = FlatUI.getFont(getContext(), fontId, fontWeight);
+        Typeface typeface = FlatUI.getFont(getContext(), attributes.getFontId(), attributes.getFontWeight());
         if (typeface != null) setTypeface(typeface);
+    }
+
+    public Attributes getAttributes() {
+        return attributes;
+    }
+
+    @Override
+    public void onThemeChange() {
+        init(null);
     }
 }
