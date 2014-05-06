@@ -26,6 +26,8 @@ public class FlatCheckBox extends CheckBox implements Attributes.AttributeChange
 
     private Attributes attributes;
 
+    private int dotMargin = 2;
+
     public FlatCheckBox(Context context) {
         super(context);
         init(null);
@@ -61,6 +63,9 @@ public class FlatCheckBox extends CheckBox implements Attributes.AttributeChange
             attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatCheckBox_cornerRadius, Attributes.DEFAULT_RADIUS));
             attributes.setBorderWidth(attributes.getSize() / 10);
 
+            // getting view specific attributes
+            dotMargin = a.getDimensionPixelSize(R.styleable.FlatCheckBox_dotMargin, dotMargin);
+
             a.recycle();
         }
 
@@ -83,8 +88,8 @@ public class FlatCheckBox extends CheckBox implements Attributes.AttributeChange
         checkedCore.setIntrinsicHeight(attributes.getSize());
         checkedCore.setIntrinsicWidth(attributes.getSize());
         InsetDrawable checkedInside = new InsetDrawable(checkedCore,
-                attributes.getBorderWidth() + 2, attributes.getBorderWidth() + 2,
-                attributes.getBorderWidth() + 2, attributes.getBorderWidth() + 2);
+                attributes.getBorderWidth() + dotMargin, attributes.getBorderWidth() + dotMargin,
+                attributes.getBorderWidth() + dotMargin, attributes.getBorderWidth() + dotMargin);
 
         Drawable[] checkedEnabledDrawable = {checkedOutside, checkedInside};
         LayerDrawable checkedEnabled = new LayerDrawable(checkedEnabledDrawable);
@@ -108,8 +113,8 @@ public class FlatCheckBox extends CheckBox implements Attributes.AttributeChange
         checkedCoreDisabled.setIntrinsicHeight(attributes.getSize());
         checkedCoreDisabled.setIntrinsicWidth(attributes.getSize());
         InsetDrawable checkedInsideDisabled = new InsetDrawable(checkedCoreDisabled,
-                attributes.getBorderWidth() + 2, attributes.getBorderWidth() + 2,
-                attributes.getBorderWidth() + 2, attributes.getBorderWidth() + 2);
+                attributes.getBorderWidth() + dotMargin, attributes.getBorderWidth() + dotMargin,
+                attributes.getBorderWidth() + dotMargin, attributes.getBorderWidth() + dotMargin);
 
         Drawable[] checkedDisabledDrawable = {checkedOutsideDisabled, checkedInsideDisabled};
         LayerDrawable checkedDisabled = new LayerDrawable(checkedDisabledDrawable);

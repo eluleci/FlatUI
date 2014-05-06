@@ -125,6 +125,10 @@ public class FlatToggleButton extends ToggleButton implements Attributes.Attribu
 
         setBackgroundDrawable(states);
 
+        setText("");
+        setTextOff("");
+        setTextOn("");
+
         setTextSize(0);
     }
 

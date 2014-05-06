@@ -2,6 +2,7 @@ package com.cengalabs.flatui.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
@@ -61,7 +62,7 @@ public class FlatTextView extends TextView implements Attributes.AttributeChange
             attributes.setFontWeight(a.getString(R.styleable.FlatTextView_fontWeight));
             attributes.setFontExtension(a.getString(R.styleable.FlatTextView_fontExtension));
 
-            attributes.setRadius(attributes.getSize() / 2);
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatTextView_cornerRadius, Attributes.DEFAULT_RADIUS));
             attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.FlatTextView_borderWidth, 0));
 
             // getting view specific attributes
@@ -72,19 +73,17 @@ public class FlatTextView extends TextView implements Attributes.AttributeChange
             a.recycle();
         }
 
+        GradientDrawable gradientDrawable = new GradientDrawable();
         if (backgroundColor != Attributes.INVALID) {
-            GradientDrawable gradientDrawable = new GradientDrawable();
             gradientDrawable.setColor(attributes.getColor(backgroundColor));
-            gradientDrawable.setCornerRadius(attributes.getRadius());
-            gradientDrawable.setStroke(attributes.getBorderWidth(), attributes.getColor(textColor));
-            setBackgroundDrawable(gradientDrawable);
         } else if (customBackgroundColor != Attributes.INVALID) {
-            GradientDrawable gradientDrawable = new GradientDrawable();
             gradientDrawable.setColor(customBackgroundColor);
-            gradientDrawable.setCornerRadius(attributes.getRadius());
-            gradientDrawable.setStroke(attributes.getBorderWidth(), attributes.getColor(textColor));
-            setBackgroundDrawable(gradientDrawable);
+        } else {
+            gradientDrawable.setColor(Color.TRANSPARENT);
         }
+        gradientDrawable.setCornerRadius(attributes.getRadius());
+        gradientDrawable.setStroke(attributes.getBorderWidth(), attributes.getColor(textColor));
+        setBackgroundDrawable(gradientDrawable);
 
         // setting the text color only if there is no android:textColor attribute used
         if (!hasOwnTextColor) setTextColor(attributes.getColor(textColor));

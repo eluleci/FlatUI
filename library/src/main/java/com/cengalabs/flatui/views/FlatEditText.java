@@ -76,28 +76,24 @@ public class FlatEditText extends EditText implements Attributes.AttributeChange
         backgroundDrawable.setCornerRadius(attributes.getRadius());
 
         if (style == 0) {             // flat
-            if(!hasOwnTextColor) setTextColor(attributes.getColor(3));
+            if (!hasOwnTextColor) setTextColor(attributes.getColor(3));
             backgroundDrawable.setColor(attributes.getColor(2));
             backgroundDrawable.setStroke(0, attributes.getColor(2));
 
         } else if (style == 1) {      // box
-            if(!hasOwnTextColor) setTextColor(attributes.getColor(2));
+            if (!hasOwnTextColor) setTextColor(attributes.getColor(2));
             backgroundDrawable.setColor(Color.WHITE);
             backgroundDrawable.setStroke(attributes.getBorderWidth(), attributes.getColor(2));
 
         } else if (style == 2) {      // transparent
-            if(!hasOwnTextColor) setTextColor(attributes.getColor(1));
-            backgroundDrawable.setColor(Color.TRANSPARENT);
-            backgroundDrawable.setStroke(attributes.getBorderWidth(), Color.TRANSPARENT);
-        } else if (style == 3) {      // transparentBox
-            if(!hasOwnTextColor) setTextColor(attributes.getColor(1));
+            if (!hasOwnTextColor) setTextColor(attributes.getColor(1));
             backgroundDrawable.setColor(Color.TRANSPARENT);
             backgroundDrawable.setStroke(attributes.getBorderWidth(), attributes.getColor(2));
         }
 
         setBackgroundDrawable(backgroundDrawable);
 
-        if(!hasOwnHintColor) setHintTextColor(attributes.getColor(3));
+        if (!hasOwnHintColor) setHintTextColor(attributes.getColor(3));
 
         if (attributes.getTextAppearance() == 1) setTextColor(attributes.getColor(0));
         else if (attributes.getTextAppearance() == 2) setTextColor(attributes.getColor(3));

@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
 
+    private final int APP_THEME = R.array.blood;
+
     private ArrayList<FlatTextView> flatTextViews = new ArrayList<FlatTextView>();
     private ArrayList<FlatEditText> flatEditTexts = new ArrayList<FlatEditText>();
     private ArrayList<FlatButton> flatButtons = new ArrayList<FlatButton>();
@@ -30,17 +32,16 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Default theme should bew set before content view is added
-        FlatUI.setDefaultTheme(FlatUI.CANDY);
+        // converts the default values to dp to be compatible with different screen sizes
+        FlatUI.initDefaultValues(this);
+
+        // Default theme should be set before content view is added
+        FlatUI.setDefaultTheme(APP_THEME);
 
         setContentView(R.layout.activity_main);
 
-        // if you are using standard action bar (not compatibility library) use this
-        // FlatUI.setActionBarTheme(this, theme, false, true);
-
-        // if you are using ActionBar of Compatibility library (like this activity), get drawable
-        // and set it manually to support action bar.
-        getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(this, FlatUI.CANDY, false));
+        // Getting action bar background and applying it
+        getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(this, APP_THEME, false, 2));
 
         // titles
         flatTextViews.add((FlatTextView) findViewById(R.id.title_edittexts));
@@ -94,6 +95,8 @@ public class MainActivity extends ActionBarActivity {
         flatToggleButtons.add((FlatToggleButton) findViewById(R.id.toggle_checked_disabled));
 
         flatSeekBar = (FlatSeekBar) findViewById(R.id.seekbar);
+        flatSeekBar.setProgress(30);
+        flatSeekBar.setSecondaryProgress(40);
     }
 
     public void onChangeThemeButtonClicked(View v) {

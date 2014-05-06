@@ -35,7 +35,8 @@
                 android:gravity="center_vertical"
                 android:text="Edit Texts"
                 android:textSize="20dip"
-                flatui:textColor="main" />
+                flatui:textColor="main"
+                flatui:theme="@array/candy" />
 
             <LinearLayout
                 android:orientation="vertical"
@@ -55,7 +56,7 @@
                     android:hint="Flat style"
                     android:includeFontPadding="true"
                     flatui:fieldStyle="flat"
-                    flatui:cornerRadius="3dip" />
+                    flatui:theme="@array/candy" />
 
                 <com.cengalabs.flatui.views.FlatEditText
                     android:id="@+id/edittext_box"
@@ -66,7 +67,8 @@
                     android:gravity="center_vertical"
                     android:hint="Box style"
                     android:includeFontPadding="true"
-                    flatui:fieldStyle="box" />
+                    flatui:fieldStyle="box"
+                    flatui:theme="@array/candy" />
 
                 <com.cengalabs.flatui.views.FlatEditText
                     android:id="@+id/edittext_transparentbox"
@@ -77,7 +79,8 @@
                     android:gravity="center_vertical"
                     android:hint="Transparent box style"
                     android:includeFontPadding="true"
-                    flatui:fieldStyle="transparentBox" />
+                    flatui:fieldStyle="transparent"
+                    flatui:theme="@array/candy" />
 
                 <com.cengalabs.flatui.views.FlatEditText
                     android:id="@+id/edittext_transparent"
@@ -88,7 +91,9 @@
                     android:gravity="center_vertical"
                     android:hint="Transparent style"
                     android:includeFontPadding="true"
-                    flatui:fieldStyle="transparent" />
+                    flatui:fieldStyle="transparent"
+                    flatui:theme="@array/candy"
+                    flatui:borderWidth="0dp" />
 
             </LinearLayout>
 
@@ -164,7 +169,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_block"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Block"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
@@ -174,11 +179,10 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_flat"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Full Flat"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:isFullFlat="true"
                         flatui:textAppearance="light" />
 
                 </LinearLayout>
@@ -202,7 +206,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_light"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Light"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
@@ -211,7 +215,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_white"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="White"
                         android:layout_weight="1"
                         android:layout_margin="3dp" />
@@ -219,7 +223,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_dark_text"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Dark"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
@@ -639,7 +643,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_sand"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Sand"
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
@@ -650,14 +654,13 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_orange"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Orange"
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
                         flatui:theme="@array/orange"
-                        flatui:textAppearance="light"
-                        flatui:cornerRadius="3dip" />
+                        flatui:textAppearance="light"/>
 
                 </LinearLayout>
 
@@ -669,7 +672,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_candy"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Candy"
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
@@ -680,7 +683,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_blossom"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Blossom"
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
@@ -698,7 +701,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_grape"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Grape"
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
@@ -709,7 +712,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_deep"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Deep"
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
@@ -727,7 +730,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_sky"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Sky"
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
@@ -738,7 +741,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_grass"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Grass"
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
@@ -756,7 +759,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_dark"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Dark"
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
@@ -767,7 +770,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_snow"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Snow"
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
@@ -785,7 +788,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_sea"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Sea"
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
@@ -796,7 +799,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_turquoise"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Blood"
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
@@ -814,7 +817,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_custom_theme_1"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Custom 1"
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
@@ -825,7 +828,7 @@
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_custom_theme_2"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
                         android:text="Custom 2"
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"

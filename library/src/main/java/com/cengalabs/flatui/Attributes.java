@@ -3,7 +3,7 @@ package com.cengalabs.flatui;
 import android.content.res.Resources;
 
 /**
- * Created by eluleci on 05/05/14.
+ * This class holds the values of the common attributes.
  */
 public class Attributes {
 
@@ -16,9 +16,9 @@ public class Attributes {
     public static final String DEFAULT_FONT_EXTENSION = "ttf";
     public static final int DEFAULT_TEXT_APPEARANCE = 0;
 
-    public static final int DEFAULT_RADIUS = 10;
-    public static final int DEFAULT_BORDER_WIDTH = 5;
-    public static final int DEFAULT_SIZE = 20;
+    public static int DEFAULT_RADIUS = 4;
+    public static int DEFAULT_BORDER_WIDTH = 2;
+    public static int DEFAULT_SIZE = 10;
 
     /**
      * Color related fields

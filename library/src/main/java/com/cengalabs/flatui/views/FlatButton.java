@@ -26,8 +26,7 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
     private Attributes attributes;
 
     // default values of specific attributes
-    private int bottom = 5;
-    private boolean isFullFlat = false;
+    private int bottom = 0;
 
     public FlatButton(Context context) {
         super(context);
@@ -65,7 +64,6 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
 
             // getting view specific attributes
             bottom = a.getDimensionPixelSize(R.styleable.FlatButton_blockButtonEffectHeight, bottom);
-            isFullFlat = a.getBoolean(R.styleable.FlatButton_isFullFlat, isFullFlat);
 
             a.recycle();
         }
@@ -77,7 +75,6 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
         ShapeDrawable normalBack = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
         normalBack.getPaint().setColor(attributes.getColor(1));
 
-        if (isFullFlat) bottom = 0;
         normalBack.setPadding(0, 0, 0, bottom);
 
         Drawable[] d = {normalBack, normalFront};
@@ -89,7 +86,7 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
 
         ShapeDrawable pressedBack = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
         pressedBack.getPaint().setColor(attributes.getColor(0));
-        if (!isFullFlat) pressedBack.setPadding(0, 0, 0, bottom / 2);
+        if (bottom != 0) pressedBack.setPadding(0, 0, 0, bottom / 2);
 
         Drawable[] d2 = {pressedBack, pressedFront};
         LayerDrawable pressed = new LayerDrawable(d2);

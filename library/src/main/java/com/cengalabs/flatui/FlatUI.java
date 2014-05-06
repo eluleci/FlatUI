@@ -1,19 +1,17 @@
 package com.cengalabs.flatui;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.PaintDrawable;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 
 /**
- * Created with IntelliJ IDEA.
- * User: eluleci
- * Date: 25.10.2013
- * Time: 15:00
+ * This class contains some util methods and keeps theme constants.
  */
 public class FlatUI {
 
@@ -32,6 +30,25 @@ public class FlatUI {
     public static final int SEA = R.array.sea;
     public static final int BLOOD = R.array.blood;
 
+    /**
+     * Converts the default values to dp to be compatible with different screen sizes
+     *
+     * @param context
+     */
+    public static void initDefaultValues(Context context) {
+
+        Attributes.DEFAULT_BORDER_WIDTH = (int) dipToPx(context, Attributes.DEFAULT_BORDER_WIDTH);
+        Attributes.DEFAULT_RADIUS = (int) dipToPx(context, Attributes.DEFAULT_RADIUS);
+        Attributes.DEFAULT_SIZE = (int) dipToPx(context, Attributes.DEFAULT_SIZE);
+    }
+
+    /**
+     * Creates and returns the font file from given attributes.
+     *
+     * @param context
+     * @param attributes
+     * @return
+     */
     public static Typeface getFont(Context context, Attributes attributes) {
 
         String fontPath = "fonts/" + attributes.getFontFamily()
@@ -49,32 +66,19 @@ public class FlatUI {
         }
     }
 
-    /**
-     * Sets action bar drawable with given attributes. Can be used for standard Activity ActionBar.
-     * If you are using Action Bar Compatibility, you can use getActionBarDrawable() method with
-     * same attributes and apply drawable manually.
-     *
-     * @param activity context
-     * @param theme    selected theme
-     * @param dark     boolean for choosing dark colors or primary colors
-     */
-    public static void setActionBarTheme(Activity activity, int theme, boolean dark) {
-
-        Drawable drawable = getActionBarDrawable(activity, theme, dark);
-
-        ActionBar actionBar = activity.getActionBar();
-        actionBar.setBackgroundDrawable(drawable);
+    public static Drawable getActionBarDrawable(Activity activity, int theme, boolean dark) {
+        return getActionBarDrawable(activity, theme, dark, 0);
     }
 
     /**
-     * Returns a suitable drawable for ActionBar with theme colors. Should be used in case of usage
-     * of Action Bar Compatibility library.
+     * Returns a suitable drawable for ActionBar with theme colors.
      *
-     * @param theme selected theme
-     * @param dark  boolean for choosing dark colors or primary colors
+     * @param theme        selected theme
+     * @param dark         boolean for choosing dark colors or primary colors
+     * @param borderBottom bottom border width
      * @return drawable to be used in ActionBar
      */
-    public static Drawable getActionBarDrawable(Activity activity, int theme, boolean dark) {
+    public static Drawable getActionBarDrawable(Activity activity, int theme, boolean dark, float borderBottom) {
         int[] colors = activity.getResources().getIntArray(theme);
 
         int color1 = colors[2];
@@ -85,15 +89,30 @@ public class FlatUI {
             color2 = colors[0];
         }
 
+        borderBottom = dipToPx(activity, borderBottom);
+
         PaintDrawable front = new PaintDrawable(color1);
         PaintDrawable bottom = new PaintDrawable(color2);
         Drawable[] d = {bottom, front};
         LayerDrawable drawable = new LayerDrawable(d);
-        drawable.setLayerInset(1, 0, 0, 0, 3);
+        drawable.setLayerInset(1, 0, 0, 0, (int) borderBottom);
         return drawable;
     }
 
+    /**
+     * Sets the default theme of the application. The views which doesn't have any theme attribute
+     * will have this defined default theme.
+     * <p/>
+     * IMPORTANT: This method should be called before setContentView method of the activity.
+     *
+     * @param theme
+     */
     public static void setDefaultTheme(int theme) {
         Attributes.DEFAULT_THEME = theme;
+    }
+
+    private static float dipToPx(Context context, float dp) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, metrics);
     }
 }
