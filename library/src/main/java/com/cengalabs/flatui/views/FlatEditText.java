@@ -98,8 +98,11 @@ public class FlatEditText extends EditText implements Attributes.AttributeChange
         if (attributes.getTextAppearance() == 1) setTextColor(attributes.getColor(0));
         else if (attributes.getTextAppearance() == 2) setTextColor(attributes.getColor(3));
 
-        Typeface typeface = FlatUI.getFont(getContext(), attributes);
-        if (typeface != null) setTypeface(typeface);
+        // check for IDE preview render
+        if(!this.isInEditMode()) {
+            Typeface typeface = FlatUI.getFont(getContext(), attributes);
+            if (typeface != null) setTypeface(typeface);
+        }
     }
 
     public Attributes getAttributes() {

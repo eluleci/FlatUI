@@ -114,8 +114,11 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
         else if (attributes.getTextAppearance() == 2) setTextColor(attributes.getColor(3));
         else setTextColor(Color.WHITE);
 
-        Typeface typeface = FlatUI.getFont(getContext(), attributes);
-        if (typeface != null) setTypeface(typeface);
+        // check for IDE preview render
+        if(!this.isInEditMode()) {
+            Typeface typeface = FlatUI.getFont(getContext(), attributes);
+            if (typeface != null) setTypeface(typeface);
+        }
     }
 
     public Attributes getAttributes() {

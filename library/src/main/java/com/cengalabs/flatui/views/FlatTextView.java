@@ -88,8 +88,11 @@ public class FlatTextView extends TextView implements Attributes.AttributeChange
         // setting the text color only if there is no android:textColor attribute used
         if (!hasOwnTextColor) setTextColor(attributes.getColor(textColor));
 
-        Typeface typeface = FlatUI.getFont(getContext(), attributes);
-        if (typeface != null) setTypeface(typeface);
+        // check for IDE preview render
+        if(!this.isInEditMode()) {
+            Typeface typeface = FlatUI.getFont(getContext(), attributes);
+            if (typeface != null) setTypeface(typeface);
+        }
     }
 
     public Attributes getAttributes() {

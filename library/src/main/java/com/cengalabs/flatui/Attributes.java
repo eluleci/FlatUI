@@ -1,6 +1,7 @@
 package com.cengalabs.flatui;
 
 import android.content.res.Resources;
+import android.graphics.Color;
 
 /**
  * This class holds the values of the common attributes.
@@ -55,14 +56,20 @@ public class Attributes {
     }
 
     public void setTheme(int theme, Resources resources) {
-        this.theme = theme;
-        colors = resources.getIntArray(theme);
+        setThemeSilent(theme, resources);
         attributeChangeListener.onThemeChange();
     }
 
-    public void setThemeSilent(int customTheme, Resources resources) {
-        this.theme = customTheme;
-        colors = resources.getIntArray(customTheme);
+    public void setThemeSilent(int theme, Resources resources) {
+        try {
+            this.theme = theme;
+            colors = resources.getIntArray(theme);
+        } catch (Resources.NotFoundException e) {
+
+            // setting theme blood if exception occurs (especially used for preview rendering by IDE)
+            colors = new int[]{Color.parseColor("#732219"), Color.parseColor("#a63124"),
+                    Color.parseColor("#d94130"), Color.parseColor("#f2b6ae")};
+        }
     }
 
     public void setColors(int[] colors) {

@@ -131,8 +131,11 @@ public class FlatRadioButton extends RadioButton implements Attributes.Attribute
         setPadding(attributes.getSize() / 4 * 5, 0, 0, 0);
         setTextColor(attributes.getColor(2));
 
-        Typeface typeface = FlatUI.getFont(getContext(), attributes);
-        if (typeface != null) setTypeface(typeface);
+        // check for IDE preview render
+        if(!this.isInEditMode()) {
+            Typeface typeface = FlatUI.getFont(getContext(), attributes);
+            if (typeface != null) setTypeface(typeface);
+        }
     }
 
     public Attributes getAttributes() {
