@@ -86,10 +86,10 @@
     </integer-array>
 
     <!-- grass -->
-    <color name="grass_darker">#1a3b6c</color>
-    <color name="grass_dark">#1c52a2</color>
-    <color name="grass_primary">#2d72d9</color>
-    <color name="grass_light">#d5e3f7</color>
+    <color name="grass_darker">#124c38</color>
+    <color name="grass_dark">#1e7d5b</color>
+    <color name="grass_primary">#2ab081</color>
+    <color name="grass_light">#a8e3ce</color>
     <integer-array name="grass">
         <item>@color/grass_darker</item>
         <item>@color/grass_dark</item>

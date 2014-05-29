@@ -39,10 +39,6 @@ You just need to add the following dependency to your `build.gradle`.
     }
 
 
-IMPORTANT - If you want to use the widgets inside xml, you need to add this line to the root element of layout and use necessary parameters with 'flatui' tag
-```xml
-xmlns:flatui="http://schemas.android.com/apk/res-auto"
-```
 
 ## Main Java functions
 
@@ -89,7 +85,7 @@ You can use your own colors in two ways.
 <!-- REFERENCE THE ARRAY IN LAYOUT FILE -->
 <com.cengalabs.flatui.views.FlatButton
     ...
-    flatui:theme="@array/custom_theme_1" />
+    flatui:theme="@array/custom_theme" />
 
 ```
 
@@ -144,6 +140,9 @@ Only showing specific attributes for views.
 
 ```xml
 
+<!-- Add this line to you root element -->
+xmlns:flatui="http://schemas.android.com/apk/res-auto"
+
 <!-- General Attributes -->
 <com.cengalabs.flatui.views.SomeFlatView
     ...
@@ -166,7 +165,6 @@ Only showing specific attributes for views.
 
 
 <!-- FlatEditText -->
-<!-- available attrs: fieldStyle, cornerRadius, textPadding, fontFamily, fontWeight, textAppearance -->
 <com.cengalabs.flatui.views.FlatEditText
 	...
 	flatui:fieldStyle="flat" />
