@@ -53,7 +53,7 @@
                     android:layout_margin="5dip"
                     android:maxLines="1"
                     android:gravity="center_vertical"
-                    android:hint="Flat style"
+                    android:hint="Flat"
                     android:includeFontPadding="true"
                     flatui:fieldStyle="flat"
                     flatui:theme="@array/grass" />
@@ -65,7 +65,7 @@
                     android:layout_margin="5dip"
                     android:maxLines="1"
                     android:gravity="center_vertical"
-                    android:hint="Box style"
+                    android:hint="Box"
                     android:includeFontPadding="true"
                     flatui:fieldStyle="box"
                     flatui:theme="@array/grass" />
@@ -77,7 +77,7 @@
                     android:layout_margin="5dip"
                     android:maxLines="1"
                     android:gravity="center_vertical"
-                    android:hint="Transparent box style"
+                    android:hint="Transparent box"
                     android:includeFontPadding="true"
                     flatui:fieldStyle="transparent"
                     flatui:theme="@array/grass" />
@@ -89,7 +89,7 @@
                     android:layout_margin="5dip"
                     android:maxLines="1"
                     android:gravity="center_vertical"
-                    android:hint="Transparent style"
+                    android:hint="Transparent"
                     android:includeFontPadding="true"
                     flatui:fieldStyle="transparent"
                     flatui:theme="@array/candy"

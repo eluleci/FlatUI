@@ -35,7 +35,7 @@ Including into your project
 You just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.eluleci:flatui:2.0.0'
+        compile 'com.github.eluleci:flatui:2.0.1'
     }
 
 
@@ -140,7 +140,7 @@ Only showing specific attributes for views.
 
 ```xml
 
-<!-- Add this line to you root element -->
+<!-- Add this line to the root element of the layout -->
 xmlns:flatui="http://schemas.android.com/apk/res-auto"
 
 <!-- General Attributes -->
@@ -207,7 +207,7 @@ xmlns:flatui="http://schemas.android.com/apk/res-auto"
 License
 --------
 
-    Copyright 2014 Cengalabs.
+    Copyright 2014 CengaLabs.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
