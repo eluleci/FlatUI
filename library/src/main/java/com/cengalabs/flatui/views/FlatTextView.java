@@ -50,7 +50,17 @@ public class FlatTextView extends TextView implements Attributes.AttributeChange
         if (attrs != null) {
 
             // getting android default tags for textColor and textColorHint
-            hasOwnTextColor = attrs.getAttributeValue(FlatUI.androidStyleNameSpace, "textColor") != null;
+            String textColorAttribute = attrs.getAttributeValue(FlatUI.androidStyleNameSpace, "textColor");
+            int styleId = attrs.getStyleAttribute();
+            int[] attributesArray = new int[] { android.R.attr.textColor };
+            TypedArray styleTextColorTypedArray = getContext().obtainStyledAttributes(styleId, attributesArray);
+            // color might have values from the entire integer range, so to find out if there is any color set,
+            // checking if default value is returned is not enough. Thus we get color with two different 
+            // default values - if returned value is the same, it means color is set
+            int styleTextColor1 = styleTextColorTypedArray.getColor(0, -1);
+            int styleTextColor2 = styleTextColorTypedArray.getColor(0, 1);
+            hasOwnTextColor = textColorAttribute != null || styleTextColor1 == styleTextColor2;
+            styleTextColorTypedArray.recycle();
 
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatTextView);
 
