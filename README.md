@@ -35,7 +35,7 @@ Including into your project
 You just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.eluleci:flatui:2.0.1'
+        compile 'com.github.eluleci:flatui:2.0.2'
     }
 
 
