@@ -60,7 +60,7 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
             attributes.setFontExtension(a.getString(R.styleable.FlatButton_fontExtension));
 
             attributes.setTextAppearance(a.getInt(R.styleable.FlatButton_textAppearance, Attributes.DEFAULT_TEXT_APPEARANCE));
-            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatButton_cornerRadius, Attributes.DEFAULT_RADIUS));
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatButton_cornerRadius, Attributes.DEFAULT_RADIUS_PX));
 
             // getting view specific attributes
             bottom = a.getDimensionPixelSize(R.styleable.FlatButton_blockButtonEffectHeight, bottom);

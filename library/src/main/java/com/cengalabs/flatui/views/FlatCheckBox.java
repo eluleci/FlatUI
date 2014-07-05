@@ -59,8 +59,8 @@ public class FlatCheckBox extends CheckBox implements Attributes.AttributeChange
             attributes.setFontWeight(a.getString(R.styleable.FlatButton_fontWeight));
             attributes.setFontExtension(a.getString(R.styleable.FlatCheckBox_fontExtension));
 
-            attributes.setSize(a.getDimensionPixelSize(R.styleable.FlatCheckBox_size, Attributes.DEFAULT_SIZE));
-            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatCheckBox_cornerRadius, Attributes.DEFAULT_RADIUS));
+            attributes.setSize(a.getDimensionPixelSize(R.styleable.FlatCheckBox_size, Attributes.DEFAULT_SIZE_PX));
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatCheckBox_cornerRadius, Attributes.DEFAULT_RADIUS_PX));
             attributes.setBorderWidth(attributes.getSize() / 10);
 
             // getting view specific attributes

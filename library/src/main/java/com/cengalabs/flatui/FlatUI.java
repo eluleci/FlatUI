@@ -37,9 +37,9 @@ public class FlatUI {
      */
     public static void initDefaultValues(Context context) {
 
-        Attributes.DEFAULT_BORDER_WIDTH = (int) dipToPx(context, Attributes.DEFAULT_BORDER_WIDTH);
-        Attributes.DEFAULT_RADIUS = (int) dipToPx(context, Attributes.DEFAULT_RADIUS);
-        Attributes.DEFAULT_SIZE = (int) dipToPx(context, Attributes.DEFAULT_SIZE);
+        Attributes.DEFAULT_BORDER_WIDTH_PX = (int) dipToPx(context, Attributes.DEFAULT_BORDER_WIDTH_DP);
+        Attributes.DEFAULT_RADIUS_PX = (int) dipToPx(context, Attributes.DEFAULT_RADIUS_DP);
+        Attributes.DEFAULT_SIZE_PX = (int) dipToPx(context, Attributes.DEFAULT_SIZE_DP);
     }
 
     /**

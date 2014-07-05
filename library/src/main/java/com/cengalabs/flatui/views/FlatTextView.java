@@ -72,7 +72,7 @@ public class FlatTextView extends TextView implements Attributes.AttributeChange
             attributes.setFontWeight(a.getString(R.styleable.FlatTextView_fontWeight));
             attributes.setFontExtension(a.getString(R.styleable.FlatTextView_fontExtension));
 
-            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatTextView_cornerRadius, Attributes.DEFAULT_RADIUS));
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatTextView_cornerRadius, Attributes.DEFAULT_RADIUS_PX));
             attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.FlatTextView_borderWidth, 0));
 
             // getting view specific attributes

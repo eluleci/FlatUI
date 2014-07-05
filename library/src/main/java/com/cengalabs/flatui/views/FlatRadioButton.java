@@ -59,9 +59,9 @@ public class FlatRadioButton extends RadioButton implements Attributes.Attribute
             attributes.setFontWeight(a.getString(R.styleable.FlatRadioButton_fontWeight));
             attributes.setFontExtension(a.getString(R.styleable.FlatRadioButton_fontExtension));
 
-            attributes.setSize(a.getDimensionPixelSize(R.styleable.FlatRadioButton_size, Attributes.DEFAULT_SIZE));
+            attributes.setSize(a.getDimensionPixelSize(R.styleable.FlatRadioButton_size, Attributes.DEFAULT_SIZE_PX));
             attributes.setRadius(attributes.getSize() / 2);
-            attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.FlatRadioButton_borderWidth, Attributes.DEFAULT_BORDER_WIDTH));
+            attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.FlatRadioButton_borderWidth, Attributes.DEFAULT_BORDER_WIDTH_PX));
 
             // getting view specific attributes
             dotMargin = a.getDimensionPixelSize(R.styleable.FlatRadioButton_dotMargin, dotMargin);

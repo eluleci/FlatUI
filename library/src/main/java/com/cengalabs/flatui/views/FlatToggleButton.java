@@ -54,7 +54,7 @@ public class FlatToggleButton extends ToggleButton implements Attributes.Attribu
             int customTheme = a.getResourceId(R.styleable.FlatToggleButton_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
-            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatToggleButton_cornerRadius, Attributes.DEFAULT_RADIUS));
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatToggleButton_cornerRadius, Attributes.DEFAULT_RADIUS_PX));
 
             space = a.getDimensionPixelSize(R.styleable.FlatToggleButton_space, space);
             padding = space / 10;

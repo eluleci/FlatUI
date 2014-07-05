@@ -17,9 +17,13 @@ public class Attributes {
     public static final String DEFAULT_FONT_EXTENSION = "ttf";
     public static final int DEFAULT_TEXT_APPEARANCE = 0;
 
-    public static int DEFAULT_RADIUS = 4;
-    public static int DEFAULT_BORDER_WIDTH = 2;
-    public static int DEFAULT_SIZE = 10;
+    public static int DEFAULT_RADIUS_DP = 4;
+    public static int DEFAULT_BORDER_WIDTH_DP = 2;
+    public static int DEFAULT_SIZE_DP = 10;
+    
+    public static int DEFAULT_RADIUS_PX = 8;
+    public static int DEFAULT_BORDER_WIDTH_PX = 4;
+    public static int DEFAULT_SIZE_PX = 20;
 
     /**
      * Color related fields
@@ -38,9 +42,9 @@ public class Attributes {
     /**
      * Size related fields
      */
-    private int radius = DEFAULT_RADIUS;
-    private int size = DEFAULT_SIZE;
-    private int borderWidth = DEFAULT_BORDER_WIDTH;
+    private int radius = DEFAULT_RADIUS_PX;
+    private int size = DEFAULT_SIZE_PX;
+    private int borderWidth = DEFAULT_BORDER_WIDTH_PX;
 
     /**
      * Attribute change listener. Used to redraw the view when attributes are changed.
