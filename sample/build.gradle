@@ -2,17 +2,20 @@ apply plugin: 'android'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.0"
-
+    buildToolsVersion '19.1.0'
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 19
         versionCode 1
-        versionName "1.0"
+        versionName '1.0'
+    }
+    productFlavors {
+    }
+    buildTypes {
     }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:+'
+    compile 'com.android.support:appcompat-v7:19.1.0'
     compile project(':library')
 }
