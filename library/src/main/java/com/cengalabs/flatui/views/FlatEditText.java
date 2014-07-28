@@ -55,7 +55,7 @@ public class FlatEditText extends EditText implements Attributes.AttributeChange
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatEditText);
 
             // getting common attributes
-            int customTheme = a.getResourceId(R.styleable.FlatEditText_theme, Attributes.DEFAULT_THEME);
+            int customTheme = a.getResourceId(R.styleable.FlatEditText_flatui_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
             attributes.setFontFamily(a.getString(R.styleable.FlatEditText_fontFamily));

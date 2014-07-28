@@ -52,7 +52,7 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatButton);
 
             // getting common attributes
-            int customTheme = a.getResourceId(R.styleable.FlatButton_theme, Attributes.DEFAULT_THEME);
+            int customTheme = a.getResourceId(R.styleable.FlatButton_flatui_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
             attributes.setFontFamily(a.getString(R.styleable.FlatButton_fontFamily));

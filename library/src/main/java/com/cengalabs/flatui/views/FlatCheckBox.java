@@ -52,7 +52,7 @@ public class FlatCheckBox extends CheckBox implements Attributes.AttributeChange
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatCheckBox);
 
             // getting common attributes
-            int customTheme = a.getResourceId(R.styleable.FlatCheckBox_theme, Attributes.DEFAULT_THEME);
+            int customTheme = a.getResourceId(R.styleable.FlatCheckBox_flatui_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
             attributes.setFontFamily(a.getString(R.styleable.FlatButton_fontFamily));

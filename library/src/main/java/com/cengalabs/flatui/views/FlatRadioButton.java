@@ -52,7 +52,7 @@ public class FlatRadioButton extends RadioButton implements Attributes.Attribute
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatRadioButton);
 
             // getting common attributes
-            int customTheme = a.getResourceId(R.styleable.FlatRadioButton_theme, Attributes.DEFAULT_THEME);
+            int customTheme = a.getResourceId(R.styleable.FlatRadioButton_flatui_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
             attributes.setFontFamily(a.getString(R.styleable.FlatRadioButton_fontFamily));

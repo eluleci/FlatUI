@@ -85,7 +85,7 @@ You can use your own colors in two ways.
 <!-- REFERENCE THE ARRAY IN LAYOUT FILE -->
 <com.cengalabs.flatui.views.FlatButton
     ...
-    flatui:theme="@array/custom_theme" />
+    flatui:flatui_theme="@array/custom_theme" />
 
 ```
 
@@ -123,7 +123,7 @@ Place your font file in assets/fonts/ folder of your project and use fontFamily 
 
 These are only common attributes for most of the views. You can see the full list of available attributes in [attrs.xml][3]
 
-- theme          :  theme of the element (reference: @array/themeName)
+- flatui_theme          :  theme of the element (reference: @array/themeName)
 
 - textAppearance :  text color on the element. dark or light colors of the theme.(none, dark, light)
 - fontFamily     :  name of the font family (string)
@@ -146,7 +146,7 @@ xmlns:flatui="http://schemas.android.com/apk/res-auto"
 <!-- General Attributes -->
 <com.cengalabs.flatui.views.SomeFlatView
     ...
-    flatui:theme="@array/sand"
+    flatui:flatui_theme="@array/sand"
     flatui:textAppearance="dark"
     flatui:fontFamily="roboto"
     flatui:fontWeight="light"

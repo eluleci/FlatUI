@@ -65,7 +65,7 @@ public class FlatTextView extends TextView implements Attributes.AttributeChange
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatTextView);
 
             // getting common attributes
-            int customTheme = a.getResourceId(R.styleable.FlatTextView_theme, Attributes.DEFAULT_THEME);
+            int customTheme = a.getResourceId(R.styleable.FlatTextView_flatui_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
             attributes.setFontFamily(a.getString(R.styleable.FlatTextView_fontFamily));
