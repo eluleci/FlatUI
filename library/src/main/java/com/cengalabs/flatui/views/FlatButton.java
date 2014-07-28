@@ -45,6 +45,12 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
 
     private void init(AttributeSet attrs) {
 
+        // saving padding values for using them after setting background drawable
+        final int paddingTop = getPaddingTop();
+        final int paddingRight = getPaddingRight();
+        final int paddingLeft = getPaddingLeft();
+        final int paddingBottom = getPaddingBottom();
+
         if (attributes == null)
             attributes = new Attributes(this);
 
@@ -109,6 +115,7 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
         states.addState(new int[]{-android.R.attr.state_enabled}, disabled);
 
         setBackgroundDrawable(states);
+        setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
 
         if (attributes.getTextAppearance() == 1) setTextColor(attributes.getColor(0));
         else if (attributes.getTextAppearance() == 2) setTextColor(attributes.getColor(3));
