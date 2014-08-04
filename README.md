@@ -24,6 +24,7 @@ Latest Changes
 * Fix issue #18 - Consecutive activity opening (pull request from @michalbrz) :2.0.3
 * Fix issue #17 - FlatButton padding applied (solution from @jstefanowski) :2.0.4
 * Fix issue #14, 15, 19, 26 - Attribute name clash (contribution from @aimanbaharum) :2.1.0
+* Fix issue #22 - NPE-while-creating-views-dynamically :2.1.1
 
 Widgets
 -----------
@@ -40,7 +41,7 @@ Including into your project
 Add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.eluleci:flatui:2.1.0'
+        compile 'com.github.eluleci:flatui:2.1.1'
     }
 
 
