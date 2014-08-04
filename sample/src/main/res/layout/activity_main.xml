@@ -92,7 +92,7 @@
                     android:hint="Transparent"
                     android:includeFontPadding="true"
                     flatui:fl_fieldStyle="transparent"
-                    flatui:fl_theme="@array/candy"
+                    flatui:fl_theme="@array/grass"
                     flatui:fl_borderWidth="0dp" />
 
             </LinearLayout>

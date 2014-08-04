@@ -23,6 +23,7 @@ Latest Changes
 -----------------
 * Fix issue #18 - Consecutive activity opening (pull request from @michalbrz) :2.0.3
 * Fix issue #17 - FlatButton padding applied (solution from @jstefanowski) :2.0.4
+* Fix issue #14, 15, 19, 26 - Attribute name clash (contribution from @aimanbaharum) :2.1.0
 
 Widgets
 -----------
@@ -36,10 +37,10 @@ Themes
 Including into your project
 -------------------------
 
-You just need to add the following dependency to your `build.gradle`.
+Add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.eluleci:flatui:2.0.4'
+        compile 'com.github.eluleci:flatui:2.1.0'
     }
 
 
@@ -89,7 +90,7 @@ You can use your own colors in two ways.
 <!-- REFERENCE THE ARRAY IN LAYOUT FILE -->
 <com.cengalabs.flatui.views.FlatButton
     ...
-    flatui:flatui_theme="@array/custom_theme" />
+    flatui:fl_theme="@array/custom_theme" />
 
 ```
 
@@ -117,9 +118,9 @@ Place your font file in assets/fonts/ folder of your project and use fontFamily 
 <!-- all the weights of the roboto and open sans are already included -->
 <com.cengalabs.flatui.views.FlatTextView
      ...
-     flatui:fontFamily="roboto"
-     flatui:fontWeight="light"
-     flatui:fontExtension="ttf"/>
+     flatui:fl_fontFamily="roboto"
+     flatui:fl_fontWeight="light"
+     flatui:fl_fontExtension="ttf"/>
 
  ```
 
@@ -127,16 +128,16 @@ Place your font file in assets/fonts/ folder of your project and use fontFamily 
 
 These are only common attributes for most of the views. You can see the full list of available attributes in [attrs.xml][3]
 
-- flatui_theme          :  theme of the element (reference: @array/themeName)
+- fl_theme          :  theme of the element (reference: @array/themeName)
 
-- textAppearance :  text color on the element. dark or light colors of the theme.(none, dark, light)
-- fontFamily     :  name of the font family (string)
-- fontWeight     :  font weight of the text (string) (extralight, light, regular, bold, extrabold)
-- fontExtension  :  extension of the font. use if not ttf (string)
+- fl_textAppearance :  text color on the element. dark or light colors of the theme.(none, dark, light)
+- fl_fontFamily     :  name of the font family (string)
+- fl_fontWeight     :  font weight of the text (string) (extralight, light, regular, bold, extrabold)
+- fl_fontExtension  :  extension of the font. use if not ttf (string)
 
-- borderWidth    :  border width of the element. (dimension)
-- cornerRadius   :  corner radius of the element. (dimension)
-- size           :  size of the element. (dimension)
+- fl_borderWidth    :  border width of the element. (dimension)
+- fl_cornerRadius   :  corner radius of the element. (dimension)
+- fl_size           :  size of the element. (dimension)
 
 ## Samples
 
@@ -150,28 +151,28 @@ xmlns:flatui="http://schemas.android.com/apk/res-auto"
 <!-- General Attributes -->
 <com.cengalabs.flatui.views.SomeFlatView
     ...
-    flatui:flatui_theme="@array/sand"
-    flatui:textAppearance="dark"
-    flatui:fontFamily="roboto"
-    flatui:fontWeight="light"
-    flatui:fontExtension="ttf"
-    flatui:borderWidth="2dp"
-    flatui:cornerRadius="5dp"
-    flatui:size="20dp" />
+    flatui:fl_theme="@array/sand"
+    flatui:fl_textAppearance="dark"
+    flatui:fl_fontFamily="roboto"
+    flatui:fl_fontWeight="light"
+    flatui:fl_fontExtension="ttf"
+    flatui:fl_borderWidth="2dp"
+    flatui:fl_cornerRadius="5dp"
+    flatui:fl_size="20dp" />
 
 
 <!-- FlatTextView -->
 <com.cengalabs.flatui.views.FlatTextView
     ...
-    flatui:textColor="main"
-    flatui:backgroundColor="darker"
-    flatui:customBackgroundColor="#00aff0" />
+    flatui:fl_textColor="main"
+    flatui:fl_backgroundColor="darker"
+    flatui:fl_customBackgroundColor="#00aff0" />
 
 
 <!-- FlatEditText -->
 <com.cengalabs.flatui.views.FlatEditText
 	...
-	flatui:fieldStyle="flat" />
+	flatui:fl_fieldStyle="flat" />
 	
 
 <!-- FlatSeekBar -->
@@ -184,26 +185,26 @@ xmlns:flatui="http://schemas.android.com/apk/res-auto"
 <!-- FlatButton -->
 <com.cengalabs.flatui.views.FlatButton
 	...
-	flatui:blockButtonEffectHeight="3dp" />
+	flatui:fl_blockButtonEffectHeight="3dp" />
 
 
 <!-- FlatCheckBox -->
 <com.cengalabs.flatui.views.FlatCheckBox
 	...
-	flatui:dotMargin="5dip" />
+	flatui:fl_dotMargin="5dip" />
 
 
 <!-- FlatRadioButton -->
 <com.cengalabs.flatui.views.FlatRadioButton
 	...
-	flatui:dotMargin="5dip" />
+	flatui:fl_dotMargin="5dip" />
 
 
 <!-- FlatToggleButton -->
 <!-- You can create different looks by playing with height, width, size, radius and space -->
 <com.cengalabs.flatui.views.FlatToggleButton
 	...
-	flatui:space="5dip" />
+	flatui:fl_space="5dip" />
 
 	
 ```
