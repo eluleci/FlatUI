@@ -52,22 +52,22 @@ public class FlatEditText extends EditText implements Attributes.AttributeChange
             hasOwnTextColor = attrs.getAttributeValue(FlatUI.androidStyleNameSpace, "textColor") != null;
             hasOwnHintColor = attrs.getAttributeValue(FlatUI.androidStyleNameSpace, "textColorHint") != null;
 
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatEditText);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.fl_FlatEditText);
 
             // getting common attributes
-            int customTheme = a.getResourceId(R.styleable.FlatEditText_flatui_theme, Attributes.DEFAULT_THEME);
+            int customTheme = a.getResourceId(R.styleable.fl_FlatEditText_fl_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
-            attributes.setFontFamily(a.getString(R.styleable.FlatEditText_fontFamily));
-            attributes.setFontWeight(a.getString(R.styleable.FlatEditText_fontWeight));
-            attributes.setFontExtension(a.getString(R.styleable.FlatEditText_fontExtension));
+            attributes.setFontFamily(a.getString(R.styleable.fl_FlatEditText_fl_fontFamily));
+            attributes.setFontWeight(a.getString(R.styleable.fl_FlatEditText_fl_fontWeight));
+            attributes.setFontExtension(a.getString(R.styleable.fl_FlatEditText_fl_fontExtension));
 
-            attributes.setTextAppearance(a.getInt(R.styleable.FlatEditText_textAppearance, Attributes.DEFAULT_TEXT_APPEARANCE));
-            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatEditText_cornerRadius, Attributes.DEFAULT_RADIUS_PX));
-            attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.FlatEditText_borderWidth, Attributes.DEFAULT_BORDER_WIDTH_PX));
+            attributes.setTextAppearance(a.getInt(R.styleable.fl_FlatEditText_fl_textAppearance, Attributes.DEFAULT_TEXT_APPEARANCE));
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.fl_FlatEditText_fl_cornerRadius, Attributes.DEFAULT_RADIUS_PX));
+            attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.fl_FlatEditText_fl_borderWidth, Attributes.DEFAULT_BORDER_WIDTH_PX));
 
             // getting view specific attributes
-            style = a.getInt(R.styleable.FlatEditText_fieldStyle, 0);
+            style = a.getInt(R.styleable.fl_FlatEditText_fl_fieldStyle, 0);
 
             a.recycle();
         }

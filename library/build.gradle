@@ -16,6 +16,8 @@ android {
             res.srcDirs = ['src/main/res']
         }
     }
+
+    resourcePrefix 'fl_'
 }
 
 dependencies {

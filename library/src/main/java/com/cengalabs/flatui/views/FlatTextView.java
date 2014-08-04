@@ -62,23 +62,23 @@ public class FlatTextView extends TextView implements Attributes.AttributeChange
             hasOwnTextColor = textColorAttribute != null || styleTextColor1 == styleTextColor2;
             styleTextColorTypedArray.recycle();
 
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatTextView);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.fl_FlatTextView);
 
             // getting common attributes
-            int customTheme = a.getResourceId(R.styleable.FlatTextView_flatui_theme, Attributes.DEFAULT_THEME);
+            int customTheme = a.getResourceId(R.styleable.fl_FlatTextView_fl_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
-            attributes.setFontFamily(a.getString(R.styleable.FlatTextView_fontFamily));
-            attributes.setFontWeight(a.getString(R.styleable.FlatTextView_fontWeight));
-            attributes.setFontExtension(a.getString(R.styleable.FlatTextView_fontExtension));
+            attributes.setFontFamily(a.getString(R.styleable.fl_FlatTextView_fl_fontFamily));
+            attributes.setFontWeight(a.getString(R.styleable.fl_FlatTextView_fl_fontWeight));
+            attributes.setFontExtension(a.getString(R.styleable.fl_FlatTextView_fl_fontExtension));
 
-            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatTextView_cornerRadius, Attributes.DEFAULT_RADIUS_PX));
-            attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.FlatTextView_borderWidth, 0));
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.fl_FlatTextView_fl_cornerRadius, Attributes.DEFAULT_RADIUS_PX));
+            attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.fl_FlatTextView_fl_borderWidth, 0));
 
             // getting view specific attributes
-            textColor = a.getInt(R.styleable.FlatTextView_textColor, textColor);
-            backgroundColor = a.getInt(R.styleable.FlatTextView_backgroundColor, backgroundColor);
-            customBackgroundColor = a.getInt(R.styleable.FlatTextView_customBackgroundColor, customBackgroundColor);
+            textColor = a.getInt(R.styleable.fl_FlatTextView_fl_textColor, textColor);
+            backgroundColor = a.getInt(R.styleable.fl_FlatTextView_fl_backgroundColor, backgroundColor);
+            customBackgroundColor = a.getInt(R.styleable.fl_FlatTextView_fl_customBackgroundColor, customBackgroundColor);
 
             a.recycle();
         }

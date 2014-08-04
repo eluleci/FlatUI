@@ -49,22 +49,22 @@ public class FlatCheckBox extends CheckBox implements Attributes.AttributeChange
             attributes = new Attributes(this);
 
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatCheckBox);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.fl_FlatCheckBox);
 
             // getting common attributes
-            int customTheme = a.getResourceId(R.styleable.FlatCheckBox_flatui_theme, Attributes.DEFAULT_THEME);
+            int customTheme = a.getResourceId(R.styleable.fl_FlatCheckBox_fl_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
-            attributes.setFontFamily(a.getString(R.styleable.FlatButton_fontFamily));
-            attributes.setFontWeight(a.getString(R.styleable.FlatButton_fontWeight));
-            attributes.setFontExtension(a.getString(R.styleable.FlatCheckBox_fontExtension));
+            attributes.setFontFamily(a.getString(R.styleable.fl_FlatCheckBox_fl_fontFamily));
+            attributes.setFontWeight(a.getString(R.styleable.fl_FlatCheckBox_fl_fontWeight));
+            attributes.setFontExtension(a.getString(R.styleable.fl_FlatCheckBox_fl_fontExtension));
 
-            attributes.setSize(a.getDimensionPixelSize(R.styleable.FlatCheckBox_size, Attributes.DEFAULT_SIZE_PX));
-            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatCheckBox_cornerRadius, Attributes.DEFAULT_RADIUS_PX));
+            attributes.setSize(a.getDimensionPixelSize(R.styleable.fl_FlatCheckBox_fl_size, Attributes.DEFAULT_SIZE_PX));
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.fl_FlatCheckBox_fl_cornerRadius, Attributes.DEFAULT_RADIUS_PX));
             attributes.setBorderWidth(attributes.getSize() / 10);
 
             // getting view specific attributes
-            dotMargin = a.getDimensionPixelSize(R.styleable.FlatCheckBox_dotMargin, dotMargin);
+            dotMargin = a.getDimensionPixelSize(R.styleable.fl_FlatCheckBox_fl_dotMargin, dotMargin);
 
             a.recycle();
         }

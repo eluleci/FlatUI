@@ -49,21 +49,21 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
             attributes = new Attributes(this);
 
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatButton);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.fl_FlatButton);
 
             // getting common attributes
-            int customTheme = a.getResourceId(R.styleable.FlatButton_flatui_theme, Attributes.DEFAULT_THEME);
+            int customTheme = a.getResourceId(R.styleable.fl_FlatButton_fl_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
-            attributes.setFontFamily(a.getString(R.styleable.FlatButton_fontFamily));
-            attributes.setFontWeight(a.getString(R.styleable.FlatButton_fontWeight));
-            attributes.setFontExtension(a.getString(R.styleable.FlatButton_fontExtension));
+            attributes.setFontFamily(a.getString(R.styleable.fl_FlatButton_fl_fontFamily));
+            attributes.setFontWeight(a.getString(R.styleable.fl_FlatButton_fl_fontWeight));
+            attributes.setFontExtension(a.getString(R.styleable.fl_FlatButton_fl_fontExtension));
 
-            attributes.setTextAppearance(a.getInt(R.styleable.FlatButton_textAppearance, Attributes.DEFAULT_TEXT_APPEARANCE));
-            attributes.setRadius(a.getDimensionPixelSize(R.styleable.FlatButton_cornerRadius, Attributes.DEFAULT_RADIUS_PX));
+            attributes.setTextAppearance(a.getInt(R.styleable.fl_FlatButton_fl_textAppearance, Attributes.DEFAULT_TEXT_APPEARANCE));
+            attributes.setRadius(a.getDimensionPixelSize(R.styleable.fl_FlatButton_fl_cornerRadius, Attributes.DEFAULT_RADIUS_PX));
 
             // getting view specific attributes
-            bottom = a.getDimensionPixelSize(R.styleable.FlatButton_blockButtonEffectHeight, bottom);
+            bottom = a.getDimensionPixelSize(R.styleable.fl_FlatButton_fl_blockButtonEffectHeight, bottom);
 
             a.recycle();
         }

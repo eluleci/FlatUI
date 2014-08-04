@@ -49,22 +49,22 @@ public class FlatRadioButton extends RadioButton implements Attributes.Attribute
             attributes = new Attributes(this);
 
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.FlatRadioButton);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.fl_FlatRadioButton);
 
             // getting common attributes
-            int customTheme = a.getResourceId(R.styleable.FlatRadioButton_flatui_theme, Attributes.DEFAULT_THEME);
+            int customTheme = a.getResourceId(R.styleable.fl_FlatRadioButton_fl_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
-            attributes.setFontFamily(a.getString(R.styleable.FlatRadioButton_fontFamily));
-            attributes.setFontWeight(a.getString(R.styleable.FlatRadioButton_fontWeight));
-            attributes.setFontExtension(a.getString(R.styleable.FlatRadioButton_fontExtension));
+            attributes.setFontFamily(a.getString(R.styleable.fl_FlatRadioButton_fl_fontFamily));
+            attributes.setFontWeight(a.getString(R.styleable.fl_FlatRadioButton_fl_fontWeight));
+            attributes.setFontExtension(a.getString(R.styleable.fl_FlatRadioButton_fl_fontExtension));
 
-            attributes.setSize(a.getDimensionPixelSize(R.styleable.FlatRadioButton_size, Attributes.DEFAULT_SIZE_PX));
+            attributes.setSize(a.getDimensionPixelSize(R.styleable.fl_FlatRadioButton_fl_size, Attributes.DEFAULT_SIZE_PX));
             attributes.setRadius(attributes.getSize() / 2);
-            attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.FlatRadioButton_borderWidth, Attributes.DEFAULT_BORDER_WIDTH_PX));
+            attributes.setBorderWidth(a.getDimensionPixelSize(R.styleable.fl_FlatRadioButton_fl_borderWidth, Attributes.DEFAULT_BORDER_WIDTH_PX));
 
             // getting view specific attributes
-            dotMargin = a.getDimensionPixelSize(R.styleable.FlatRadioButton_dotMargin, dotMargin);
+            dotMargin = a.getDimensionPixelSize(R.styleable.fl_FlatRadioButton_fl_dotMargin, dotMargin);
 
             a.recycle();
         }

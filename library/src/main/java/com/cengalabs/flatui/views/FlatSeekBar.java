@@ -42,13 +42,13 @@ public class FlatSeekBar extends SeekBar implements Attributes.AttributeChangeLi
             attributes = new Attributes(this);
 
         if (attrs != null) {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, com.cengalabs.flatui.R.styleable.FlatSeekBar);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, com.cengalabs.flatui.R.styleable.fl_FlatSeekBar);
 
             // getting common attributes
-            int customTheme = a.getResourceId(com.cengalabs.flatui.R.styleable.FlatSeekBar_flatui_theme, Attributes.DEFAULT_THEME);
+            int customTheme = a.getResourceId(com.cengalabs.flatui.R.styleable.fl_FlatSeekBar_fl_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
 
-            attributes.setSize(a.getDimensionPixelSize(com.cengalabs.flatui.R.styleable.FlatSeekBar_size, Attributes.DEFAULT_SIZE_PX));
+            attributes.setSize(a.getDimensionPixelSize(com.cengalabs.flatui.R.styleable.fl_FlatSeekBar_fl_size, Attributes.DEFAULT_SIZE_PX));
 
             a.recycle();
         }

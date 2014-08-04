@@ -35,8 +35,8 @@
                 android:gravity="center_vertical"
                 android:text="Edit Texts"
                 android:textSize="20dip"
-                flatui:textColor="main"
-                flatui:theme="@array/grass" />
+                flatui:fl_textColor="main"
+                flatui:fl_theme="@array/grass" />
 
             <LinearLayout
                 android:orientation="vertical"
@@ -55,8 +55,8 @@
                     android:gravity="center_vertical"
                     android:hint="Flat"
                     android:includeFontPadding="true"
-                    flatui:fieldStyle="flat"
-                    flatui:theme="@array/grass" />
+                    flatui:fl_fieldStyle="flat"
+                    flatui:fl_theme="@array/grass" />
 
                 <com.cengalabs.flatui.views.FlatEditText
                     android:id="@+id/edittext_box"
@@ -67,8 +67,8 @@
                     android:gravity="center_vertical"
                     android:hint="Box"
                     android:includeFontPadding="true"
-                    flatui:fieldStyle="box"
-                    flatui:theme="@array/grass" />
+                    flatui:fl_fieldStyle="box"
+                    flatui:fl_theme="@array/grass" />
 
                 <com.cengalabs.flatui.views.FlatEditText
                     android:id="@+id/edittext_transparentbox"
@@ -79,8 +79,8 @@
                     android:gravity="center_vertical"
                     android:hint="Transparent box"
                     android:includeFontPadding="true"
-                    flatui:fieldStyle="transparent"
-                    flatui:theme="@array/grass" />
+                    flatui:fl_fieldStyle="transparent"
+                    flatui:fl_theme="@array/grass" />
 
                 <com.cengalabs.flatui.views.FlatEditText
                     android:id="@+id/edittext_transparent"
@@ -91,9 +91,9 @@
                     android:gravity="center_vertical"
                     android:hint="Transparent"
                     android:includeFontPadding="true"
-                    flatui:fieldStyle="transparent"
-                    flatui:theme="@array/candy"
-                    flatui:borderWidth="0dp" />
+                    flatui:fl_fieldStyle="transparent"
+                    flatui:fl_theme="@array/candy"
+                    flatui:fl_borderWidth="0dp" />
 
             </LinearLayout>
 
@@ -109,7 +109,7 @@
                 android:gravity="center_vertical"
                 android:text="Seek Bar"
                 android:textSize="20dip"
-                flatui:textColor="main" />
+                flatui:fl_textColor="main" />
 
             <LinearLayout
                 android:orientation="vertical"
@@ -140,7 +140,7 @@
                 android:gravity="center_vertical"
                 android:text="Buttons"
                 android:textSize="20dip"
-                flatui:textColor="main" />
+                flatui:fl_textColor="main" />
 
             <LinearLayout
                 android:orientation="vertical"
@@ -159,7 +159,7 @@
                     android:gravity="center_vertical"
                     android:text="Shape"
                     android:textSize="16dip"
-                    flatui:textColor="main" />
+                    flatui:fl_textColor="main" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -173,8 +173,8 @@
                         android:text="Block"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:textAppearance="light"
-                        flatui:blockButtonEffectHeight="3dp" />
+                        flatui:fl_textAppearance="light"
+                        flatui:fl_blockButtonEffectHeight="3dp" />
 
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_flat"
@@ -183,7 +183,7 @@
                         android:text="Full Flat"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:textAppearance="light" />
+                        flatui:fl_textAppearance="light" />
 
                 </LinearLayout>
 
@@ -196,7 +196,7 @@
                     android:gravity="center_vertical"
                     android:text="Text Appearance"
                     android:textSize="16dip"
-                    flatui:textColor="main" />
+                    flatui:fl_textColor="main" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -210,7 +210,7 @@
                         android:text="Light"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:textAppearance="light" />
+                        flatui:fl_textAppearance="light" />
 
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_white"
@@ -227,7 +227,7 @@
                         android:text="Dark"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:textAppearance="dark" />
+                        flatui:fl_textAppearance="dark" />
 
                 </LinearLayout>
 
@@ -245,7 +245,7 @@
                 android:gravity="center_vertical"
                 android:text="Check Box"
                 android:textSize="20dip"
-                flatui:textColor="main" />
+                flatui:fl_textColor="main" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -269,7 +269,7 @@
                         android:gravity="center_vertical"
                         android:text="Enabled"
                         android:textSize="16dip"
-                        flatui:textColor="main" />
+                        flatui:fl_textColor="main" />
 
                     <LinearLayout
                         android:orientation="vertical"
@@ -285,7 +285,7 @@
                             android:background="#0000"
                             android:text="unchecked"
                             android:layout_margin="5dip"
-                            flatui:size="20dip" />
+                            flatui:fl_size="20dip" />
 
                         <com.cengalabs.flatui.views.FlatCheckBox
                             android:id="@+id/checkbox_checked_enabled"
@@ -296,7 +296,7 @@
                             android:checked="true"
                             android:background="#0000"
                             android:layout_margin="5dip"
-                            flatui:size="20dip" />
+                            flatui:fl_size="20dip" />
 
                     </LinearLayout>
 
@@ -316,7 +316,7 @@
                         android:gravity="center_vertical"
                         android:text="Disabled"
                         android:textSize="16dip"
-                        flatui:textColor="main" />
+                        flatui:fl_textColor="main" />
 
                     <LinearLayout
                         android:orientation="vertical"
@@ -333,7 +333,7 @@
                             android:text="unchecked"
                             android:enabled="false"
                             android:layout_margin="5dip"
-                            flatui:size="20dip" />
+                            flatui:fl_size="20dip" />
 
                         <com.cengalabs.flatui.views.FlatCheckBox
                             android:id="@+id/checkbox_checked_disabled"
@@ -345,7 +345,7 @@
                             android:enabled="false"
                             android:background="#0000"
                             android:layout_margin="5dip"
-                            flatui:size="20dip" />
+                            flatui:fl_size="20dip" />
 
                     </LinearLayout>
 
@@ -364,7 +364,7 @@
                 android:gravity="center_vertical"
                 android:text="Radio Button"
                 android:textSize="20dip"
-                flatui:textColor="main" />
+                flatui:fl_textColor="main" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -388,7 +388,7 @@
                         android:gravity="center_vertical"
                         android:text="Enabled"
                         android:textSize="16dip"
-                        flatui:textColor="main" />
+                        flatui:fl_textColor="main" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -408,8 +408,8 @@
                                 android:background="#0000"
                                 android:text="unchecked"
                                 android:layout_margin="5dip"
-                                flatui:size="20dip"
-                                flatui:dotMargin="1dp" />
+                                flatui:fl_size="20dip"
+                                flatui:fl_dotMargin="1dp" />
 
                             <com.cengalabs.flatui.views.FlatRadioButton
                                 android:id="@+id/radio_checked_enabled"
@@ -419,8 +419,8 @@
                                 android:text="checked"
                                 android:background="#0000"
                                 android:layout_margin="5dip"
-                                flatui:size="20dip"
-                                flatui:dotMargin="1dp" />
+                                flatui:fl_size="20dip"
+                                flatui:fl_dotMargin="1dp" />
 
                         </RadioGroup>
 
@@ -442,7 +442,7 @@
                         android:gravity="center_vertical"
                         android:text="Disabled"
                         android:textSize="16dip"
-                        flatui:textColor="main" />
+                        flatui:fl_textColor="main" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -463,8 +463,8 @@
                                 android:text="unchecked"
                                 android:enabled="false"
                                 android:layout_margin="5dip"
-                                flatui:size="20dip"
-                                flatui:dotMargin="1dp" />
+                                flatui:fl_size="20dip"
+                                flatui:fl_dotMargin="1dp" />
 
                             <com.cengalabs.flatui.views.FlatRadioButton
                                 android:id="@+id/radio_checked_disabled"
@@ -476,8 +476,8 @@
                                 android:enabled="false"
                                 android:background="#0000"
                                 android:layout_margin="5dip"
-                                flatui:size="20dip"
-                                flatui:dotMargin="1dp" />
+                                flatui:fl_size="20dip"
+                                flatui:fl_dotMargin="1dp" />
 
                         </RadioGroup>
 
@@ -498,7 +498,7 @@
                 android:gravity="center_vertical"
                 android:text="Toggle Button"
                 android:textSize="20dip"
-                flatui:textColor="main" />
+                flatui:fl_textColor="main" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -522,7 +522,7 @@
                         android:gravity="center_vertical"
                         android:text="Enabled"
                         android:textSize="16dip"
-                        flatui:textColor="main" />
+                        flatui:fl_textColor="main" />
 
                     <LinearLayout
                         android:orientation="vertical"
@@ -535,8 +535,8 @@
                             android:layout_width="72dp"
                             android:layout_height="36dp"
                             android:text="Full Flat"
-                            flatui:space="14dp"
-                            flatui:cornerRadius="18dp" />
+                            flatui:fl_space="14dp"
+                            flatui:fl_cornerRadius="18dp" />
 
                         <com.cengalabs.flatui.views.FlatToggleButton
                             android:id="@+id/toggle_checked_enabled"
@@ -544,8 +544,8 @@
                             android:layout_height="36dp"
                             android:text="Full Flat"
                             android:checked="true"
-                            flatui:space="14dp"
-                            flatui:cornerRadius="18dp" />
+                            flatui:fl_space="14dp"
+                            flatui:fl_cornerRadius="18dp" />
 
                     </LinearLayout>
 
@@ -565,7 +565,7 @@
                         android:gravity="center_vertical"
                         android:text="Disabled"
                         android:textSize="16dip"
-                        flatui:textColor="main" />
+                        flatui:fl_textColor="main" />
 
                     <LinearLayout
                         android:orientation="vertical"
@@ -579,8 +579,8 @@
                             android:layout_height="36dp"
                             android:text="Full Flat"
                             android:enabled="false"
-                            flatui:space="14dp"
-                            flatui:cornerRadius="18dp" />
+                            flatui:fl_space="14dp"
+                            flatui:fl_cornerRadius="18dp" />
 
                         <com.cengalabs.flatui.views.FlatToggleButton
                             android:id="@+id/toggle_checked_disabled"
@@ -589,8 +589,8 @@
                             android:text="Full Flat"
                             android:checked="true"
                             android:enabled="false"
-                            flatui:space="14dp"
-                            flatui:cornerRadius="18dp" />
+                            flatui:fl_space="14dp"
+                            flatui:fl_cornerRadius="18dp" />
 
                     </LinearLayout>
 
@@ -613,7 +613,7 @@
                     android:gravity="center_vertical"
                     android:text="Themes"
                     android:textSize="20dip"
-                    flatui:textColor="main" />
+                    flatui:fl_textColor="main" />
 
                 <com.cengalabs.flatui.views.FlatTextView
                     android:id="@+id/title_themes_note"
@@ -623,7 +623,7 @@
                     android:gravity="center_vertical"
                     android:text="Press buttons to change theme."
                     android:textSize="12dip"
-                    flatui:textColor="light" />
+                    flatui:fl_textColor="light" />
 
             </LinearLayout>
 
@@ -648,8 +648,8 @@
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:theme="@array/sand"
-                        flatui:textAppearance="light" />
+                        flatui:fl_theme="@array/sand"
+                        flatui:fl_textAppearance="light" />
 
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_orange"
@@ -659,8 +659,8 @@
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:theme="@array/orange"
-                        flatui:textAppearance="light"/>
+                        flatui:fl_theme="@array/orange"
+                        flatui:fl_textAppearance="light"/>
 
                 </LinearLayout>
 
@@ -677,8 +677,8 @@
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:theme="@array/candy"
-                        flatui:textAppearance="light" />
+                        flatui:fl_theme="@array/candy"
+                        flatui:fl_textAppearance="light" />
 
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_blossom"
@@ -688,8 +688,8 @@
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:theme="@array/blossom"
-                        flatui:textAppearance="light" />
+                        flatui:fl_theme="@array/blossom"
+                        flatui:fl_textAppearance="light" />
 
                 </LinearLayout>
 
@@ -706,8 +706,8 @@
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:theme="@array/grape"
-                        flatui:textAppearance="light" />
+                        flatui:fl_theme="@array/grape"
+                        flatui:fl_textAppearance="light" />
 
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_deep"
@@ -717,8 +717,8 @@
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:theme="@array/deep"
-                        flatui:textAppearance="light" />
+                        flatui:fl_theme="@array/deep"
+                        flatui:fl_textAppearance="light" />
 
                 </LinearLayout>
 
@@ -735,8 +735,8 @@
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:theme="@array/sky"
-                        flatui:textAppearance="light" />
+                        flatui:fl_theme="@array/sky"
+                        flatui:fl_textAppearance="light" />
 
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_grass"
@@ -746,8 +746,8 @@
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:theme="@array/grass"
-                        flatui:textAppearance="light" />
+                        flatui:fl_theme="@array/grass"
+                        flatui:fl_textAppearance="light" />
 
                 </LinearLayout>
 
@@ -764,8 +764,8 @@
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:theme="@array/dark"
-                        flatui:textAppearance="light" />
+                        flatui:fl_theme="@array/dark"
+                        flatui:fl_textAppearance="light" />
 
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_snow"
@@ -775,8 +775,8 @@
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:theme="@array/snow"
-                        flatui:textAppearance="light" />
+                        flatui:fl_theme="@array/snow"
+                        flatui:fl_textAppearance="light" />
 
                 </LinearLayout>
 
@@ -793,8 +793,8 @@
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:theme="@array/sea"
-                        flatui:textAppearance="light" />
+                        flatui:fl_theme="@array/sea"
+                        flatui:fl_textAppearance="light" />
 
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_turquoise"
@@ -804,8 +804,8 @@
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:theme="@array/blood"
-                        flatui:textAppearance="light" />
+                        flatui:fl_theme="@array/blood"
+                        flatui:fl_textAppearance="light" />
 
                 </LinearLayout>
 
@@ -822,8 +822,8 @@
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:textAppearance="light"
-                        flatui:theme="@array/custom_theme_1" />
+                        flatui:fl_textAppearance="light"
+                        flatui:fl_theme="@array/custom_theme_1" />
 
                     <com.cengalabs.flatui.views.FlatButton
                         android:id="@+id/button_custom_theme_2"
@@ -833,8 +833,8 @@
                         android:onClick="onChangeThemeButtonClicked"
                         android:layout_weight="1"
                         android:layout_margin="3dp"
-                        flatui:textAppearance="light"
-                        flatui:theme="@array/custom_theme_2" />
+                        flatui:fl_textAppearance="light"
+                        flatui:fl_theme="@array/custom_theme_2" />
 
                 </LinearLayout>
             </LinearLayout>
