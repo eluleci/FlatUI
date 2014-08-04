@@ -19,6 +19,10 @@ Features included
 * Changing theme and attributes at runtime.
 * Changing ActionBar theme.
 
+Latest Changes
+-----------------
+* Fix issue #18 - Consecutive activity opening (pull request from @michalbrz) :2.0.3
+* Fix issue #17 - FlatButton padding applied (solution from @jstefanowski) :2.0.4
 
 Widgets
 -----------
@@ -35,7 +39,7 @@ Including into your project
 You just need to add the following dependency to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.eluleci:flatui:2.0.2'
+        compile 'com.github.eluleci:flatui:2.0.4'
     }
 
 
