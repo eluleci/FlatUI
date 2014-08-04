@@ -46,7 +46,7 @@ public class FlatRadioButton extends RadioButton implements Attributes.Attribute
     private void init(AttributeSet attrs) {
 
         if (attributes == null)
-            attributes = new Attributes(this);
+            attributes = new Attributes(this, getResources());
 
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.fl_FlatRadioButton);

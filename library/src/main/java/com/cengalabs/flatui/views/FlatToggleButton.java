@@ -45,7 +45,7 @@ public class FlatToggleButton extends ToggleButton implements Attributes.Attribu
     private void init(AttributeSet attrs) {
 
         if (attributes == null)
-            attributes = new Attributes(this);
+            attributes = new Attributes(this, getResources());
 
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.fl_FlatToggleButton);

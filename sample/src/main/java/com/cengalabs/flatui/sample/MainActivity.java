@@ -141,7 +141,7 @@ public class MainActivity extends ActionBarActivity {
         });
 
         // if you are using standard action bar (not compatibility library) use this
-        // FlatUI.setActionBarTheme(this, theme, false, true);
+        // getActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(this, colorReference, false));
 
         // if you are using ActionBar of Compatibility library, get drawable and set it manually
         getSupportActionBar().setBackgroundDrawable(FlatUI.getActionBarDrawable(this, colorReference, false));

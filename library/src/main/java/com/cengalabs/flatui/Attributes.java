@@ -20,7 +20,7 @@ public class Attributes {
     public static int DEFAULT_RADIUS_DP = 4;
     public static int DEFAULT_BORDER_WIDTH_DP = 2;
     public static int DEFAULT_SIZE_DP = 10;
-    
+
     public static int DEFAULT_RADIUS_PX = 8;
     public static int DEFAULT_BORDER_WIDTH_PX = 4;
     public static int DEFAULT_SIZE_PX = 20;
@@ -51,8 +51,9 @@ public class Attributes {
      */
     private AttributeChangeListener attributeChangeListener;
 
-    public Attributes(AttributeChangeListener attributeChangeListener) {
+    public Attributes(AttributeChangeListener attributeChangeListener, Resources resources) {
         this.attributeChangeListener = attributeChangeListener;
+        setThemeSilent(DEFAULT_THEME, resources);
     }
 
     public int getTheme() {

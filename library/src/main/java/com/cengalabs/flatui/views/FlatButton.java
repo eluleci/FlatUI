@@ -52,7 +52,7 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
         final int paddingBottom = getPaddingBottom();
 
         if (attributes == null)
-            attributes = new Attributes(this);
+            attributes = new Attributes(this, getResources());
 
         if (attrs != null) {
             TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.fl_FlatButton);
