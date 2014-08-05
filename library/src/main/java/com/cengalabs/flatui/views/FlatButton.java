@@ -100,6 +100,7 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
         // creating disabled state drawable
         ShapeDrawable disabledFront = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
         disabledFront.getPaint().setColor(attributes.getColor(3));
+        disabledFront.getPaint().setAlpha(0xA0);
 
         ShapeDrawable disabledBack = new ShapeDrawable(new RoundRectShape(attributes.getOuterRadius(), null, null));
         disabledBack.getPaint().setColor(attributes.getColor(2));
