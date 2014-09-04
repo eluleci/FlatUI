@@ -660,7 +660,7 @@
                         android:layout_weight="1"
                         android:layout_margin="3dp"
                         flatui:fl_theme="@array/orange"
-                        flatui:fl_textAppearance="light"/>
+                        flatui:fl_textAppearance="light" />
 
                 </LinearLayout>
 
@@ -840,6 +840,47 @@
             </LinearLayout>
 
 
+            <!-- Spinner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dip"
+                android:layout_marginLeft="5dip"
+                android:orientation="vertical">
+
+                <com.cengalabs.flatui.views.FlatTextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:gravity="center_vertical"
+                    android:text="Spinner example"
+                    android:textSize="20dip"
+                    flatui:fl_textColor="main" />
+
+                <com.cengalabs.flatui.views.FlatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Theme of the spinner is not dynamic yet. This is an example of spinner usage, not a library component."
+                    android:textSize="12dip"
+                    flatui:fl_textColor="light" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dip"
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip">
+
+                <Spinner
+                    android:id="@+id/themes_spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

@@ -5,4 +5,19 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string-array name="themes_array">
+        <item>Sand</item>
+        <item>Orange</item>
+        <item>Candy</item>
+        <item>Blossom</item>
+        <item>Grape</item>
+        <item>Deep</item>
+        <item>Sky</item>
+        <item>Grass</item>
+        <item>Dark</item>
+        <item>Snow</item>
+        <item>Sea</item>
+        <item>Blood</item>
+    </string-array>
+
 </resources>

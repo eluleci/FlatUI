@@ -3,6 +3,11 @@ package com.cengalabs.flatui.sample;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.cengalabs.flatui.FlatUI;
 import com.cengalabs.flatui.views.FlatButton;
@@ -27,6 +32,8 @@ public class MainActivity extends ActionBarActivity {
     private ArrayList<FlatToggleButton> flatToggleButtons = new ArrayList<FlatToggleButton>();
     private FlatRadioButton radioCheckedEnabled;
     private FlatSeekBar flatSeekBar;
+
+    private boolean isSpinnerSelectedBefore = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +104,78 @@ public class MainActivity extends ActionBarActivity {
         flatSeekBar = (FlatSeekBar) findViewById(R.id.seekbar);
         flatSeekBar.setProgress(30);
         flatSeekBar.setSecondaryProgress(40);
+
+        /**
+         * This part is an example of spinner usage. You can change the theme of this spinner by
+         * editing the layout files spinner_button and spinner_row.
+         */
+        Spinner spinner = (Spinner) findViewById(R.id.themes_spinner);
+
+        // Create an ArrayAdapter using the string array and a custom spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.themes_array, R.layout.spinner_button);
+
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(R.layout.spinner_row);
+
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                // preventing the spinner to change the theme on start
+                if (!isSpinnerSelectedBefore) {
+                    isSpinnerSelectedBefore = true;
+                    return;
+                }
+
+                int themeReference = APP_THEME;
+                switch (position) {
+                    case 0:
+                        themeReference = FlatUI.SAND;
+                        break;
+                    case 1:
+                        themeReference = FlatUI.ORANGE;
+                        break;
+                    case 2:
+                        themeReference = FlatUI.CANDY;
+                        break;
+                    case 3:
+                        themeReference = FlatUI.BLOSSOM;
+                        break;
+                    case 4:
+                        themeReference = FlatUI.GRAPE;
+                        break;
+                    case 5:
+                        themeReference = FlatUI.DEEP;
+                        break;
+                    case 6:
+                        themeReference = FlatUI.SKY;
+                        break;
+                    case 7:
+                        themeReference = FlatUI.GRASS;
+                        break;
+                    case 8:
+                        themeReference = FlatUI.DARK;
+                        break;
+                    case 9:
+                        themeReference = FlatUI.SNOW;
+                        break;
+                    case 10:
+                        themeReference = FlatUI.SEA;
+                        break;
+                    case 11:
+                        themeReference = FlatUI.BLOOD;
+                        break;
+                }
+                changeTheme(themeReference);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     public void onChangeThemeButtonClicked(View v) {
