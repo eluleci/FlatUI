@@ -3,10 +3,9 @@ package com.cengalabs.flatui.sample;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Spinner;
 
 import com.cengalabs.flatui.FlatUI;
@@ -107,7 +106,7 @@ public class MainActivity extends ActionBarActivity {
 
         /**
          * This part is an example of spinner usage. You can change the theme of this spinner by
-         * editing the layout files spinner_button and spinner_row.
+         * editing the layout files spinner_button and simple_flat_list_item.
          */
         Spinner spinner = (Spinner) findViewById(R.id.themes_spinner);
 
@@ -116,7 +115,7 @@ public class MainActivity extends ActionBarActivity {
                 R.array.themes_array, R.layout.spinner_button);
 
         // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(R.layout.spinner_row);
+        adapter.setDropDownViewResource(R.layout.simple_flat_list_item);
 
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -176,6 +175,17 @@ public class MainActivity extends ActionBarActivity {
 
             }
         });
+
+        /**
+         * Autocomplete textview. You can change the EditText color via theme but
+         * you need to set a layout for the rows as shown below. This is the same
+         * row that is used in the spinner example.
+         */
+        AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView1);
+
+        String[] themes = getResources().getStringArray(R.array.themes_array);
+        ArrayAdapter acAdapter = new ArrayAdapter(this, R.layout.simple_flat_list_item, themes);
+        actv.setAdapter(acAdapter);
     }
 
     public void onChangeThemeButtonClicked(View v) {

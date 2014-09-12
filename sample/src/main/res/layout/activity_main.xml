@@ -95,6 +95,16 @@
                     flatui:fl_theme="@array/grass"
                     flatui:fl_borderWidth="0dp" />
 
+                <com.cengalabs.flatui.views.FlatAutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:hint="Auto Complete"
+                    android:layout_margin="5dip"
+                    android:ems="10" />
+
             </LinearLayout>
 
 
