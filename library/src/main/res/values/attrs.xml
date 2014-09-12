@@ -57,6 +57,22 @@
             <enum name="transparent" value="2" />
         </attr>
     </declare-styleable>
+    
+    <!-- Flat AutoCompleteTextView Text -->
+    <declare-styleable name="fl_FlatAutoCompleteTextView">
+        <attr name="fl_theme" />
+        <attr name="fl_fontFamily" />
+        <attr name="fl_fontWeight" />
+        <attr name="fl_fontExtension" />
+        <attr name="fl_textAppearance" />
+        <attr name="fl_cornerRadius" />
+        <attr name="fl_borderWidth" />
+        <attr name="fl_autoFieldStyle" format="integer">
+            <enum name="flat" value="0" />
+            <enum name="box" value="1" />
+            <enum name="transparent" value="2" />
+        </attr>
+    </declare-styleable>
 
     <!-- Flat Radio Button -->
     <declare-styleable name="fl_FlatRadioButton">
