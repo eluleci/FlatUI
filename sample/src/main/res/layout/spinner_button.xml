@@ -6,5 +6,5 @@
     android:layout_height="wrap_content"
     android:padding="15dip"
     android:textSize="16dip"
-    flatui:fl_textColor="light"
+    flatui:fl_textColor="fl_light"
     flatui:fl_backgroundColor="fl_main" />
