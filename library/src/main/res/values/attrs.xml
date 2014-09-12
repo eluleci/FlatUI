@@ -7,9 +7,9 @@
     <attr name="fl_fontWeight" format="string" />
     <attr name="fl_fontExtension" format="string" />
     <attr name="fl_textAppearance" format="integer">
-        <enum name="none" value="0" />
-        <enum name="dark" value="1" />
-        <enum name="light" value="2" />
+        <enum name="fl_none" value="0" />
+        <enum name="fl_dark" value="1" />
+        <enum name="fl_light" value="2" />
     </attr>
 
     <attr name="fl_cornerRadius" format="dimension" />
@@ -52,9 +52,9 @@
         <attr name="fl_cornerRadius" />
         <attr name="fl_borderWidth" />
         <attr name="fl_fieldStyle" format="integer">
-            <enum name="flat" value="0" />
-            <enum name="box" value="1" />
-            <enum name="transparent" value="2" />
+            <enum name="fl_flat" value="0" />
+            <enum name="fl_box" value="1" />
+            <enum name="fl_transparent" value="2" />
         </attr>
     </declare-styleable>
 
@@ -84,10 +84,10 @@
         <attr name="fl_cornerRadius" />
         <attr name="fl_borderWidth" />
         <attr name="fl_textColor" format="integer">
-            <enum name="darker" value="0" />
-            <enum name="dark" value="1" />
-            <enum name="main" value="2" />
-            <enum name="light" value="3" />
+            <enum name="fl_darker" value="0" />
+            <enum name="fl_dark" value="1" />
+            <enum name="fl_main" value="2" />
+            <enum name="fl_light" value="3" />
         </attr>
         <attr name="fl_backgroundColor" format="integer">
             <enum name="fl_darker" value="0" />
