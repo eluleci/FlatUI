@@ -188,6 +188,7 @@ xmlns:flatui="http://schemas.android.com/apk/res-auto"
 <!-- FlatButton -->
 <com.cengalabs.flatui.views.FlatButton
 	...
+    flatui:fl_touchEffect="fl_ripple"
 	flatui:fl_blockButtonEffectHeight="3dp" />
 
 
