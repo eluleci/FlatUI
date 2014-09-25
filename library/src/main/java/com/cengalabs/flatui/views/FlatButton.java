@@ -50,21 +50,19 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
 
     @Override
     public boolean onTouchEvent(final MotionEvent event) {
-
-        touchEffectAnimator.onTouchEvent(event);
+        if (attributes.hasTouchEffect() && touchEffectAnimator != null)
+            touchEffectAnimator.onTouchEvent(event);
         return super.onTouchEvent(event);
     }
 
     @Override
     protected void onDraw(final Canvas canvas) {
-
-        touchEffectAnimator.onDraw(canvas);
+        if (attributes.hasTouchEffect() && touchEffectAnimator != null)
+            touchEffectAnimator.onDraw(canvas);
         super.onDraw(canvas);
     }
 
     private void init(AttributeSet attrs) {
-
-        touchEffectAnimator = new TouchEffectAnimator(this, true);
 
         // saving padding values for using them after setting background drawable
         final int paddingTop = getPaddingTop();
@@ -81,6 +79,7 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
             // getting common attributes
             int customTheme = a.getResourceId(R.styleable.fl_FlatButton_fl_theme, Attributes.DEFAULT_THEME);
             attributes.setThemeSilent(customTheme, getResources());
+            attributes.setTouchEffect(a.getInt(R.styleable.fl_FlatButton_fl_touchEffect, Attributes.DEFAULT_TOUCH_EFFECT));
 
             attributes.setFontFamily(a.getString(R.styleable.fl_FlatButton_fl_fontFamily));
             attributes.setFontWeight(a.getString(R.styleable.fl_FlatButton_fl_fontWeight));
@@ -95,8 +94,13 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
             a.recycle();
         }
 
-        touchEffectAnimator.setRippleColor(attributes.getColor(1));
-        touchEffectAnimator.setClipRadius(attributes.getRadius());
+        if (attributes.hasTouchEffect()) {
+            boolean hasRippleEffect = attributes.getTouchEffect() == Attributes.RIPPLE_TOUCH_EFFECT;
+            touchEffectAnimator = new TouchEffectAnimator(this);
+            touchEffectAnimator.setHasRippleEffect(hasRippleEffect);
+            touchEffectAnimator.setEffectColor(attributes.getColor(1));
+            touchEffectAnimator.setClipRadius(attributes.getRadius());
+        }
 
         /*mPaint = new Paint();
         mPaint.setColor(attributes.getColor(1));
@@ -138,7 +142,8 @@ public class FlatButton extends Button implements Attributes.AttributeChangeList
 
         StateListDrawable states = new StateListDrawable();
 
-        //states.addState(new int[]{android.R.attr.state_pressed, android.R.attr.state_enabled}, pressed);
+        if (!attributes.hasTouchEffect())
+            states.addState(new int[]{android.R.attr.state_pressed, android.R.attr.state_enabled}, pressed);
         states.addState(new int[]{android.R.attr.state_focused, android.R.attr.state_enabled}, pressed);
         states.addState(new int[]{android.R.attr.state_enabled}, normal);
         states.addState(new int[]{-android.R.attr.state_enabled}, disabled);

@@ -55,6 +55,7 @@ public class MainActivity extends ActionBarActivity {
         flatTextViews.add((FlatTextView) findViewById(R.id.title_buttons));
         flatTextViews.add((FlatTextView) findViewById(R.id.title_buttons_shape));
         flatTextViews.add((FlatTextView) findViewById(R.id.title_buttons_text_appearance));
+        flatTextViews.add((FlatTextView) findViewById(R.id.title_buttons_touch_effect));
         flatTextViews.add((FlatTextView) findViewById(R.id.title_checkbox));
         flatTextViews.add((FlatTextView) findViewById(R.id.title_checkbox_enabled));
         flatTextViews.add((FlatTextView) findViewById(R.id.title_checkbox_disabled));
@@ -79,6 +80,8 @@ public class MainActivity extends ActionBarActivity {
         flatButtons.add((FlatButton) findViewById(R.id.button_light));
         flatButtons.add((FlatButton) findViewById(R.id.button_white));
         flatButtons.add((FlatButton) findViewById(R.id.button_dark_text));
+        flatButtons.add((FlatButton) findViewById(R.id.button_ease));
+        flatButtons.add((FlatButton) findViewById(R.id.button_ripple));
 
         // check boxes
         flatCheckBoxes.add((FlatCheckBox) findViewById(R.id.checkbox_unchecked_enabled));

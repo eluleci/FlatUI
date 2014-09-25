@@ -20,4 +20,12 @@
         <item>Blood</item>
     </string-array>
 
+    <string name="touch_effect_description">
+        This TextView is placed into a LinearLayout which uses the TouchEffectAnimator class to
+        perform this touch animation. This is the same class that is used on FlatButtons to achieve
+        the same animation. You can look at the sample project to see the usage of this animator
+        class and you can use it regardless of this FlatUI Library by just copying the
+        TouchEffectAnimator class to your project.
+    </string>
+
 </resources>

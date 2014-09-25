@@ -241,6 +241,44 @@
 
                 </LinearLayout>
 
+                <com.cengalabs.flatui.views.FlatTextView
+                    android:id="@+id/title_buttons_touch_effect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dip"
+                    android:maxLines="1"
+                    android:gravity="center_vertical"
+                    android:text="Touch Effect"
+                    android:textSize="16dip"
+                    flatui:fl_textColor="fl_main" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2">
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_ease"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:text="Ease Effect"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"
+                        flatui:fl_textAppearance="fl_light"
+                        flatui:fl_touchEffect="fl_ease" />
+
+                    <com.cengalabs.flatui.views.FlatButton
+                        android:id="@+id/button_ripple"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:text="Ripple Effect"
+                        android:layout_weight="1"
+                        android:layout_margin="3dp"
+                        flatui:fl_textAppearance="fl_light"
+                        flatui:fl_touchEffect="fl_ripple" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
 
@@ -891,6 +929,23 @@
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
+
+            <com.cengalabs.flatui.sample.RippleLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="15dp"
+                android:background="@android:color/transparent">
+
+                <com.cengalabs.flatui.views.FlatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textSize="16dp"
+                    android:text="@string/touch_effect_description"
+                    android:textColor="#333333"/>
+
+            </com.cengalabs.flatui.sample.RippleLinearLayout>
         </LinearLayout>
     </ScrollView>
 

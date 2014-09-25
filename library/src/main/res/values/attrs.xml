@@ -16,6 +16,12 @@
     <attr name="fl_borderWidth" format="dimension" />
     <attr name="fl_size" format="dimension" />
 
+    <attr name="fl_touchEffect" format="integer">
+        <enum name="fl_none" value="0" />
+        <enum name="fl_ease" value="1" />
+        <enum name="fl_ripple" value="2" />
+    </attr>
+
     <attr name="fl_dotMargin" format="dimension" />
 
     <!-- FlatButton -->
@@ -26,6 +32,7 @@
         <attr name="fl_fontExtension" />
         <attr name="fl_textAppearance" />
         <attr name="fl_cornerRadius" />
+        <attr name="fl_touchEffect" />
 
         <!-- Defines the height of the border bottom of the button -->
         <attr name="fl_blockButtonEffectHeight" format="dimension" />
@@ -57,7 +64,7 @@
             <enum name="fl_transparent" value="2" />
         </attr>
     </declare-styleable>
-    
+
     <!-- Flat AutoCompleteTextView Text -->
     <declare-styleable name="fl_FlatAutoCompleteTextView">
         <attr name="fl_theme" />
