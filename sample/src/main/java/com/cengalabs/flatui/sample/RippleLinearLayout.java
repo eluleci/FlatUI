@@ -61,12 +61,14 @@ public class RippleLinearLayout extends LinearLayout {
 
     @Override
     public boolean onTouchEvent(final MotionEvent event) {
+        // send the touch event to animator
         touchEffectAnimator.onTouchEvent(event);
         return super.onTouchEvent(event);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
+        // let animator show the animation by applying changes to view's canvas
         touchEffectAnimator.onDraw(canvas);
         super.onDraw(canvas);
     }

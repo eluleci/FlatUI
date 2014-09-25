@@ -14,10 +14,10 @@
     </integer-array>
 
 
-    <color name="theme2_darker_color">#0089A0</color>
-    <color name="theme2_dark_color">#fffcf334</color>
-    <color name="theme2_primary_color">#11C5DC</color>
-    <color name="theme2_light_color">#70FFFF</color>
+    <color name="theme2_darker_color">#008AA1</color>
+    <color name="theme2_dark_color">#FFFF34</color>
+    <color name="theme2_primary_color">#10C6DC</color>
+    <color name="theme2_light_color">#ff6dffff</color>
 
     <integer-array name="custom_theme_2">
         <item>@color/theme2_darker_color</item>
